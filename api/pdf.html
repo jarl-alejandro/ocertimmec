@@ -1,0 +1,105 @@
+<html lang="en">
+<head>
+	<title>PDF</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<style type="text/css" media="all">
+		@font-face {
+			font-family: 'Roboto';
+			font-style: normal;
+			font-weight: 100;
+			font-display: swap;
+			src: url('${config.API}/font/Roboto-Regular.ttf') format('truetype');
+		}
+		@font-face {
+			font-family: 'FontBI';
+			src: url('${config.API}/fuentes') format('truetype');
+		}
+		html {
+			margin:0;
+			zoom: 0.75;
+		}
+		body {
+			font-size: 14px;
+			box-sizing: border-box;
+			font-family: 'Roboto', sans-serif;
+			margin: 0;
+			padding: 0;
+			width: 95%;
+			margin: 0 auto;
+		}
+		.headerImg-titulo {
+			font-weight: 400;
+			color: #767676;
+			text-align: center;
+			font-size: 40px;
+		}
+		.name {
+			text-align: center;
+			font-size: 35px;
+		}
+		.texto {
+			color: #767676;
+			font-size: 22px;
+		}
+		.texto-ident {
+			margin-right: 1%;
+			margin-left: 2%;
+		}
+
+		.hoja {
+			background-image: url(${config.API}/fotos-pdf/escudo.png);
+			background-repeat: no-repeat;
+			background-position: bottom right;
+			height: 100%;
+			min-height: 100%;
+			position: relative;
+		}
+		.footer2 {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			text-align: center;
+		}
+
+		.name-estudiante {
+			font-family: FontBI;
+			font-size: 50px;
+		}
+		.list-title {
+			margin: 0;
+			margin-top: 15px;
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body>
+
+<section class="hoja hoja1">
+	<br/>
+	<h1 class="headerImg-titulo">CERTIFICACIÓN POR COMPETENCIA LABORAL</h1>
+	<h2 class="name name-estudiante">${formatName(props.name, props.lastName)} - ${props.document}</h2>
+	<p class="texto">Ha cumplido con los requisitos establecidos en la normativa vigente para obtener la certificación en el perfil:</p>
+
+	<h2 class="name" style="font-weight: 600;">${props.certificateId.name}</h2>
+
+	<p class="texto">Unidad de competencia $ de acuerdo al Esquema de Certificación </p>
+	<br/>
+	<p class="texto">
+		Vigencia de la certificación:
+		<span class="texto-ident">del: </span>
+		<span>al: </span>
+	</p>
+</section>
+
+<div style='page-break-before: always;'></div>
+<section class="hoja hoja2">
+	<br/><br/><br/><br/>
+	<br/><br/><br/><br/>
+
+	<footer class="footer2">
+		<img src="${config.API}/fotos-pdf/setec-footer.png" width="300" height="150"  />
+	</footer>
+</section>
+<body>
+<html>

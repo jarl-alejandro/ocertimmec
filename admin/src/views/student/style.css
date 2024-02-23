@@ -1,0 +1,8 @@
+.ActionsStudent {
+	display: flex !important;
+	justify-content: space-between;
+}
+
+.ActionsStudent button, .ActionsStudent a {
+	margin-right: 5px;
+}
