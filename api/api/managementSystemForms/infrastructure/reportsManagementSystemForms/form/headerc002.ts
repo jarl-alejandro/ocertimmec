@@ -1,6 +1,6 @@
-import config from '../../../config'
+import config from '../../../../../config'
 
-function headert011(number) {
+function headerc001(number) {
 
 	return `
 		<table class="Header">
@@ -9,10 +9,10 @@ function headert011(number) {
 						<img src="${config.API}/logo/occertimm" width="150" height="125"  />
 					</td>
 					<td rowspan="3" width="48%" style="text-align: center;font-weight:600;">
-					MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
+						MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
 					</td>
 					<td style="font-size: 12px">Código:</td>
-					<td style="font-size: 12px">OCCERTIMM-T011</td>
+					<td style="font-size: 12px">OCCERTIMM-C002</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">Fecha de emisión:</td>
@@ -24,21 +24,21 @@ function headert011(number) {
 				</tr>
 				<tr>
 					<td rowspan="3" style="text-align: center;font-weight:500;font-size:14px">
-						EVALUACION DE DESEMPEÑO AL EXAMINADOR 
+						EVALUACIÓN DIAGNÓSTICA DE LECTO-ESCRITURA Y CÁLCULO BÁSICO
 					</td>
 					<td style="font-size: 12px">Versión:</td>
 					<td style="font-size: 12px">DCR-V02-2018</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">N° pág:</td>
-					<td style="font-size: 12px">Page ${number} of 2</td>
+					<td style="font-size: 12px">Page ${number} of 4</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">File:</td>
-					<td style="font-size: 12px">T011</td>
+					<td style="font-size: 12px">C002</td>
 				</tr>
 			</table>
 	`
 }
 
-export default headert011
+export default headerc001

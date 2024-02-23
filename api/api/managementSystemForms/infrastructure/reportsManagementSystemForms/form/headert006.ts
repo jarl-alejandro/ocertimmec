@@ -1,6 +1,6 @@
-import config from '../../../config'
+import config from '../../../../../config'
 
-function headerc014(number) {
+function headert006(number) {
 
 	return `
 		<table class="Header">
@@ -9,10 +9,10 @@ function headerc014(number) {
 						<img src="${config.API}/logo/occertimm" width="150" height="125"  />
 					</td>
 					<td rowspan="3" width="48%" style="text-align: center;font-weight:600;">
-						MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
+					MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
 					</td>
 					<td style="font-size: 12px">Código:</td>
-					<td style="font-size: 12px">OCCERTIMM-C014</td>
+					<td style="font-size: 12px">OCCERTIMM-T006</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">Fecha de emisión:</td>
@@ -24,21 +24,21 @@ function headerc014(number) {
 				</tr>
 				<tr>
 					<td rowspan="3" style="text-align: center;font-weight:500;font-size:14px">
-						NOTIFICACION DE SUSPENSIÓN O RETIRO DE LA CERTIFICACIÓN
+						ACUERDO DE CONFIDENCIALIDAD Y RESPONSABILIDAD DE LA INFORMACIÓN
 					</td>
 					<td style="font-size: 12px">Versión:</td>
 					<td style="font-size: 12px">DCR-V02-2018</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">N° pág:</td>
-					<td style="font-size: 12px">Page ${number} of 2</td>
+					<td style="font-size: 12px">Page ${number} of 3</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">File:</td>
-					<td style="font-size: 12px">C014</td>
+					<td style="font-size: 12px">T006</td>
 				</tr>
 			</table>
 	`
 }
 
-export default headerc014
+export default headert006

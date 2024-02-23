@@ -1,6 +1,6 @@
 import phantomHtmlToPdf from 'phantom-html-to-pdf'
-import template from '../../form/template'
-import template007 from '../../form/template007'
+import template from './form/template'
+import template007 from './form/template007'
 
 import Student from '../../../courses/domain/student'
 import Certificate from '../../../certificate/domain/model'

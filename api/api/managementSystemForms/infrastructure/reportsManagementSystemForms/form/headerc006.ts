@@ -1,6 +1,6 @@
-import config from '../../../config'
+import config from '../../../../../config'
 
-function headerc013(number) {
+function headerc006(number) {
 
 	return `
 		<table class="Header">
@@ -12,7 +12,7 @@ function headerc013(number) {
 						MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
 					</td>
 					<td style="font-size: 12px">Código:</td>
-					<td style="font-size: 12px">OCCERTIMM-C013</td>
+					<td style="font-size: 12px">OCCERTIMM-C006</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">Fecha de emisión:</td>
@@ -24,7 +24,7 @@ function headerc013(number) {
 				</tr>
 				<tr>
 					<td rowspan="3" style="text-align: center;font-weight:500;font-size:14px">
-						LISTA DE VERIFICACIÓN DEL PROCESO DE EXAMINACIÓN
+						LISTA VERIFICACIÓN DEL LUGAR DE EXAMINACIÓN
 					</td>
 					<td style="font-size: 12px">Versión:</td>
 					<td style="font-size: 12px">DCR-V02-2018</td>
@@ -35,10 +35,10 @@ function headerc013(number) {
 				</tr>
 				<tr>
 					<td style="font-size: 12px">File:</td>
-					<td style="font-size: 12px">C013</td>
+					<td style="font-size: 12px">C006</td>
 				</tr>
 			</table>
 	`
 }
 
-export default headerc013
+export default headerc006

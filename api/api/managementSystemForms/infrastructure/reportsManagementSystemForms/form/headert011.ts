@@ -1,6 +1,6 @@
-import config from '../../../config'
+import config from '../../../../../config'
 
-function headerc001 (number) {
+function headert011(number) {
 
 	return `
 		<table class="Header">
@@ -9,10 +9,10 @@ function headerc001 (number) {
 						<img src="${config.API}/logo/occertimm" width="150" height="125"  />
 					</td>
 					<td rowspan="3" width="48%" style="text-align: center;font-weight:600;">
-						MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
+					MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
 					</td>
 					<td style="font-size: 12px">Código:</td>
-					<td style="font-size: 12px">OCCERTIMM-C001</td>
+					<td style="font-size: 12px">OCCERTIMM-T011</td>
 				</tr>
 				<tr>
 					<td style="font-size: 12px">Fecha de emisión:</td>
@@ -24,7 +24,7 @@ function headerc001 (number) {
 				</tr>
 				<tr>
 					<td rowspan="3" style="text-align: center;font-weight:500;font-size:14px">
-						APLICACIÓN PARA LA CERTIFICACIÓN DE PERSONAS
+						EVALUACION DE DESEMPEÑO AL EXAMINADOR 
 					</td>
 					<td style="font-size: 12px">Versión:</td>
 					<td style="font-size: 12px">DCR-V02-2018</td>
@@ -35,10 +35,10 @@ function headerc001 (number) {
 				</tr>
 				<tr>
 					<td style="font-size: 12px">File:</td>
-					<td style="font-size: 12px">C001</td>
+					<td style="font-size: 12px">T011</td>
 				</tr>
 			</table>
 	`
 }
 
-export default headerc001
+export default headert011

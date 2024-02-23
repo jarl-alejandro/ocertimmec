@@ -2,7 +2,7 @@
   "name": "api-occertim",
   "version": "1.0.0",
   "description": "Api de occertimm",
-  "main": "index.js",
+  "main": "api.ts",
   "scripts": {
     "dev": "NODE_ENV=dev nodemon index --exec babel-node",
     "start": "NODE_ENV=production ./node_modules/.bin/babel-node index"
@@ -26,6 +26,11 @@
     "pdf-maker": "0.0.2",
     "phantom-html-to-pdf": "^0.5.6",
     "socket.io": "^2.1.1",
-		"qrcode": "^1.4.4"
-	}
+    "qrcode": "^1.4.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/socket.io": "^3.0.2",
+    "typescript": "^5.3.3"
+  }
 }
