@@ -5,14 +5,14 @@ import path                from 'path'
 import fs                  from 'fs'
 
 
-import users               from './api/users/api'
-import courses             from './api/courses/api'
-import training            from './api/training/api'
-import certificate         from './api/certificate/api'
-import planning            from './api/planning/api'
-import pdf                 from './api/pdf/router'
-import messages            from './api/messages/api'
-import trainingCertificate from './api/trainingCertificate'
+import users               from './api/users/application/api'
+import courses             from './api/courses/application/api'
+import training            from './api/training/application/api'
+import certificate         from './api/certificate/application/api'
+import planning            from './api/planning/application/api'
+import pdf                 from './api/managementSystemForms/infrastructure/routerReports'
+import messages            from './api/messages/application/api'
+import trainingCertificate from './api/training/infrastructure/report/reportCerficateOnAssisence'
 
 import excel               from './excel'
 

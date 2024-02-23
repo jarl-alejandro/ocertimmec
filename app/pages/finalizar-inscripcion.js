@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'next/router'
+import { withRouter } from 'next/routerReports'
 
 
 import fetch from 'isomorphic-unfetch'

@@ -1,5 +1,5 @@
-import Student from '../api/courses/student'
-import Planning from '../api/planning/model'
+import Student from '../api/courses/domain/student'
+import Planning from '../api/planning/domain/model'
 
 import path from 'path'
 import Excel from 'exceljs'

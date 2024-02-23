@@ -8,7 +8,7 @@ import Ciudadanos from './Ciudadanos'
 import CondicionLaboral from './CondicionLaboral'
 import CondicionVida from './CondicionVida'
 import Studiant from './Studiant'
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-routerReports-dom'
 
 import initialState from './state'
 

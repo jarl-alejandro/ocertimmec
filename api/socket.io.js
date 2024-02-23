@@ -1,11 +1,11 @@
 import socketio from 'socket.io'
 
-import users from './api/users/socket.io'
-import courses from './api/courses/socket.io'
-import training from './api/training/socket.io'
-import certificate from './api/certificate/socket.io'
-import planning from './api/planning/socket.io'
-import messages from './api/messages/socket.io'
+import users from './api/users/application/socket.io'
+import courses from './api/courses/application/socket.io'
+import training from './api/training/application/socket.io'
+import certificate from './api/certificate/application/socket.io'
+import planning from './api/planning/application/socket.io'
+import messages from './api/messages/application/socket.io'
 
 class SocketIo {
 
