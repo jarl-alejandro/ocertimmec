@@ -2,18 +2,18 @@ import { Document, Schema, model } from 'mongoose'
 import bcrypt from 'bcryptjs'
 
 interface UserDocument extends Document {
-	cedula: string,
-	name: string,
-	email: string,
-	password: string,
-	photo: string,
-	roles: string,
-	workExperience: string,
-	levelInstruction: string,
-	teachingExperience: string,
-	trainingProfile: string,
-	trainingPedagogy: string,
-	isActive: Boolean,
+	cedula?: string,
+	name?: string,
+	email?: string,
+	password?: string,
+	photo?: string,
+	roles?: string,
+	workExperience?: string,
+	levelInstruction?: string,
+	teachingExperience?: string,
+	trainingProfile?: string,
+	trainingPedagogy?: string,
+	isActive?: Boolean,
 }
 
 const UserSchema = new Schema<UserDocument>({
@@ -56,4 +56,4 @@ UserSchema.methods.comparePassword = function (password: string, done: any) {
 }
 
 
-export default model('Users', UserSchema, 'Users')
+export default model<UserDocument>('Users', UserSchema, 'Users')

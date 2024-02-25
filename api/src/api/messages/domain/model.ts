@@ -1,12 +1,17 @@
-import mongoose from 'mongoose'
+import { Document, Schema, model } from 'mongoose'
 
-const MessageSchema = new mongoose.Schema({
+interface Message extends Document {
+	name: string,
+	email: string,
+	subject: string,
+	message: string,
+}
+
+const MessageSchema = new Schema<Message>({
 	name: { type: String, default: "" },
 	email: { type: String, default: "" },
 	subject: { type: String, default: "" },
 	message: { type: String, default: "" },
 })
 
-const Message = mongoose.model('Message', MessageSchema, 'Message')
-
-export default Message
+export default model<Message>('Message', MessageSchema, 'Message')

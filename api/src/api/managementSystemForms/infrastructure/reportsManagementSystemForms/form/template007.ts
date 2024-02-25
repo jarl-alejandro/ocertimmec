@@ -22,7 +22,7 @@ function formatDate(date) {
 	return `${day}/${month}/${date.getFullYear()}`
 }
 
-function template(props, certificate, planning) {
+function template(props, certificate) {
 	let edad = calcularEdad(new Date(props.birthdate), new Date(props.fechaAplicacion))
 
 	let template = `

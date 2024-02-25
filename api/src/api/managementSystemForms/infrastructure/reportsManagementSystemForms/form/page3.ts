@@ -1,6 +1,5 @@
 import headerc003 from './headerc003'
-import control from './control'
-import datePlus  from '../date'
+import datePlus from '../date'
 
 const month = [
 	'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
@@ -59,22 +58,22 @@ function formatDate (date) {
 	}
 }
 
-function page(props, certificate) {
+function page(props: any, certificate: any) {
 
 	let dateCerficate = new Date(props.dateCertificate)
 	let fechaAplicacion = datePlus(props.dateCertificate, 2)
 
 
-const template = `
+	return `
 	<section>
-		${ headerc003(1) }
+		${headerc003(1)}
 
 		<br/><br/>
 		<div>
 			<label>Santo Domingo de los Colorados,</label>
-			<span style="display:inline-block;width:25px;border-bottom: 1px solid black;">  ${ dateCerficate.getDate() }</span>
+			<span style="display:inline-block;width:25px;border-bottom: 1px solid black;">  ${dateCerficate.getDate()}</span>
 			<label>de</label>
-			<span style="display:inline-block;width:100px;border-bottom: 1px solid black;">  ${ month[dateCerficate.getMonth()] }</span>
+			<span style="display:inline-block;width:100px;border-bottom: 1px solid black;">  ${month[dateCerficate.getMonth()]}</span>
 			<label>del ${dateCerficate.getFullYear()}</label>
 		</div>
 			
@@ -82,10 +81,10 @@ const template = `
 
 		<div>
 			<label>Expediente No.</label>
-			<span style="display:inline-block;width:50%;border-bottom: 1px solid black;font-size:11px">${ siglas(certificate.name, props.numberAplicacion)}</span>
+			<span style="display:inline-block;width:50%;border-bottom: 1px solid black;font-size:11px">${siglas(certificate.name, props.numberAplicacion)}</span>
 
 			<label>Aplicación Nº:</label>
-			<span style="display:inline-block;width:60px;border-bottom: 1px solid black">000${ props.numberAplicacion }</span>
+			<span style="display:inline-block;width:60px;border-bottom: 1px solid black">000${props.numberAplicacion}</span>
 		</div>
 		<br/>
 		<div style="">
@@ -94,7 +93,7 @@ const template = `
 			<label>/</label>
 			<span style="display:inline-block;width:20px;border-bottom: 1px solid black;">  ${fechaAplicacion.getMonth() + 1}</span>
 			<label>/</label>
-			<span style="display:inline-block;width:40px;border-bottom: 1px solid black;">  ${fechaAplicacion.getFullYear() }</span>
+			<span style="display:inline-block;width:40px;border-bottom: 1px solid black;">  ${fechaAplicacion.getFullYear()}</span>
 		</div>
 
 		<br/><br/>
@@ -149,7 +148,7 @@ const template = `
 		<br/>
 		<div>
 			<label>MORA LEDESMA WALTER FILIBERTO con nombre comercial OCCERTIMM le notifica que su aplicación para la certificación de personas del/de los perfil/es de competencia laboral</label>
-			<span style="display:inline-block;width:650px;border-bottom: 1px solid black;font-size:11px">${ certificate.name }</span>
+			<span style="display:inline-block;width:650px;border-bottom: 1px solid black;font-size:11px">${certificate.name}</span>
 			<label>en la/s unidad/es de competencia:</label>
 			<span style="display:inline-block;width:250px;border-bottom: 1px solid black;">${generateUC(certificate.uc)}</span>
 			<label>ha sido:</label>
@@ -174,41 +173,41 @@ const template = `
 
 		<table>
 			<tr>
-				<td width="10%" style="border: 1px solid black;">${ certificate.uc >= 1 ? 'x' : '' }</td>
+				<td width="10%" style="border: 1px solid black;">${certificate.uc >= 1 ? 'x' : ''}</td>
 				<td width="12%" style="border: 1px solid black;">UC 1</td>
 				<td width="20%" rowspan="3" style="border: 1px solid black;">Fecha:</td>
-				<td width="10%" rowspan="3" style="border: 1px solid black;">${ formatDate(dateCerficate) }</td>
+				<td width="10%" rowspan="3" style="border: 1px solid black;">${formatDate(dateCerficate)}</td>
 				<td width="30%" rowspan="3" style="border: 1px solid black;">Sitio de Trabajo</td>
 				<td width="30%" rowspan="3" style="border: 1px solid black;">Dirección:</td>
 			</tr>
 			<tr>
-				<td style="border: 1px solid black;">${ certificate.uc >= 2 ? 'x' : '' }</td>
+				<td style="border: 1px solid black;">${certificate.uc >= 2 ? 'x' : ''}</td>
 				<td style="border: 1px solid black;">UC 2</td>
 			</tr>
 			<tr>
-				<td style="border: 1px solid black;">${ certificate.uc >= 3 ? 'x' : '' }</td>
+				<td style="border: 1px solid black;">${certificate.uc >= 3 ? 'x' : ''}</td>
 				<td style="border: 1px solid black;">UC 3</td>
 			</tr>
 			<tr>
-				<td style="border: 1px solid black;">${ certificate.uc >= 4 ? 'x' : '' }</td>
+				<td style="border: 1px solid black;">${certificate.uc >= 4 ? 'x' : ''}</td>
 				<td style="border: 1px solid black;">UC 4</td>
 				<td rowspan="3" style="border: 1px solid black;">Hora:</td>
-				<td rowspan="3" style="border: 1px solid black;">${ props.hourCertificate }</td>
+				<td rowspan="3" style="border: 1px solid black;">${props.hourCertificate}</td>
 				<td rowspan="3" style="border: 1px solid black;">
 					<strong>Instalaciones establecidas por</strong>
 					<p style="margin:0">MORA LEDESMA WALTER FILIBERTO con nombre comercial OCCERTIMM</p>
 				</td>
 				<td rowspan="3" style="border: 1px solid black;">
 					Dirección:
-					${ props.placeCertificate }
+					${props.placeCertificate}
 				</td>
 			</tr>
 			<tr>
-				<td style="border: 1px solid black;">${ certificate.uc >= 5 ? 'x' : '' }</td>
+				<td style="border: 1px solid black;">${certificate.uc >= 5 ? 'x' : ''}</td>
 				<td style="border: 1px solid black;">UC 5</td>
 			</tr>
 			<tr>
-				<td style="border: 1px solid black;">${ certificate.uc >= 6 ? 'x' : '' }</td>
+				<td style="border: 1px solid black;">${certificate.uc >= 6 ? 'x' : ''}</td>
 				<td style="border: 1px solid black;">UC 6</td>
 			</tr>
 		</table>
@@ -227,7 +226,5 @@ const template = `
 		<p style="margin:0">Coordinador de Certificación</p>
 	</section>
 `
-
-return template
 }
 export default page

@@ -1,8 +1,156 @@
-import mongoose from 'mongoose'
-const deepPopulate = require('mongoose-deep-populate')(mongoose)
+import { Document, Schema, model, Types } from 'mongoose';
+interface Student extends Document {
+	isCerficateAssiten: Boolean,
+	certificacion: {
+		type: {},
+		default: {
+			date: Date,
+			code: string
+		}
+	},
+	isActive: Boolean,
+	pdfRequisitos: string,
+	document: string,
+	name: string,
+	lastName: string,
+	birthdate: Date,
+	direction: string,
+	province: string,
+	city: string,
+	phone: string,
+	celphone: string,
+	email: string,
+	type: string,
+	work: string,
+	nameCompany: string,
+	activity: string,
+	experience: string,
+	numberTrainig: string,
+	traning: string,
+	level: string,
+	isVerifiy: Boolean,
+	isComplete: Boolean,
+	isAll : Boolean,
+	fechaAplicacion: Date,
+	fechaAceptacion: Date,
+	numberAplicacion: { type: Number, default: 0 },
+	codigoCertificado: string,
+	placeCertificate: string,
+	dateCertificate: Date
+	hourCertificate: string,
+	notaCertificate: string,
+	certificateId: { type: Types.ObjectId, ref: 'Certificate' },
+	trainingId: { type: Types.ObjectId, ref: 'Trainings' },
 
-const StudentSchema = new mongoose.Schema({
-	isCerficateAssiten: { type: Boolean, default: false  },
+	isNoCertificateSetec: Boolean,
+	isCertificateSetec: Boolean,
+	codeSetec: string,
+	dateExpedicion: Date
+	dateExpiracion: Date
+
+	primaria: {
+		name: string,
+		pais: string,
+		ciudad: string,
+		titulo: string,
+	},
+	secundaria: {
+		name: string,
+		pais: string,
+		ciudad: string,
+		titulo: string,
+	},
+	tecnico: {
+		name: string,
+		pais: string,
+		ciudad: string,
+		titulo: string,
+	},
+	tercerNivel: {
+		name: string,
+		pais: string,
+		ciudad: string,
+		titulo: string,
+	},
+	cuartoNivel: {
+		name: string,
+		pais: string,
+		ciudad: string,
+		titulo: string,
+	},
+	capacitacion1: {
+		nameCourse: string,
+		nameInstitucion: string,
+		dateCourse: Date,
+		hourCourse: string,
+	},
+	capacitacion2: {
+		nameCourse: string,
+		nameInstitucion: string,
+		dateCourse: Date,
+		hourCourse: string,
+	},
+	capacitacion3: {
+		nameCourse: string,
+		nameInstitucion: string,
+		dateCourse: Date,
+		hourCourse: string,
+	},
+	experiencia1: {
+		desde: Date,
+		hasta: Date,
+		name: string,
+		direction: string,
+		phone: string,
+		funcion: string,
+	},
+	experiencia2: {
+		desde: Date,
+		hasta: Date,
+		name: string,
+		direction: string,
+		phone: string,
+		funcion: string,
+	},
+	experiencia3: {
+		desde: Date,
+		hasta: Date,
+		name: string,
+		direction: string,
+		phone: string,
+		funcion: string,
+	},
+	autoidentificacion: string,
+	tipoOcupacion: string,
+	contrato: string,
+	seguroMedio: string,
+	sueldoTrece: string,
+	sueldoCatorce: string,
+	sueldo: string,
+	cambioPuesto: string,
+	satisfechoEmpleo: string,
+	agotadoEmpleo: string,
+	respetanTrabajo: string,
+	jefesRecoTrab: string,
+	riesgoLaboral: string,
+	deseariaCambiarTrabajo: string,
+	seguroMedico: string,
+	hijos: string,
+	cuantoHijos: string,
+	hijosMayorTres: string,
+	estudian: string,
+	miembrosHogar: string,
+	propiedad: string,
+	servicioBasico: string,
+	discapacidad: string,
+	tipoDiscapacidad: string,
+	socioEmpleo: string,
+}
+// import * as mongoose from "mongoose";
+// import deepPopulate from 'mongoose-deep-populate';
+
+const StudentSchema = new Schema<Student>({
+	isCerficateAssiten: Boolean,
 	certificacion: {
 		type: {},
 		default: {
@@ -11,7 +159,7 @@ const StudentSchema = new mongoose.Schema({
 		}
 	},
 
-	isActive: { type: Boolean, default: true },
+	isActive: Boolean,
 	pdfRequisitos: { type: String, default: '',  },
 
 	document: { type: String, default: '' },
@@ -32,9 +180,9 @@ const StudentSchema = new mongoose.Schema({
 	numberTrainig: { type: String, default: '', uppercase: true },
 	traning: { type: String, default: '', uppercase: true },
 	level: { type: String, default: '', uppercase: true },
-	isVerifiy: { type: Boolean, default: false },
-	isComplete: { type: Boolean, default: false },
-	isAll : { type: Boolean, default: false },
+	isVerifiy: Boolean,
+	isComplete: Boolean,
+	isAll : Boolean,
 	fechaAplicacion: { type: Date, default: Date.now() },
 	fechaAceptacion: { type: Date, default: Date.now() },
 	numberAplicacion: { type: Number, default: 0 },
@@ -43,11 +191,11 @@ const StudentSchema = new mongoose.Schema({
 	dateCertificate: { type: Date },
 	hourCertificate: { type: String },
 	notaCertificate: { type: String },
-	certificateId: { type: mongoose.Schema.ObjectId, ref: 'Certificate' },
-	trainingId: { type: mongoose.Schema.ObjectId, ref: 'Trainings' },
+	certificateId: { type: Types.ObjectId, ref: 'Certificate' },
+	trainingId: { type: Types.ObjectId, ref: 'Trainings' },
 
-	isNoCertificateSetec: { type: Boolean, default: false },
-	isCertificateSetec: { type: Boolean, default: false },
+	isNoCertificateSetec: Boolean,
+	isCertificateSetec: Boolean,
 	codeSetec: { type: String },
 	dateExpedicion: { type: Date },
 	dateExpiracion: { type: Date },
@@ -151,7 +299,6 @@ const StudentSchema = new mongoose.Schema({
 	socioEmpleo: { type: String, default: '', uppercase: true },
 })
 
-StudentSchema.plugin(deepPopulate);
-const Student = mongoose.model('Student', StudentSchema, 'Student')
+// StudentSchema.plugin(deepPopulate(mongoose));
+export default model<Student>('Student', StudentSchema, 'Student')
 
-export default Student

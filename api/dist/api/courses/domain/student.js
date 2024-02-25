@@ -1,12 +1,10 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
-const deepPopulate = require('mongoose-deep-populate')(mongoose_1.default);
-const StudentSchema = new mongoose_1.default.Schema({
-    isCerficateAssiten: { type: Boolean, default: false },
+const mongoose_1 = require("mongoose");
+// import * as mongoose from "mongoose";
+// import deepPopulate from 'mongoose-deep-populate';
+const StudentSchema = new mongoose_1.Schema({
+    isCerficateAssiten: Boolean,
     certificacion: {
         type: {},
         default: {
@@ -14,7 +12,7 @@ const StudentSchema = new mongoose_1.default.Schema({
             code: 'OCCERTIMM-01-STODGO-ASIST-ARB-FUT-0001-0001'
         }
     },
-    isActive: { type: Boolean, default: true },
+    isActive: Boolean,
     pdfRequisitos: { type: String, default: '', },
     document: { type: String, default: '' },
     name: { type: String, default: '', uppercase: true, },
@@ -34,9 +32,9 @@ const StudentSchema = new mongoose_1.default.Schema({
     numberTrainig: { type: String, default: '', uppercase: true },
     traning: { type: String, default: '', uppercase: true },
     level: { type: String, default: '', uppercase: true },
-    isVerifiy: { type: Boolean, default: false },
-    isComplete: { type: Boolean, default: false },
-    isAll: { type: Boolean, default: false },
+    isVerifiy: Boolean,
+    isComplete: Boolean,
+    isAll: Boolean,
     fechaAplicacion: { type: Date, default: Date.now() },
     fechaAceptacion: { type: Date, default: Date.now() },
     numberAplicacion: { type: Number, default: 0 },
@@ -45,10 +43,10 @@ const StudentSchema = new mongoose_1.default.Schema({
     dateCertificate: { type: Date },
     hourCertificate: { type: String },
     notaCertificate: { type: String },
-    certificateId: { type: mongoose_1.default.Schema.ObjectId, ref: 'Certificate' },
-    trainingId: { type: mongoose_1.default.Schema.ObjectId, ref: 'Trainings' },
-    isNoCertificateSetec: { type: Boolean, default: false },
-    isCertificateSetec: { type: Boolean, default: false },
+    certificateId: { type: mongoose_1.Types.ObjectId, ref: 'Certificate' },
+    trainingId: { type: mongoose_1.Types.ObjectId, ref: 'Trainings' },
+    isNoCertificateSetec: Boolean,
+    isCertificateSetec: Boolean,
     codeSetec: { type: String },
     dateExpedicion: { type: Date },
     dateExpiracion: { type: Date },
@@ -150,6 +148,5 @@ const StudentSchema = new mongoose_1.default.Schema({
     tipoDiscapacidad: { type: String, default: '', uppercase: true },
     socioEmpleo: { type: String, default: '', uppercase: true },
 });
-StudentSchema.plugin(deepPopulate);
-const Student = mongoose_1.default.model('Student', StudentSchema, 'Student');
-exports.default = Student;
+// StudentSchema.plugin(deepPopulate(mongoose));
+exports.default = (0, mongoose_1.model)('Student', StudentSchema, 'Student');

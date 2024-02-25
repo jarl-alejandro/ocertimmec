@@ -1,11 +1,8 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
-const TrainingSchema = new mongoose_1.default.Schema({
-    id_user: { type: mongoose_1.default.Schema.ObjectId, ref: 'Users' },
+const mongoose_1 = require("mongoose");
+const TrainingSchema = new mongoose_1.Schema({
+    id_user: { type: mongoose_1.Types.ObjectId, ref: 'Users' },
     cost: { type: Number, default: 0 },
     content: { type: String, default: '' },
     materials: { type: String, default: '' },
@@ -15,5 +12,4 @@ const TrainingSchema = new mongoose_1.default.Schema({
     photo: String,
     isActive: { type: Boolean, default: true }
 });
-const Trainings = mongoose_1.default.model('Trainings', TrainingSchema, 'Trainings');
-exports.default = Trainings;
+exports.default = (0, mongoose_1.model)('Trainings', TrainingSchema, 'Trainings');

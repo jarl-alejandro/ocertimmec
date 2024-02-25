@@ -13,7 +13,7 @@ import page13     from './page13'
 import paget006   from './paget006'
 import paget011   from './paget011'
 import esquemas   from './esquemas'
-import config     from '../../../../../config'
+import config     from '@/config'
 
 
 function calcularEdad(fecha, fecha2) {
@@ -56,7 +56,7 @@ function siglas(name, numberAplicacion) {
 
 	return `OCCERTIMM-${siglas.toLocaleUpperCase()}-${code}${numberAplicacion}`
 }
-function formatDate (date, isLog = false) {
+function formatDate (date) {
 	let text = JSON.stringify(date)
 	text = text.split('T')[0].split('-').join('/')
 
@@ -507,7 +507,7 @@ function template(props, certificate, planning) {
 	 */
 	template += `
 			<div style='page-break-before: always;'></div>
-			${ page3(props, certificate, planning) }
+			${ page3(props, certificate) }
 			<div style='page-break-before: always;'></div>
 			${ page4(props) }
 			<div style='page-break-before: always;'></div>

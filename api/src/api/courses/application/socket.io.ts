@@ -134,7 +134,7 @@ async function updated(data, io, socket) {
 }
 
 function ioCourse (socket, io) {
-	socket.on('certificate::assistance', data => certificateAssistance(data, io))
+	socket.on('certificate::assistance', data => certificateAssistance(data))
 
 	socket.on('finalizar::inscripcion', data => finalizarInscripcion(data, io, socket))
 	socket.on('verificar::email', data => verificarEmail(data, io))

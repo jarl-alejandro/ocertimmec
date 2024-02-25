@@ -8,16 +8,6 @@ const month = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
     'Octubre', 'Noviembre', 'Diciembre'
 ];
-function generateUC(uc) {
-    uc = parseInt(uc);
-    let formatUc = '';
-    for (let i = 1; i <= uc; i++) {
-        formatUc += `UC${i}`;
-        if (uc !== i)
-            formatUc += ', ';
-    }
-    return formatUc;
-}
 function siglas(name, numberAplicacion) {
     const cero = 3;
     name = name.toUpperCase();

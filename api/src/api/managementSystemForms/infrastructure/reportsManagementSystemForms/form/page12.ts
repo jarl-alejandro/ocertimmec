@@ -7,17 +7,6 @@ const month = [
 ]
 
 
-function generateUC(uc) {
-	uc = parseInt(uc)
-	let formatUc = ''
-
-	for (let i = 1; i <= uc; i++) {
-		formatUc += `UC${i}`
-		if (uc !== i) formatUc += ', '
-	}
-
-	return formatUc
-}
 function siglas(name, numberAplicacion) {
 	const cero = 3
 	name = name.toUpperCase()

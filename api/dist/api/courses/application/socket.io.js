@@ -105,7 +105,7 @@ async function updated(data, io, socket) {
     io.sockets.connected[id_user].emit('terminar::register');
 }
 function ioCourse(socket, io) {
-    socket.on('certificate::assistance', data => (0, certificateAssistance_1.default)(data, io));
+    socket.on('certificate::assistance', data => (0, certificateAssistance_1.default)(data));
     socket.on('finalizar::inscripcion', data => finalizarInscripcion(data, io, socket));
     socket.on('verificar::email', data => verificarEmail(data, io));
     socket.on('finish::register', data => finishRegister(data, io));

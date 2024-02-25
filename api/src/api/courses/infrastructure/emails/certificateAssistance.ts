@@ -35,7 +35,7 @@ export default async function certificateAssistance (data) {
 	})
 
 	// const email = "jarlalejor@gmail.com"
-	const email = student.email
+	const email = student.email;
 	const subject = `CERTIFICACIÓN DE ${student.trainingId.name.toUpperCase()}`
 
 	const mailOptions = {

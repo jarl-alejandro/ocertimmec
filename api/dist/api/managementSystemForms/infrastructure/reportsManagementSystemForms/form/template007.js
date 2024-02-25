@@ -20,7 +20,7 @@ function formatDate(date) {
     let month = date.getMonth() >= 10 ? 1 + date.getMonth() : `0${date.getMonth() + 1}`;
     return `${day}/${month}/${date.getFullYear()}`;
 }
-function template(props, certificate, planning) {
+function template(props, certificate) {
     let edad = calcularEdad(new Date(props.birthdate), new Date(props.fechaAplicacion));
     let template = `
     <html lang="en">

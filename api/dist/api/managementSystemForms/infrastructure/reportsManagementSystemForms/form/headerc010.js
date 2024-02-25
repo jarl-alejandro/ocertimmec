@@ -1,11 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const config_1 = __importDefault(require("@/config"));
 function headerc010(number) {
     return `
 		<table class="Header">
 				<tr>
 					<td rowspan="6" style="text-align: center;">
-						<img src="${config.API}/logo/occertimm" width="150" height="125"  />
+						<img src="${config_1.default.API}/logo/occertimm" width="150" height="125"  />
 					</td>
 					<td rowspan="3" width="48%" style="text-align: center;font-weight:600;">
 						MORA LEDESMA WALTER FILIBERTO CON NOMBRE COMERCIAL OCCERTIMM
