@@ -8,7 +8,7 @@ async function generateExcel (req, res) {
 	const db = path.join('./db.xlsx')
 	const workbook = new Excel.Workbook()
 	const query = await Student.find({ isComplete: true })
-		.deepPopulate('certificateId certificateId.id_user')
+		.populate('certificateId certificateId.id_user')
 
 	let start = 16
 	let indice = 5
@@ -17,19 +17,19 @@ async function generateExcel (req, res) {
 	let worksheet = workbook.getWorksheet(1)
 
 	query.map(async (item, index) => {
-		let planning = await Planning.find({ rel: item.certificateId._id })
+		let planning = await Planning.find({ rel: item.certificateId._id.toString() })
 		let row = worksheet.getRow(start)
 
 		row.getCell(1).value = indice
 		row.getCell(2).value = formatDate(item.fechaAplicacion)
 		row.getCell(3).value = formatDate(item.fechaAplicacion)
-		row.getCell(4).value = item.lastName
-		row.getCell(5).value = item.name
-		row.getCell(6).value = item.document
-		row.getCell(7).value = item.email
+		row.getCell(4).value = item.lastName as string
+		row.getCell(5).value = item.name as string
+		row.getCell(6).value = item.document as string
+		row.getCell(7).value = item.email as string
 		row.getCell(8).value = calcularEdad(item.birthdate, item.fechaAceptacion)
-		row.getCell(9).value = item.phone
-		row.getCell(10).value = item.celphone
+		row.getCell(9).value = item.phone as string
+		row.getCell(10).value = item.celphone as string
 		row.getCell(11).value = "NO"
 		row.getCell(12).value = "NO"
 		row.getCell(13).value = item.certificateId.name
@@ -85,7 +85,7 @@ async function generateExcel (req, res) {
 		row.getCell(63).value = formatDate(item.dateCertificate)
 		row.getCell(64).value = formatDate(item.dateCertificate)
 		row.getCell(65).value = "NO"
-		row.getCell(66).value = item.codigoCertificado
+		row.getCell(66).value = item.codigoCertificado as string
 		row.getCell(67).value = item.certificateId.name
 		row.getCell(68).value = ucFormat(item.certificateId.uc)
 		row.getCell(69).value = ucFormat(item.certificateId.uc)
@@ -156,11 +156,4 @@ function ucFormat (num) {
 	}
 
 	return ucData
-}
-
-function sumDate (date, year) {
-	date = new Date(date)
-	date.setFullYear(date.getFullYear() + 5)
-
-	return formatDate(date)
 }

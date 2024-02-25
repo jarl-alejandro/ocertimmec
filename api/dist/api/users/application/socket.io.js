@@ -8,7 +8,8 @@ const path_1 = __importDefault(require("path"));
 const model_1 = __importDefault(require("../domain/model"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 async function created(data, io) {
-    const create = await (0, model_1.default)({ ...data, password: 'occertimm' });
+    const userDocument = new model_1.default({ ...data, password: 'occertimm' });
+    const create = await userDocument.save();
     let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');
     if (data.photo) {
         create.photo = `${create._id}-${data.photo}`;
@@ -25,10 +26,10 @@ async function created(data, io) {
 }
 async function updated(data, io) {
     let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');
-    let updated = await model_1.default.findByIdAndUpdate(data.id, { ...data }, { new: true });
+    let updatedUser = await model_1.default.findByIdAndUpdate(data.id, { ...data }, { new: true });
     io.emit('updated::user');
     if (data.isPhoto) {
-        fs_1.default.writeFile(`${pathFiles}/${updated.photo}`, data.photoFile, err => {
+        fs_1.default.writeFile(`${pathFiles}/${updatedUser.photo}`, data.photoFile, err => {
             if (err)
                 console.log(err);
         });

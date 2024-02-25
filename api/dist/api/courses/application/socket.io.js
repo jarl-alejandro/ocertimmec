@@ -3,12 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const student_1 = __importDefault(require("../domain/student"));
 const path_1 = __importDefault(require("path"));
-const fs_1 = __importDefault(require("fs"));
-const emailFinishRegisterOnCourse_1 = __importDefault(require("../infrastructure/emails/emailFinishRegisterOnCourse"));
-const config_1 = __importDefault(require("../../../config"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
+const fs_1 = __importDefault(require("fs"));
+const student_1 = __importDefault(require("../domain/student"));
+const emailFinishRegisterOnCourse_1 = __importDefault(require("../infrastructure/emails/emailFinishRegisterOnCourse"));
+const config_1 = __importDefault(require("@/config"));
 const params_1 = __importDefault(require("../domain/params"));
 const certificateAssistance_1 = __importDefault(require("../infrastructure/emails/certificateAssistance"));
 async function finalizarInscripcion(payload, io, socket) {
@@ -25,7 +25,7 @@ async function finalizarInscripcion(payload, io, socket) {
     let updated = await student_1.default.findByIdAndUpdate(payload.inscripcionId, { ...payload, pdfRequisitos: namePDF, isComplete: true }, { new: true });
     let object = {
         type: updated.type.toUpperCase() === 'CERTIFICATE' ? 'certificación' : 'capacitación',
-        name: `${updated.name} ${updated.lasName}`,
+        name: `${updated.name} ${updated.lastName}`,
         nameCurso: 'Finalizó el registro'
     };
     io.emit('notificacion', object);
@@ -37,12 +37,11 @@ async function finalizarInscripcion(payload, io, socket) {
 async function finishRegister(payload, io) {
     const student = await student_1.default.findById(payload.id).populate('certificateId');
     const name = student.certificateId.name.toString().toUpperCase();
-    const validParams = await params_1.default.findOne({ name });
-    let param = await params_1.default.findOneAndUpdate({ name }, { name, $inc: { "counter": 1 } }, { upsert: true, 'new': true });
+    let param = await params_1.default.findOneAndUpdate({ name }, { name, $inc: { 'counter': 1 } }, { upsert: true, 'new': true });
     updatedStudent(param.counter, io, payload);
 }
 async function updatedStudent(count, io, payload) {
-    let updated = await student_1.default.findByIdAndUpdate(payload.id, {
+    await student_1.default.findByIdAndUpdate(payload.id, {
         isAll: true,
         codigoCertificado: payload.code,
         placeCertificate: payload.placeCertificate,
@@ -51,7 +50,6 @@ async function updatedStudent(count, io, payload) {
         notaCertificate: payload.nota,
         numberAplicacion: count
     }, { new: true });
-    console.log(count);
     io.emit('registerInscripcion');
 }
 async function certificate(payload, io) {
@@ -112,7 +110,7 @@ function ioCourse(socket, io) {
     socket.on('registerInscripcion', data => {
         let object = {
             type: data.type.toUpperCase() === 'CERTIFICATE' ? 'certificación' : 'capacitación',
-            name: `${data.name} ${data.lasName}`,
+            name: `${data.name} ${data.lastName}`,
             nameCurso: data.nameCurso
         };
         io.emit('notificacion', object);

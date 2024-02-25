@@ -4,7 +4,8 @@ import User from '../domain/model'
 import bcrypt from 'bcryptjs'
 
 async function created (data, io) {
-	const create = await User({ ...data, password: 'occertimm' })
+	const userDocument = new User({ ...data, password: 'occertimm' });
+	const create = await userDocument.save();
 	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
 
 	if (data.photo) {
@@ -23,11 +24,11 @@ async function created (data, io) {
 
 async function updated(data, io) {
 	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
-	let updated = await User.findByIdAndUpdate(data.id, { ...data }, { new: true })
+	let updatedUser = await User.findByIdAndUpdate(data.id, { ...data }, { new: true })
 	io.emit('updated::user')
 
 	if (data.isPhoto) {
-		fs.writeFile(`${pathFiles}/${updated.photo}`, data.photoFile, err => {
+		fs.writeFile(`${pathFiles}/${updatedUser.photo}`, data.photoFile, err => {
 			if (err) console.log(err)
 		})
 	}

@@ -1,8 +1,9 @@
-import { Document, Schema, model } from 'mongoose'
+import {Document, Schema, model, Types} from 'mongoose'
 
-interface Params extends Document {
+export interface Params extends Document {
+	_id: Types.ObjectId;
 	name: string;
-	counter: string;
+	counter: Number;
 }
 
 const paramsSchema = new Schema<Params>({

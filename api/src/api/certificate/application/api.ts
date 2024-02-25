@@ -11,7 +11,7 @@ async function getCertificate (req, res) {
 
 async function getCertificateOne (req, res) {
 	const certificate = await Certificate.findById(req.params.id)
-	const planningCertificate = await Planning.find({ rel: certificate._id })
+	const planningCertificate = await Planning.find({ rel: certificate._id.toString() })
 
 	res.send({
 		certificate,

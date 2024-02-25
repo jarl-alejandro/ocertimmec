@@ -17,7 +17,7 @@ async function register (req, res) {
 
 		document: req.body.document.toString(),
 		name: req.body.name,
-		lastName: req.body.lasName,
+		lastName: req.body.lastName,
 		birthdate: req.body.birthdate,
 		direction: req.body.direction,
 		province: req.body.province,
@@ -54,8 +54,7 @@ async function register (req, res) {
 		}
 		else {
 			if (req.body.type === 'certificate') {
-				const query = await Student.deepPopulate(student, ['certificateId', 'trainingId'])
-			
+				const query = await Student.findById(student._id).populate('certificateId trainingId')
 				const tranport = nodemailer.createTransport({
 					host: 'smtp.gmail.com',
 					port: 465,
@@ -68,7 +67,7 @@ async function register (req, res) {
 			
 				const mailOptions = {
 					from: config.EMAIL,
-					to: query.email,
+					to: query.email as string,
 					subject: `CERTIFICACIÓN DE ${query.certificateId.name.toUpperCase()}`,
 					html: emailFinishRegisterOnCourse(query._id, query)
 				}
@@ -162,10 +161,10 @@ router.get('/descargar-requisitos/:name', getDescargar)
 router.get('/students', async (req,res) => {
 	let array = []
 
-	const query = await Student.find({ isComplete: true }).deepPopulate('certificateId.id_user')
+	const query = await Student.find({ isComplete: true }).populate('certificateId.id_user')
 
 	query.map(async (item, index) => {
-		let planning = await Planning.find({ rel: item.certificateId._id })
+		let planning = await Planning.find({ rel: item.certificateId._id.toString() })
 		let object = { item, planning }
 		array.push(object)
 

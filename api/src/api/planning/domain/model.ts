@@ -1,6 +1,7 @@
 import { Document, Schema, model, Types } from 'mongoose'
 
-interface Planning extends Document {
+export interface Planning extends Document {
+	_id: Types.ObjectId;
 	rel: String,
 	date: String,
 	hour: String[]

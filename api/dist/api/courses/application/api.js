@@ -18,7 +18,7 @@ async function register(req, res) {
         fechaAceptacion: new Date(),
         document: req.body.document.toString(),
         name: req.body.name,
-        lastName: req.body.lasName,
+        lastName: req.body.lastName,
         birthdate: req.body.birthdate,
         direction: req.body.direction,
         province: req.body.province,
@@ -52,7 +52,7 @@ async function register(req, res) {
         }
         else {
             if (req.body.type === 'certificate') {
-                const query = await student_1.default.deepPopulate(student, ['certificateId', 'trainingId']);
+                const query = await student_1.default.findById(student._id).populate('certificateId trainingId');
                 const tranport = nodemailer_1.default.createTransport({
                     host: 'smtp.gmail.com',
                     port: 465,
@@ -139,9 +139,9 @@ router.get('/training-certificate', getCertificateTraining);
 router.get('/descargar-requisitos/:name', getDescargar);
 router.get('/students', async (req, res) => {
     let array = [];
-    const query = await student_1.default.find({ isComplete: true }).deepPopulate('certificateId.id_user');
+    const query = await student_1.default.find({ isComplete: true }).populate('certificateId.id_user');
     query.map(async (item, index) => {
-        let planning = await model_3.default.find({ rel: item.certificateId._id });
+        let planning = await model_3.default.find({ rel: item.certificateId._id.toString() });
         let object = { item, planning };
         array.push(object);
         if (query.length === index + 1)

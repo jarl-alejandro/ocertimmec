@@ -1,7 +1,9 @@
-import { Document, Schema, model, Types } from 'mongoose'
+import {Document, Schema, model, Types, PopulatedDoc} from 'mongoose'
+import {UserDocument} from "@/api/users/domain/model";
 
-interface Training extends Document {
-	id_user: Types.ObjectId;
+export interface Training extends Document {
+	_id: Types.ObjectId;
+	id_user: PopulatedDoc<UserDocument & Document>,
 	cost: Number;
 	content: String;
 	materials: String;

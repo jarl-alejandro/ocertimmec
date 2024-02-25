@@ -2,9 +2,10 @@ import Student from '../../domain/student'
 import config from '../../../../config'
 import nodemailer from 'nodemailer'
 import emailCertificateAssist from './emailCertificateAssist'
+import Mail from "nodemailer/lib/mailer";
 
 
-export default async function certificateAssistance (data) {
+export default async function certificateAssistance(data: any) {
 	const student = await Student.findById(data).populate('trainingId')
 
 	if (!student.isCerficateAssiten) {
@@ -34,14 +35,10 @@ export default async function certificateAssistance (data) {
 		},
 	})
 
-	// const email = "jarlalejor@gmail.com"
-	const email = student.email;
-	const subject = `CERTIFICACIÓN DE ${student.trainingId.name.toUpperCase()}`
-
-	const mailOptions = {
+	const mailOptions: Mail.Options = {
 		from: config.EMAIL,
-		to: email,
-		subject,
+		to: student.email as string,
+		subject: `CERTIFICACIÓN DE ${student.trainingId.name.toUpperCase()}`,
 		html: emailCertificateAssist(student)
 	}
 

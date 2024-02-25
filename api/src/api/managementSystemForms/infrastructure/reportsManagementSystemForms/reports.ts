@@ -14,7 +14,7 @@ async function generatePDF (req, res) {
 	let certificate = await Certificate.findById(student.certificateId)
 		.populate('id_user')
 
-	let planning = await Planning.findOne({ rel: student.certificateId })
+	let planning = await Planning.findOne({ 'rel': student.certificateId })
 
 	conversion({
 		encoding: 'utf8',

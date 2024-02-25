@@ -1,12 +1,13 @@
-import { Document, Schema, model, Types } from 'mongoose';
-interface Student extends Document {
+import mongoose, { Document, Schema, model, Types, PopulatedDoc } from 'mongoose';
+import {Certificate} from "@/api/certificate/domain/model";
+import {Training} from "@/api/training/domain/model";
+
+export interface Student extends Document {
+	_id: Types.ObjectId;
 	isCerficateAssiten: Boolean,
 	certificacion: {
-		type: {},
-		default: {
-			date: Date,
-			code: string
-		}
+		date: Date,
+		code: string
 	},
 	isActive: Boolean,
 	pdfRequisitos: string,
@@ -33,14 +34,15 @@ interface Student extends Document {
 	isAll : Boolean,
 	fechaAplicacion: Date,
 	fechaAceptacion: Date,
-	numberAplicacion: { type: Number, default: 0 },
+	numberAplicacion: Number,
 	codigoCertificado: string,
 	placeCertificate: string,
 	dateCertificate: Date
 	hourCertificate: string,
 	notaCertificate: string,
-	certificateId: { type: Types.ObjectId, ref: 'Certificate' },
-	trainingId: { type: Types.ObjectId, ref: 'Trainings' },
+
+	certificateId: PopulatedDoc<Certificate & Document>,
+	trainingId: PopulatedDoc<Training & Document>
 
 	isNoCertificateSetec: Boolean,
 	isCertificateSetec: Boolean,
@@ -146,8 +148,6 @@ interface Student extends Document {
 	tipoDiscapacidad: string,
 	socioEmpleo: string,
 }
-// import * as mongoose from "mongoose";
-// import deepPopulate from 'mongoose-deep-populate';
 
 const StudentSchema = new Schema<Student>({
 	isCerficateAssiten: Boolean,
@@ -300,5 +300,6 @@ const StudentSchema = new Schema<Student>({
 })
 
 // StudentSchema.plugin(deepPopulate(mongoose));
+StudentSchema.plugin(require('mongoose-deep-populate')(mongoose));
 export default model<Student>('Student', StudentSchema, 'Student')
 

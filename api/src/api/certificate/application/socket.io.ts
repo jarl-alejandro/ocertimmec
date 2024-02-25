@@ -3,7 +3,7 @@ import fs from 'fs'
 import path from 'path'
 
 async function created (data, io) {
-	const create = await Certificate({
+	let certificateToSave = new Certificate({
 		id_user: data.userId,
 		name: data.nameCertificate,
 		description: data.description,
@@ -16,7 +16,9 @@ async function created (data, io) {
 		uc: data.uc,
 		squemaCode: data.squemaCode,
 		sector: data.sector,
-	})
+	});
+
+	const create = await certificateToSave.save();
 
 	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
 

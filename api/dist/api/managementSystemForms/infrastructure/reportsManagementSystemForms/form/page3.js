@@ -52,7 +52,7 @@ function formatDate(date) {
 function page(props, certificate) {
     let dateCerficate = new Date(props.dateCertificate);
     let fechaAplicacion = (0, date_1.default)(props.dateCertificate, 2);
-    const template = `
+    return `
 	<section>
 		${(0, headerc003_1.default)(1)}
 
@@ -214,6 +214,5 @@ function page(props, certificate) {
 		<p style="margin:0">Coordinador de Certificación</p>
 	</section>
 `;
-    return template;
 }
 exports.default = page;

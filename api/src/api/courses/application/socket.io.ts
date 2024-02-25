@@ -1,10 +1,10 @@
-import Student from '../domain/student'
 import path from 'path'
+import nodemailer from 'nodemailer'
 import fs from 'fs'
 
+import Student from '../domain/student'
 import emailFinishRegisterOnCourse from '../infrastructure/emails/emailFinishRegisterOnCourse'
-import config from '../../../config'
-import nodemailer from 'nodemailer'
+import config from '@/config'
 import Params from '../domain/params'
 import certificateAssistance from '../infrastructure/emails/certificateAssistance'
 
@@ -28,7 +28,7 @@ async function finalizarInscripcion (payload, io, socket) {
 
 	let object = {
 		type: updated.type.toUpperCase() === 'CERTIFICATE' ? 'certificación' : 'capacitación',
-		name: `${updated.name} ${updated.lasName}`,
+		name: `${updated.name} ${updated.lastName}`,
 		nameCurso: 'Finalizó el registro'
 	}
 	io.emit('notificacion', object)
@@ -42,15 +42,17 @@ async function finalizarInscripcion (payload, io, socket) {
 async function finishRegister (payload, io) {
 	const student = await Student.findById(payload.id).populate('certificateId')
 	const name = student.certificateId.name.toString().toUpperCase()
-	const validParams = await Params.findOne({ name })
 
-	let param = await Params.findOneAndUpdate({ name }, { name, $inc: { "counter": 1 } }, { upsert: true, 'new': true })
+	let param = await Params.findOneAndUpdate(
+		{ name },
+		{ name, $inc: { 'counter': 1 } },
+		{ upsert: true, 'new': true })
 	updatedStudent(param.counter, io, payload)
 
 }
 
 async function updatedStudent(count, io, payload) {
-	let updated = await Student.findByIdAndUpdate(payload.id,
+	await Student.findByIdAndUpdate(payload.id,
 		{
 			isAll: true,
 			codigoCertificado: payload.code,
@@ -59,9 +61,7 @@ async function updatedStudent(count, io, payload) {
 			hourCertificate: payload.hour,
 			notaCertificate: payload.nota,
 			numberAplicacion: count
-		}, { new: true })
-
-	console.log(count)
+		}, { new: true });
 	io.emit('registerInscripcion')
 }
 
@@ -109,7 +109,7 @@ async function verificarEmail (payload, io) {
 
 	const mailOptions = {
 		from: config.EMAIL,
-		to: query.email,
+		to: query.email as string,
 		subject: `CERTIFICACIÓN DE ${query.certificateId.name.toUpperCase()}`,
 		html: emailFinishRegisterOnCourse(query._id, query)
 	}
@@ -134,7 +134,7 @@ async function updated(data, io, socket) {
 }
 
 function ioCourse (socket, io) {
-	socket.on('certificate::assistance', data => certificateAssistance(data))
+	socket.on('certificate::assistance', data => certificateAssistance(data,))
 
 	socket.on('finalizar::inscripcion', data => finalizarInscripcion(data, io, socket))
 	socket.on('verificar::email', data => verificarEmail(data, io))
@@ -143,7 +143,7 @@ function ioCourse (socket, io) {
 	socket.on('registerInscripcion', data => {
 		let object = {
 			type: data.type.toUpperCase() === 'CERTIFICATE' ? 'certificación' : 'capacitación',
-			name: `${data.name} ${data.lasName}`,
+			name: `${data.name} ${data.lastName}`,
 			nameCurso: data.nameCurso
 		}
 		io.emit('notificacion', object)

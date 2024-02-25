@@ -16,7 +16,7 @@ async function generatePDF(req, res) {
     let student = await student_1.default.findById(id);
     let certificate = await model_1.default.findById(student.certificateId)
         .populate('id_user');
-    let planning = await model_2.default.findOne({ rel: student.certificateId });
+    let planning = await model_2.default.findOne({ 'rel': student.certificateId });
     conversion({
         encoding: 'utf8',
         html: (0, template_1.default)(student, certificate, planning),

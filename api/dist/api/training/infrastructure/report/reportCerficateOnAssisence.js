@@ -12,7 +12,7 @@ const config_1 = __importDefault(require("../../../../config"));
 const conversion = (0, phantom_html_to_pdf_1.default)();
 async function handleCertificate(req, res) {
     let student = await student_1.default.findById(req.params.userId, { certificacion: 1, name: 1, lastName: 1, trainingId: 1 })
-        .deepPopulate('trainingId trainingId.id_user');
+        .populate('trainingId trainingId.id_user');
     const urlPDF = `${config_1.default.API}/certificado-capacitacion/${student._id}/certificacion-asistencia`;
     qrcode_1.default.toDataURL(urlPDF, function (err, url) {
         conversion({

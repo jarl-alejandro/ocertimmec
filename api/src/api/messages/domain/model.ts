@@ -1,6 +1,7 @@
-import { Document, Schema, model } from 'mongoose'
+import {Document, Schema, model, Types} from 'mongoose'
 
-interface Message extends Document {
+export interface Message extends Document {
+	_id: Types.ObjectId;
 	name: string,
 	email: string,
 	subject: string,

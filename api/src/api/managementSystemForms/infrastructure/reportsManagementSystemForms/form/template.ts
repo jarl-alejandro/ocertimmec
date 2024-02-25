@@ -417,7 +417,7 @@ function template(props, certificate, planning) {
 						<td style="border:1px solid black;height:25px;">${ props.experiencia1.funcion ? props.experiencia1.funcion : '' }</td>
 					</tr>
 					<tr>
-						<td style="border:1px solid black;height:25px;">${ props.experiencia2.name ? formatDate(props.experiencia2.desde, true) : ''}</td>
+						<td style="border:1px solid black;height:25px;">${ props.experiencia2.name ? formatDate(props.experiencia2.desde) : ''}</td>
 						<td style="border:1px solid black;height:25px;">${ props.experiencia2.name ? formatDate(props.experiencia2.hasta) : ''}</td>
 						<td style="border:1px solid black;height:25px;">${ props.experiencia2.name ? props.experiencia2.name : ''}</td>
 						<td style="border:1px solid black;height:25px;">${ props.experiencia2.direction ? props.experiencia2.direction : ''}</td>

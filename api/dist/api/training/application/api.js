@@ -13,7 +13,7 @@ async function getTraining(req, res) {
 }
 async function getTrainingOne(req, res) {
     const training = await model_1.default.findById(req.params.id);
-    const planningTraining = await model_2.default.find({ rel: training._id });
+    const planningTraining = await model_2.default.find({ rel: training._id.toString() });
     res.send({
         training,
         planning: planningTraining

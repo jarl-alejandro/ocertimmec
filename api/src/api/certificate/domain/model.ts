@@ -1,7 +1,9 @@
-import { Document, Schema, model, Types } from 'mongoose'
+import {Document, Schema, model, Types, PopulatedDoc} from 'mongoose'
+import {UserDocument} from "@/api/users/domain/model";
 
-interface Certificate extends Document {
-	id_user: Types.ObjectId;
+export interface Certificate extends Document {
+	_id: Types.ObjectId;
+	id_user: PopulatedDoc<UserDocument & Document>;
 	name: String;
 	photo: String;
 	cost: Number;

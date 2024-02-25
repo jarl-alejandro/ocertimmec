@@ -11,13 +11,13 @@ async function generateExcel(req, res) {
     const db = path_1.default.join('./db.xlsx');
     const workbook = new exceljs_1.default.Workbook();
     const query = await student_1.default.find({ isComplete: true })
-        .deepPopulate('certificateId certificateId.id_user');
+        .populate('certificateId certificateId.id_user');
     let start = 16;
     let indice = 5;
     await workbook.xlsx.readFile(db);
     let worksheet = workbook.getWorksheet(1);
     query.map(async (item, index) => {
-        let planning = await model_1.default.find({ rel: item.certificateId._id });
+        let planning = await model_1.default.find({ rel: item.certificateId._id.toString() });
         let row = worksheet.getRow(start);
         row.getCell(1).value = indice;
         row.getCell(2).value = formatDate(item.fechaAplicacion);
@@ -140,9 +140,4 @@ function ucFormat(num) {
         ucData += `UC${i} `;
     }
     return ucData;
-}
-function sumDate(date, year) {
-    date = new Date(date);
-    date.setFullYear(date.getFullYear() + 5);
-    return formatDate(date);
 }

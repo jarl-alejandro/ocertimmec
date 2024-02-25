@@ -42,7 +42,7 @@ const styles = theme => ({
 const initialState = {
 	document: '',
 	name: '',
-	lasName: '',
+	lastName: '',
 	birthdate: '',
 	direction: '',
 	province: '',
@@ -175,9 +175,9 @@ class Form extends PureComponent {
 					/>
 					<TextField
 						label="Apellidos"
-						name="lasName"
+						name="lastName"
 						fullWidth
-						value={this.state.lasName}
+						value={this.state.lastName}
 						onChange={this.setField}
 					/>
 					<TextField

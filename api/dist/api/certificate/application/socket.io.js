@@ -7,7 +7,7 @@ const model_1 = __importDefault(require("../domain/model"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 async function created(data, io) {
-    const create = await (0, model_1.default)({
+    let certificateToSave = new model_1.default({
         id_user: data.userId,
         name: data.nameCertificate,
         description: data.description,
@@ -21,6 +21,7 @@ async function created(data, io) {
         squemaCode: data.squemaCode,
         sector: data.sector,
     });
+    const create = await certificateToSave.save();
     let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');
     if (data.photo) {
         create.photo = `${create._id}-${data.photo}`;

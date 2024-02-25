@@ -13,7 +13,7 @@ async function getCertificate(req, res) {
 }
 async function getCertificateOne(req, res) {
     const certificate = await model_1.default.findById(req.params.id);
-    const planningCertificate = await model_2.default.find({ rel: certificate._id });
+    const planningCertificate = await model_2.default.find({ rel: certificate._id.toString() });
     res.send({
         certificate,
         planning: planningCertificate

@@ -1,7 +1,8 @@
-import { Document, Schema, model } from 'mongoose'
+import { Document, Schema, model, Types } from 'mongoose'
 import bcrypt from 'bcryptjs'
 
-interface UserDocument extends Document {
+export interface UserDocument extends Document {
+	_id: Types.ObjectId;
 	cedula?: string,
 	name?: string,
 	email?: string,

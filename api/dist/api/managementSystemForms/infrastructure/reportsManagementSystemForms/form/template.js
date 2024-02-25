@@ -18,7 +18,7 @@ const page13_1 = __importDefault(require("./page13"));
 const paget006_1 = __importDefault(require("./paget006"));
 const paget011_1 = __importDefault(require("./paget011"));
 const esquemas_1 = __importDefault(require("./esquemas"));
-const config_1 = __importDefault(require("../../../../../config"));
+const config_1 = __importDefault(require("@/config"));
 function calcularEdad(fecha, fecha2) {
     var hoy = new Date(fecha2);
     var cumpleanos = new Date(fecha);
@@ -51,7 +51,7 @@ function siglas(name, numberAplicacion) {
     }
     return `OCCERTIMM-${siglas.toLocaleUpperCase()}-${code}${numberAplicacion}`;
 }
-function formatDate(date, isLog = false) {
+function formatDate(date) {
     let text = JSON.stringify(date);
     text = text.split('T')[0].split('-').join('/');
     const newDate = new Date(text);
@@ -408,7 +408,7 @@ function template(props, certificate, planning) {
 						<td style="border:1px solid black;height:25px;">${props.experiencia1.funcion ? props.experiencia1.funcion : ''}</td>
 					</tr>
 					<tr>
-						<td style="border:1px solid black;height:25px;">${props.experiencia2.name ? formatDate(props.experiencia2.desde, true) : ''}</td>
+						<td style="border:1px solid black;height:25px;">${props.experiencia2.name ? formatDate(props.experiencia2.desde) : ''}</td>
 						<td style="border:1px solid black;height:25px;">${props.experiencia2.name ? formatDate(props.experiencia2.hasta) : ''}</td>
 						<td style="border:1px solid black;height:25px;">${props.experiencia2.name ? props.experiencia2.name : ''}</td>
 						<td style="border:1px solid black;height:25px;">${props.experiencia2.direction ? props.experiencia2.direction : ''}</td>
@@ -496,7 +496,7 @@ function template(props, certificate, planning) {
      */
     template += `
 			<div style='page-break-before: always;'></div>
-			${(0, page3_1.default)(props, certificate, planning)}
+			${(0, page3_1.default)(props, certificate)}
 			<div style='page-break-before: always;'></div>
 			${(0, page4_1.default)(props)}
 			<div style='page-break-before: always;'></div>

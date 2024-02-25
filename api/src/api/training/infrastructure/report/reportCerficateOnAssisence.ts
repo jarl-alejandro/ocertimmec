@@ -14,7 +14,7 @@ async function handleCertificate (req, res) {
 		req.params.userId,
 		{ certificacion: 1, name: 1, lastName: 1, trainingId: 1 }
 	)
-	.deepPopulate('trainingId trainingId.id_user')
+	.populate('trainingId trainingId.id_user')
 
 	const urlPDF = `${config.API}/certificado-capacitacion/${student._id}/certificacion-asistencia`
 

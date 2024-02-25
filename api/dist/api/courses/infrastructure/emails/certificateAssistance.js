@@ -32,13 +32,10 @@ async function certificateAssistance(data) {
             pass: config_1.default.PASSWORD
         },
     });
-    // const email = "jarlalejor@gmail.com"
-    const email = student.email;
-    const subject = `CERTIFICACIÓN DE ${student.trainingId.name.toUpperCase()}`;
     const mailOptions = {
         from: config_1.default.EMAIL,
-        to: email,
-        subject,
+        to: student.email,
+        subject: `CERTIFICACIÓN DE ${student.trainingId.name.toUpperCase()}`,
         html: (0, emailCertificateAssist_1.default)(student)
     };
     tranport.sendMail(mailOptions, (err, info) => {
