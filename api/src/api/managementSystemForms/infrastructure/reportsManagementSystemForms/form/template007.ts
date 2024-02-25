@@ -1,6 +1,6 @@
 
 import page7  from './page7'
-import config from '../../../../../config'
+import config from '../../../../../enviroments/config'
 
 
 function calcularEdad(fecha, fecha2) {

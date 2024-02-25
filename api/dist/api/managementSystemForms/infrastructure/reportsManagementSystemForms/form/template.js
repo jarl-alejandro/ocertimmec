@@ -18,7 +18,7 @@ const page13_1 = __importDefault(require("./page13"));
 const paget006_1 = __importDefault(require("./paget006"));
 const paget011_1 = __importDefault(require("./paget011"));
 const esquemas_1 = __importDefault(require("./esquemas"));
-const config_1 = __importDefault(require("@/config"));
+const config_1 = __importDefault(require("../../../../../enviroments/config"));
 function calcularEdad(fecha, fecha2) {
     var hoy = new Date(fecha2);
     var cumpleanos = new Date(fecha);

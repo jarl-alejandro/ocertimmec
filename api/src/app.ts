@@ -17,8 +17,11 @@ import trainingCertificate from './api/training/infrastructure/report/reportCerf
 import excel               from './excel'
 
 const app = express()
+const corsOptions: cors.CorsOptions = {
+	origin: '*',
+};
 
-app.use(cors('*'))
+app.use(cors(corsOptions));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 

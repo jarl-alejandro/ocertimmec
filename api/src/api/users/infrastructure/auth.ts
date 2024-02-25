@@ -2,7 +2,7 @@ import Users from '../domain/model'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import _ from 'lodash'
-import config from '../../../config'
+import config from '../../../enviroments/config'
 
 
 async function auth (req, res) {

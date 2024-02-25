@@ -18,7 +18,10 @@ const api_6 = __importDefault(require("./api/messages/application/api"));
 const reportCerficateOnAssisence_1 = __importDefault(require("./api/training/infrastructure/report/reportCerficateOnAssisence"));
 const excel_1 = __importDefault(require("./excel"));
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)('*'));
+const corsOptions = {
+    origin: '*',
+};
+app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.get('/', (req, res) => res.send('API of occertimm'));

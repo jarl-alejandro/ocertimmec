@@ -7,7 +7,7 @@ const model_1 = __importDefault(require("../domain/model"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const lodash_1 = __importDefault(require("lodash"));
-const config_1 = __importDefault(require("../../../config"));
+const config_1 = __importDefault(require("../../../enviroments/config"));
 async function auth(req, res) {
     const user = await model_1.default.findOne({ email: req.body.email });
     if (!user)

@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const headerc002_1 = __importDefault(require("./headerc002"));
-const config_1 = __importDefault(require("../../../../../config"));
+const config_1 = __importDefault(require("../../../../../enviroments/config"));
 function page(props, certificate) {
     let template = `
 	<section class="page2">

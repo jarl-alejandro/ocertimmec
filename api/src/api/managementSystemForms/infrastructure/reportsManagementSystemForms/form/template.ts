@@ -13,7 +13,7 @@ import page13     from './page13'
 import paget006   from './paget006'
 import paget011   from './paget011'
 import esquemas   from './esquemas'
-import config     from '@/config'
+import config from '../../../../../enviroments/config';
 
 
 function calcularEdad(fecha, fecha2) {

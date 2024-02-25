@@ -3,7 +3,7 @@ import headerImg    from './headerImg'
 import firma        from './firma'
 import footer1      from './footer1'
 import listUC       from './listUC'
-import config       from '../../../../../config'
+import config       from '../../../../../enviroments/config'
 
 function calcularEdad(fecha, fecha2) {
 	var hoy = new Date(fecha2);

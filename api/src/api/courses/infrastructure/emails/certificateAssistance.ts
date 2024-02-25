@@ -1,5 +1,5 @@
 import Student from '../../domain/student'
-import config from '../../../../config'
+import config from '../../../../enviroments/config'
 import nodemailer from 'nodemailer'
 import emailCertificateAssist from './emailCertificateAssist'
 import Mail from "nodemailer/lib/mailer";

@@ -1,4 +1,4 @@
-import config from '../../../../config'
+import config from '../../../../enviroments/config'
 
 const month = [
 	'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre',

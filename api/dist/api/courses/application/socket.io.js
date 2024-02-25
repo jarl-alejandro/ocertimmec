@@ -8,9 +8,9 @@ const nodemailer_1 = __importDefault(require("nodemailer"));
 const fs_1 = __importDefault(require("fs"));
 const student_1 = __importDefault(require("../domain/student"));
 const emailFinishRegisterOnCourse_1 = __importDefault(require("../infrastructure/emails/emailFinishRegisterOnCourse"));
-const config_1 = __importDefault(require("@/config"));
 const params_1 = __importDefault(require("../domain/params"));
 const certificateAssistance_1 = __importDefault(require("../infrastructure/emails/certificateAssistance"));
+const config_1 = __importDefault(require("../../../enviroments/config"));
 async function finalizarInscripcion(payload, io, socket) {
     let id_user = socket.id;
     const route = path_1.default.join(__dirname, '..', '..', '..', 'media');

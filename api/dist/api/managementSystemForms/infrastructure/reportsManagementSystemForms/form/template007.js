@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const page7_1 = __importDefault(require("./page7"));
-const config_1 = __importDefault(require("../../../../../config"));
+const config_1 = __importDefault(require("../../../../../enviroments/config"));
 function calcularEdad(fecha, fecha2) {
     var hoy = new Date(fecha2);
     var cumpleanos = new Date(fecha);

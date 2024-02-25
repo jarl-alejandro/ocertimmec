@@ -4,7 +4,7 @@ import Training from '../../training/domain/model'
 import Planning from '../../planning/domain/model'
 import Student from '../domain/student'
 import path from 'path'
-import config from '../../../config'
+import config from '../../../enviroments/config'
 import emailFinishRegisterOnCourse from '../infrastructure/emails/emailFinishRegisterOnCourse'
 import nodemailer from 'nodemailer'
 

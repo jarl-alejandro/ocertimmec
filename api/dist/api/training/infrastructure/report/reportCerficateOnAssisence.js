@@ -8,7 +8,7 @@ const phantom_html_to_pdf_1 = __importDefault(require("phantom-html-to-pdf"));
 const qrcode_1 = __importDefault(require("qrcode"));
 const student_1 = __importDefault(require("../../../courses/domain/student"));
 const template_1 = __importDefault(require("./template"));
-const config_1 = __importDefault(require("../../../../config"));
+const config_1 = __importDefault(require("../../../../enviroments/config"));
 const conversion = (0, phantom_html_to_pdf_1.default)();
 async function handleCertificate(req, res) {
     let student = await student_1.default.findById(req.params.userId, { certificacion: 1, name: 1, lastName: 1, trainingId: 1 })

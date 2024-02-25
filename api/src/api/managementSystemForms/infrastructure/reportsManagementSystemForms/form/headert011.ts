@@ -1,4 +1,4 @@
-import config from '../../../../../config'
+import config from '../../../../../enviroments/config'
 
 function headert011(number) {
 

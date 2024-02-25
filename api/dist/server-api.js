@@ -5,15 +5,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_1 = __importDefault(require("http"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const socket_io_1 = __importDefault(require("./socket.io"));
 const app_1 = __importDefault(require("./app"));
-const config_1 = __importDefault(require("./config"));
-const port = process.env.PORT || 8001;
+const config_1 = __importDefault(require("./enviroments/config"));
+const SocketIO_1 = require("./SocketIO");
+const portAPI = process.env.PORT || 8001;
+const portWS = process.env.PORT || 8002;
 const server = http_1.default.createServer(app_1.default);
-new socket_io_1.default({ server });
+new SocketIO_1.SocketIO({ server: server });
 mongoose_1.default.Promise = global.Promise;
 mongoose_1.default.connect(config_1.default.DB)
     .then(() => {
     console.log(`🎉 Conectado a la mongoDB: ${config_1.default.DB} `);
-    server.listen(port, () => console.log(`🚀 Server running in port ${port}`));
+    app_1.default.listen(portAPI, () => {
+        console.log(`🚀 Server running in port ${portAPI}`);
+    });
+    server.listen(portWS, () => {
+        console.log(`🚀 Server ws running in port ${portWS}`);
+    });
 });

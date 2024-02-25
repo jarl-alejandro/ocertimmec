@@ -4,9 +4,9 @@ import fs from 'fs'
 
 import Student from '../domain/student'
 import emailFinishRegisterOnCourse from '../infrastructure/emails/emailFinishRegisterOnCourse'
-import config from '@/config'
 import Params from '../domain/params'
 import certificateAssistance from '../infrastructure/emails/certificateAssistance'
+import config from "../../../enviroments/config";
 
 
 async function finalizarInscripcion (payload, io, socket) {

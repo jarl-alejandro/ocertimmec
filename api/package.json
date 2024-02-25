@@ -5,7 +5,7 @@
   "main": "src/server-api.ts",
   "scripts": {
     "start": "node dist/server-api.js",
-    "dev": "nodemon --exec ts-node src/server-api.ts",
+    "dev": "nodemon --exec ts-node --project ./tsconfig.json src/server-api.ts",
     "build": "tsc"
   },
   "author": "Alejandro Rivas <jarlalejor>",
@@ -18,7 +18,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "exceljs": "^1.6.2",
-    "express": "^4.16.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.11",
     "mongoose": "^8.2.0",
@@ -26,7 +26,7 @@
     "nodemailer": "^4.6.8",
     "phantom-html-to-pdf": "^0.8.3",
     "qrcode": "^1.4.4",
-    "socket.io": "^2.1.1"
+    "socket.io": "^4.7.4"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

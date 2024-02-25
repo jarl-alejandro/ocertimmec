@@ -1,4 +1,4 @@
-import config from '../../../../config'
+import config from '../../../../enviroments/config'
 
 function formatDate(date) {
 	if (date) {

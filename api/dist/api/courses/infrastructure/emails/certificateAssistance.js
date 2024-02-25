@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const student_1 = __importDefault(require("../../domain/student"));
-const config_1 = __importDefault(require("../../../../config"));
+const config_1 = __importDefault(require("../../../../enviroments/config"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const emailCertificateAssist_1 = __importDefault(require("./emailCertificateAssist"));
 async function certificateAssistance(data) {

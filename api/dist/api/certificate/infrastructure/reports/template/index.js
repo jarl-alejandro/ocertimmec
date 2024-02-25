@@ -8,7 +8,7 @@ const headerImg_1 = __importDefault(require("./headerImg"));
 const firma_1 = __importDefault(require("./firma"));
 const footer1_1 = __importDefault(require("./footer1"));
 const listUC_1 = __importDefault(require("./listUC"));
-const config_1 = __importDefault(require("../../../../../config"));
+const config_1 = __importDefault(require("../../../../../enviroments/config"));
 function calcularEdad(fecha, fecha2) {
     var hoy = new Date(fecha2);
     var cumpleanos = new Date(fecha);

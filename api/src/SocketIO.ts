@@ -1,4 +1,4 @@
-import * as socketIO from 'socket.io';
+import { Server, Socket } from 'socket.io';
 
 import users from './api/users/application/socket.io'
 import courses from './api/courses/application/socket.io'
@@ -7,13 +7,13 @@ import certificate from './api/certificate/application/socket.io'
 import planning from './api/planning/application/socket.io'
 import messages from './api/messages/application/socket.io'
 
-export default class SocketIo {
-	private io: any;
+export class SocketIO {
+	private readonly io: any;
 
-	constructor (config) {
-		this.io = socketIO.listen(config.server)
+	constructor (config: any) {
+		this.io = new Server(config.server);
 
-		this.io.on('connection', socket => {
+		this.io.on('connection', (socket: Socket) => {
 			users(socket, this.io)
 			courses(socket, this.io)
 			training(socket, this.io)
@@ -21,6 +21,7 @@ export default class SocketIo {
 			planning(socket, this.io)
 			messages(socket, this.io)
 		})
+
 	}
 
 }

@@ -4,7 +4,7 @@ import QRCode from 'qrcode'
 
 import Student from '../../../courses/domain/student'
 import template from './template'
-import config from '../../../../config'
+import config from '../../../../enviroments/config'
 
 
 const conversion = phantomHtmlToPdf()

@@ -1,6 +1,6 @@
 import headerc002 from './headerc002'
 import control from './control'
-import config from '../../../../../config'
+import config from '../../../../../enviroments/config'
 
 function page(props, certificate) { 
 let template = `

@@ -9,7 +9,7 @@ const model_2 = __importDefault(require("../../training/domain/model"));
 const model_3 = __importDefault(require("../../planning/domain/model"));
 const student_1 = __importDefault(require("../domain/student"));
 const path_1 = __importDefault(require("path"));
-const config_1 = __importDefault(require("../../../config"));
+const config_1 = __importDefault(require("../../../enviroments/config"));
 const emailFinishRegisterOnCourse_1 = __importDefault(require("../infrastructure/emails/emailFinishRegisterOnCourse"));
 const nodemailer_1 = __importDefault(require("nodemailer"));
 async function register(req, res) {

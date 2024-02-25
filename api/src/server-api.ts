@@ -1,18 +1,25 @@
 import http from 'http'
 import mongoose from 'mongoose'
 
-import socket from './socket.io'
 import app from './app'
-import config from './config'
+import config from './enviroments/config'
+import {SocketIO} from './SocketIO';
 
-const port = process.env.PORT || 8001
+const portAPI = process.env.PORT || 8001
+const portWS = process.env.PORT || 8002
 
 const server = http.createServer(app)
-new socket({ server })
+new SocketIO({ server: server })
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.DB)
 .then(() => {
 	console.log(`🎉 Conectado a la mongoDB: ${config.DB} `)
-	server.listen(port, () => console.log(`🚀 Server running in port ${port}`))
+	app.listen(portAPI, () => {
+		console.log(`🚀 Server running in port ${portAPI}`);
+	});
+
+	server.listen(portWS, () => {
+		console.log(`🚀 Server ws running in port ${portWS}`);
+	});
 })
