@@ -4,8 +4,8 @@
   "description": "Api de occertimm",
   "main": "src/server-api.ts",
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "nodemon --exec ts-node src/index.ts",
+    "start": "node dist/server-api.js",
+    "dev": "nodemon --exec ts-node src/server-api.ts",
     "build": "tsc"
   },
   "author": "Alejandro Rivas <jarlalejor>",
@@ -21,7 +21,7 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.11",
-    "mongoose": "^5.2.14",
+    "mongoose": "^8.2.0",
     "mongoose-deep-populate": "^3.1.1",
     "nodemailer": "^4.6.8",
     "phantom-html-to-pdf": "^0.8.3",

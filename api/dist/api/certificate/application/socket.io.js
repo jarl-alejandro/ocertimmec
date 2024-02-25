@@ -30,14 +30,9 @@ async function created(data, io) {
                 console.log(err);
         });
     }
-    create.save(async (err) => {
-        if (err)
-            console.log(err);
-        else {
-            const query = await model_1.default.findById(create._id).populate('id_user');
-            io.emit('created::certificate', query);
-        }
-    });
+    const created = await create.save();
+    const query = await model_1.default.findById(created._id).populate('id_user');
+    io.emit('created::certificate', query);
 }
 async function updated(data, io) {
     let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');

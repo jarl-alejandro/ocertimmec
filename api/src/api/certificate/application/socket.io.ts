@@ -29,13 +29,9 @@ async function created (data, io) {
 		})
 	}
 
-	create.save(async err => {
-		if (err) console.log(err)
-		else {
-			const query = await Certificate.findById(create._id).populate('id_user')
-			io.emit('created::certificate', query)
-		}
-	})
+	const created = await create.save();
+	const query = await Certificate.findById(created._id).populate('id_user')
+	io.emit('created::certificate', query)
 }
 
 async function updated (data, io) {

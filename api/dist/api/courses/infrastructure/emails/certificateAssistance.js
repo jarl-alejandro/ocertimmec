@@ -10,7 +10,7 @@ const emailCertificateAssist_1 = __importDefault(require("./emailCertificateAssi
 async function certificateAssistance(data) {
     const student = await student_1.default.findById(data).populate('trainingId');
     if (!student.isCerficateAssiten) {
-        const count = await student_1.default.count({
+        const count = await student_1.default.countDocuments({
             trainingId: student.trainingId._id,
             isCerficateAssiten: true
         });

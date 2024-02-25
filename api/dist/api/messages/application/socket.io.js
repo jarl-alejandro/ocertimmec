@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const model_1 = __importDefault(require("../domain/model"));
 async function created(data, io) {
-    const create = await model_1.default.create({ ...data });
+    await model_1.default.create({ ...data });
     io.emit('updated::Message');
 }
 async function deleted(data, io) {
-    let updated = await model_1.default.findByIdAndRemove(data.id);
+    await model_1.default.findOneAndDelete({ _id: data.id });
     io.emit('updated::Message');
 }
 function ioMessage(socket, io) {

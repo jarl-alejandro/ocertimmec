@@ -23,14 +23,11 @@ async function created(data, io) {
                 console.log(err);
         });
     }
-    create.save(async (err) => {
-        if (err)
-            console.log(err);
-        else {
-            const query = await model_1.default.findById(create._id).populate('id_user');
-            io.emit('created::training', query);
-        }
-    });
+    const newTraining = await create.save();
+    const query = await model_1.default.findOne({
+        _id: newTraining._id
+    }).populate('id_user');
+    io.emit('created::training', query);
 }
 async function updated(data, io) {
     let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');

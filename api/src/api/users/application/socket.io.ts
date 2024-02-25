@@ -16,10 +16,8 @@ async function created (data, io) {
 		})
 	}
 
-	create.save(err => {
-		if (err) console.log(err)
-		io.emit('created::user', create)
-	})
+	await create.save();
+	io.emit('created::user', create)
 }
 
 async function updated(data, io) {
@@ -42,7 +40,7 @@ async function deleted(data, io) {
 async function updatedPassword (data, io) {
 	bcrypt.genSalt(10, (err, salt) => {
 		bcrypt.hash(data.password1, salt, async (err, hash) => {
-			let updated = await User.findByIdAndUpdate(data.id, { password: hash }, { new: true })
+			await User.findByIdAndUpdate(data.id, { password: hash }, { new: true })
 		})
 	})
 }

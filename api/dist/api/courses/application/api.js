@@ -42,44 +42,40 @@ async function register(req, res) {
     if (req.body.type === 'certificate') {
         student.certificateId = req.body.certificateId;
     }
-    student.save(async (err) => {
-        if (err) {
-            console.log(err);
-            res.send({
-                status: 500,
-                message: 'No se pudo registrar intente nuevamenete'
+    try {
+        const newStudent = await student.save();
+        if (req.body.type === 'certificate') {
+            const query = await student_1.default.findById(newStudent._id).populate('certificateId trainingId');
+            const tranport = nodemailer_1.default.createTransport({
+                host: 'smtp.gmail.com',
+                port: 465,
+                secure: true,
+                auth: {
+                    user: config_1.default.EMAIL,
+                    pass: config_1.default.PASSWORD
+                },
             });
-        }
-        else {
-            if (req.body.type === 'certificate') {
-                const query = await student_1.default.findById(student._id).populate('certificateId trainingId');
-                const tranport = nodemailer_1.default.createTransport({
-                    host: 'smtp.gmail.com',
-                    port: 465,
-                    secure: true,
-                    auth: {
-                        user: config_1.default.EMAIL,
-                        pass: config_1.default.PASSWORD
-                    },
-                });
-                const mailOptions = {
-                    from: config_1.default.EMAIL,
-                    to: query.email,
-                    subject: `CERTIFICACIÓN DE ${query.certificateId.name.toUpperCase()}`,
-                    html: (0, emailFinishRegisterOnCourse_1.default)(query._id, query)
-                };
-                tranport.sendMail(mailOptions, (err, info) => {
-                    if (err)
-                        console.log(err);
-                    console.log(info);
-                });
-            }
+            const mailOptions = {
+                from: config_1.default.EMAIL,
+                to: query.email,
+                subject: `CERTIFICACIÓN DE ${query.certificateId.name.toUpperCase()}`,
+                html: (0, emailFinishRegisterOnCourse_1.default)(query._id, query)
+            };
+            tranport.sendMail(mailOptions, (err, info) => {
+                if (err)
+                    console.log(err);
+                console.log(info);
+            });
             res.send({
                 status: 201,
                 message: 'Se ha guardado con exito felicidades'
             });
         }
-    });
+    }
+    catch (err) {
+        console.log(err);
+        res.send({ status: 500, message: 'No se pudo registrar intente nuevamenete' });
+    }
 }
 async function getInscripcion(req, res) {
     let query = await student_1.default.findById(req.params.id);

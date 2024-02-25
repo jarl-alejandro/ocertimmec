@@ -18,11 +18,8 @@ async function created(data, io) {
                 console.log(err);
         });
     }
-    create.save(err => {
-        if (err)
-            console.log(err);
-        io.emit('created::user', create);
-    });
+    await create.save();
+    io.emit('created::user', create);
 }
 async function updated(data, io) {
     let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');
@@ -42,7 +39,7 @@ async function deleted(data, io) {
 async function updatedPassword(data, io) {
     bcryptjs_1.default.genSalt(10, (err, salt) => {
         bcryptjs_1.default.hash(data.password1, salt, async (err, hash) => {
-            let updated = await model_1.default.findByIdAndUpdate(data.id, { password: hash }, { new: true });
+            await model_1.default.findByIdAndUpdate(data.id, { password: hash }, { new: true });
         });
     });
 }

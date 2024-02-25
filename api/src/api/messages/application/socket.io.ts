@@ -1,12 +1,12 @@
 import Message from '../domain/model'
 
 async function created(data, io) {
-	const create = await Message.create({ ...data })
+	await Message.create({ ...data })
 	io.emit('updated::Message')
 }
 
 async function deleted(data, io) {
-	let updated = await Message.findByIdAndRemove(data.id)
+	await Message.findOneAndDelete({ _id: data.id })
 	io.emit('updated::Message')
 }
 

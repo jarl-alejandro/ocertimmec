@@ -12,7 +12,7 @@ const port = process.env.PORT || 8001;
 const server = http_1.default.createServer(app_1.default);
 new socket_io_1.default({ server });
 mongoose_1.default.Promise = global.Promise;
-mongoose_1.default.connect(config_1.default.DB, { useNewUrlParser: true })
+mongoose_1.default.connect(config_1.default.DB)
     .then(() => {
     console.log(`🎉 Conectado a la mongoDB: ${config_1.default.DB} `);
     server.listen(port, () => console.log(`🚀 Server running in port ${port}`));

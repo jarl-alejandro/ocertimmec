@@ -21,13 +21,11 @@ async function created (data, io) {
 		})
 	}
 
-	create.save(async err => {
-		if (err) console.log(err)
-		else {
-			const query = await Trainings.findById(create._id).populate('id_user')
-			io.emit('created::training', query)
-		}
-	})
+	const newTraining = await create.save();
+	const query = await Trainings.findOne({
+		_id: newTraining._id
+	}).populate('id_user')
+	io.emit('created::training', query)
 }
 
 async function updated(data, io) {

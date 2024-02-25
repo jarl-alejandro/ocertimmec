@@ -9,7 +9,7 @@ export default async function certificateAssistance(data: any) {
 	const student = await Student.findById(data).populate('trainingId')
 
 	if (!student.isCerficateAssiten) {
-		const count = await Student.count({
+		const count = await Student.countDocuments({
 			trainingId: student.trainingId._id,
 			isCerficateAssiten: true
 		})
