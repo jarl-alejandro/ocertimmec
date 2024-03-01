@@ -6,7 +6,7 @@ import fs                  from 'fs'
 
 
 import users               from './api/users/application/api'
-import courses             from './api/courses/application/api'
+import courses             from './api/inscriptions/application/api'
 import training            from './api/training/application/api'
 import certificate         from './api/certificate/application/api'
 import planning            from './api/planning/application/api'

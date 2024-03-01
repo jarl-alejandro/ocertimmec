@@ -1,4 +1,4 @@
-import Student from '../api/courses/domain/student'
+import Student from '../api/inscriptions/domain/student'
 import Planning from '../api/planning/domain/model'
 
 import path from 'path'

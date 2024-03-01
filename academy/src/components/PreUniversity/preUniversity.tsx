@@ -1,36 +1,33 @@
 export default function PreUniversity() {
     return (
-        <>
-            {/* =======================
-Popular course START */}
-            <section className="bg-light position-relative overflow-hidden">
-                {/* SVG decoration */}
-                <figure className="position-absolute bottom-0 end-0 mb-n5">
-                    <svg width="822.2px" height="301.9px" viewBox="0 0 822.2 301.9">
-                        <path
-                            className="fill-warning"
-                            d="M752.5,51.9c-4.5,3.9-8.9,7.8-13.4,11.8c-51.5,45.3-104.8,92.2-171.7,101.4c-39.9,5.5-80.2-3.4-119.2-12.1 c-32.3-7.2-65.6-14.6-98.9-13.9c-66.5,1.3-128.9,35.2-175.7,64.6c-11.9,7.5-23.9,15.3-35.5,22.8c-40.5,26.4-82.5,53.8-128.4,70.7 c-2.1,0.8-4.2,1.5-6.2,2.2L0,301.9c3.3-1.1,6.7-2.3,10.2-3.5c46.1-17,88.1-44.4,128.7-70.9c11.6-7.6,23.6-15.4,35.4-22.8 c46.7-29.3,108.9-63.1,175.1-64.4c33.1-0.6,66.4,6.8,98.6,13.9c39.1,8.7,79.6,17.7,119.7,12.1C634.8,157,688.3,110,740,64.6 c4.5-3.9,9-7.9,13.4-11.8C773.8,35,797,16.4,822.2,1l-0.7-1C796.2,15.4,773,34,752.5,51.9z"
-                        />
-                    </svg>
-                </figure>
-                {/* SVG decoration */}
-                <figure className="position-absolute top-0 start-0 mt-n8 me-5 d-none d-lg-block">
-                    <svg width="822.2px" height="301.9px" viewBox="0 0 822.2 301.9">
-                        <path
-                            className="fill-purple opacity-3"
-                            d="M752.5,51.9c-4.5,3.9-8.9,7.8-13.4,11.8c-51.5,45.3-104.8,92.2-171.7,101.4c-39.9,5.5-80.2-3.4-119.2-12.1 c-32.3-7.2-65.6-14.6-98.9-13.9c-66.5,1.3-128.9,35.2-175.7,64.6c-11.9,7.5-23.9,15.3-35.5,22.8c-40.5,26.4-82.5,53.8-128.4,70.7 c-2.1,0.8-4.2,1.5-6.2,2.2L0,301.9c3.3-1.1,6.7-2.3,10.2-3.5c46.1-17,88.1-44.4,128.7-70.9c11.6-7.6,23.6-15.4,35.4-22.8 c46.7-29.3,108.9-63.1,175.1-64.4c33.1-0.6,66.4,6.8,98.6,13.9c39.1,8.7,79.6,17.7,119.7,12.1C634.8,157,688.3,110,740,64.6 c4.5-3.9,9-7.9,13.4-11.8C773.8,35,797,16.4,822.2,1l-0.7-1C796.2,15.4,773,34,752.5,51.9z"
-                        />
-                    </svg>
-                </figure>
-                <div className="container position-relative">
-                    {/* Title */}
-                    <div className="row mb-4">
-                        <div className="col-12">
-                            <h2 className="fs-1 fw-bold">
-                                <span className="position-relative z-index-9">Pre </span>
-                                <span className="position-relative z-index-1">Universitario
-                                    {/* SVG START */}
-                                    <span className="position-absolute top-50 start-50 translate-middle z-index-n1">
+        <section className="bg-light position-relative overflow-hidden">
+            {/* SVG decoration */}
+            <figure className="position-absolute bottom-0 end-0 mb-n5">
+                <svg width="822.2px" height="301.9px" viewBox="0 0 822.2 301.9">
+                    <path
+                        className="fill-warning"
+                        d="M752.5,51.9c-4.5,3.9-8.9,7.8-13.4,11.8c-51.5,45.3-104.8,92.2-171.7,101.4c-39.9,5.5-80.2-3.4-119.2-12.1 c-32.3-7.2-65.6-14.6-98.9-13.9c-66.5,1.3-128.9,35.2-175.7,64.6c-11.9,7.5-23.9,15.3-35.5,22.8c-40.5,26.4-82.5,53.8-128.4,70.7 c-2.1,0.8-4.2,1.5-6.2,2.2L0,301.9c3.3-1.1,6.7-2.3,10.2-3.5c46.1-17,88.1-44.4,128.7-70.9c11.6-7.6,23.6-15.4,35.4-22.8 c46.7-29.3,108.9-63.1,175.1-64.4c33.1-0.6,66.4,6.8,98.6,13.9c39.1,8.7,79.6,17.7,119.7,12.1C634.8,157,688.3,110,740,64.6 c4.5-3.9,9-7.9,13.4-11.8C773.8,35,797,16.4,822.2,1l-0.7-1C796.2,15.4,773,34,752.5,51.9z"
+                    />
+                </svg>
+            </figure>
+            {/* SVG decoration */}
+            <figure className="position-absolute top-0 start-0 mt-n8 me-5 d-none d-lg-block">
+                <svg width="822.2px" height="301.9px" viewBox="0 0 822.2 301.9">
+                    <path
+                        className="fill-purple opacity-3"
+                        d="M752.5,51.9c-4.5,3.9-8.9,7.8-13.4,11.8c-51.5,45.3-104.8,92.2-171.7,101.4c-39.9,5.5-80.2-3.4-119.2-12.1 c-32.3-7.2-65.6-14.6-98.9-13.9c-66.5,1.3-128.9,35.2-175.7,64.6c-11.9,7.5-23.9,15.3-35.5,22.8c-40.5,26.4-82.5,53.8-128.4,70.7 c-2.1,0.8-4.2,1.5-6.2,2.2L0,301.9c3.3-1.1,6.7-2.3,10.2-3.5c46.1-17,88.1-44.4,128.7-70.9c11.6-7.6,23.6-15.4,35.4-22.8 c46.7-29.3,108.9-63.1,175.1-64.4c33.1-0.6,66.4,6.8,98.6,13.9c39.1,8.7,79.6,17.7,119.7,12.1C634.8,157,688.3,110,740,64.6 c4.5-3.9,9-7.9,13.4-11.8C773.8,35,797,16.4,822.2,1l-0.7-1C796.2,15.4,773,34,752.5,51.9z"
+                    />
+                </svg>
+            </figure>
+            <div className="container position-relative">
+                {/* Title */}
+                <div className="row mb-4">
+                    <div className="col-12">
+                        <h2 className="fs-1 fw-bold">
+                            <span className="position-relative z-index-9">Pre </span>
+                            <span className="position-relative z-index-1">Universitario
+                                {/* SVG START */}
+                                <span className="position-absolute top-50 start-50 translate-middle z-index-n1">
                 <svg width="163.9px" height="48.6px">
                   <path
                       className="fill-warning"
@@ -38,842 +35,823 @@ Popular course START */}
                   />
                 </svg>
               </span>
-                                    {/* SVG END */}
+                                {/* SVG END */}
             </span>
-                            </h2>
-                            <p className="mb-0">
-                                See what course other students and experts in your domain are
-                                learning on.
-                            </p>
-                        </div>
+                        </h2>
+                        <p className="mb-0">
+                            Clases particulares 1ro, 2do, 3ro BGU. Cursos de nivelación y preparación para examen “SER BACHILLER” en:
+                        </p>
                     </div>
-                    {/* Outer tabs START */}
-                    <ul
-                        className="nav nav-pills nav-pill-soft mb-3"
-                        id="course-pills-tab"
-                        role="tablist"
-                    >
-                        {/* Tab item */}
-                        <li className="nav-item me-2 me-sm-5" role="presentation">
-                            <button
-                                className="nav-link active"
-                                id="course-pills-tab-1"
-                                data-bs-toggle="pill"
-                                data-bs-target="#course-pills-tab1"
-                                type="button"
-                                role="tab"
-                                aria-controls="course-pills-tab1"
-                                aria-selected="true"
-                            >
-                                Art &amp; Design
-                            </button>
-                        </li>
-                        {/* Tab item */}
-                        <li className="nav-item me-2 me-sm-5" role="presentation">
-                            <button
-                                className="nav-link"
-                                id="course-pills-tab-2"
-                                data-bs-toggle="pill"
-                                data-bs-target="#course-pills-tab2"
-                                type="button"
-                                role="tab"
-                                aria-controls="course-pills-tab2"
-                                aria-selected="false"
-                            >
-                                Development
-                            </button>
-                        </li>
-                        {/* Tab item */}
-                        <li className="nav-item me-2 me-sm-5" role="presentation">
-                            <button
-                                className="nav-link"
-                                id="course-pills-tab-3"
-                                data-bs-toggle="pill"
-                                data-bs-target="#course-pills-tab3"
-                                type="button"
-                                role="tab"
-                                aria-controls="course-pills-tab3"
-                                aria-selected="false"
-                            >
-                                Data Science
-                            </button>
-                        </li>
-                        {/* Tab item */}
-                        <li className="nav-item me-2 me-sm-5" role="presentation">
-                            <button
-                                className="nav-link"
-                                id="course-pills-tab-4"
-                                data-bs-toggle="pill"
-                                data-bs-target="#course-pills-tab4"
-                                type="button"
-                                role="tab"
-                                aria-controls="course-pills-tab4"
-                                aria-selected="false"
-                            >
-                                Marketing
-                            </button>
-                        </li>
-                        {/* Tab item */}
-                        <li className="nav-item me-2 me-sm-5" role="presentation">
-                            <button
-                                className="nav-link"
-                                id="course-pills-tab-5"
-                                data-bs-toggle="pill"
-                                data-bs-target="#course-pills-tab5"
-                                type="button"
-                                role="tab"
-                                aria-controls="course-pills-tab5"
-                                aria-selected="false"
-                            >
-                                Finance
-                            </button>
-                        </li>
-                    </ul>
-                    {/* Outer tabs END */}
-                    {/* Outer tabs contents START */}
-                    <div className="tab-content mb-0" id="course-pills-tabContent">
-                        {/* Outer content START */}
-                        <div
-                            className="tab-pane fade show active"
-                            id="course-pills-tab1"
-                            role="tabpanel"
-                            aria-labelledby="course-pills-tab-1"
+                </div>
+                {/* Outer tabs START */}
+                <ul
+                    className="nav nav-pills nav-pill-soft mb-3"
+                    id="course-pills-tab"
+                    role="tablist"
+                >
+                    {/* Tab item */}
+                    <li className="nav-item me-2 me-sm-5" role="presentation">
+                        <button
+                            className="nav-link active"
+                            id="course-pills-tab-1"
+                            data-bs-toggle="pill"
+                            data-bs-target="#course-pills-tab1"
+                            type="button"
+                            role="tab"
+                            aria-controls="course-pills-tab1"
+                            aria-selected="true"
                         >
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="row justify-content-between">
-                                        {/* Left content START */}
-                                        <div className="col-lg-6">
-                                            {/* Title */}
-                                            <h3>Art &amp; Design</h3>
-                                            <p className="mb-3">
-                                                Perceived end knowledge certainly day sweetness why
-                                                cordially. Ask a quick six seven offer see among. Handsome
-                                                met debating sir dwelling age material. As style lived he
-                                                worse dried. Offered related so visitors we private removed.
-                                            </p>
-                                            {/* Inner tabs START */}
-                                            <ul
-                                                className="nav nav-pills nav-pill-dark-soft mb-0"
-                                                id="course-pills-tab-inner"
-                                                role="tablist"
-                                            >
-                                                {/* Tab item */}
-                                                <li className="nav-item me-2 me-sm-3" role="presentation">
-                                                    <button
-                                                        className="nav-link active"
-                                                        id="course-pills-tab-01"
-                                                        data-bs-toggle="pill"
-                                                        data-bs-target="#course-pills-tab01"
-                                                        type="button"
-                                                        role="tab"
-                                                        aria-controls="course-pills-tab01"
-                                                        aria-selected="true"
-                                                    >
-                                                        Art &amp; Design
-                                                    </button>
-                                                </li>
-                                                {/* Tab item */}
-                                                <li className="nav-item me-2 me-sm-3" role="presentation">
-                                                    <button
-                                                        className="nav-link"
-                                                        id="course-pills-tab-02"
-                                                        data-bs-toggle="pill"
-                                                        data-bs-target="#course-pills-tab02"
-                                                        type="button"
-                                                        role="tab"
-                                                        aria-controls="course-pills-tab02"
-                                                        aria-selected="false"
-                                                    >
-                                                        Graphic Design
-                                                    </button>
-                                                </li>
-                                                {/* Tab item */}
-                                                <li className="nav-item me-2 me-sm-3" role="presentation">
-                                                    <button
-                                                        className="nav-link"
-                                                        id="course-pills-tab-03"
-                                                        data-bs-toggle="pill"
-                                                        data-bs-target="#course-pills-tab03"
-                                                        type="button"
-                                                        role="tab"
-                                                        aria-controls="course-pills-tab03"
-                                                        aria-selected="false"
-                                                    >
-                                                        Web Design
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                            {/* Inner tabs END */}
-                                            {/* Rating */}
-                                            <div className="d-flex align-items-center mb-3">
-                                                <h2 className="me-3 mb-0">4.5</h2>
-                                                <div>
-                                                    <ul className="list-inline mb-0">
-                                                        <li className="list-inline-item me-0 small">
-                                                            <i className="fas fa-star text-warning"/>
-                                                        </li>
-                                                        <li className="list-inline-item me-0 small">
-                                                            <i className="fas fa-star text-warning"/>
-                                                        </li>
-                                                        <li className="list-inline-item me-0 small">
-                                                            <i className="fas fa-star text-warning"/>
-                                                        </li>
-                                                        <li className="list-inline-item me-0 small">
-                                                            <i className="fas fa-star text-warning"/>
-                                                        </li>
-                                                        <li className="list-inline-item me-0 small">
-                                                            <i className="fas fa-star-half-alt text-warning"/>
-                                                        </li>
-                                                    </ul>
-                                                    <p className="mb-0">Review from our students</p>
-                                                </div>
+                            MATEMÁTICA
+                        </button>
+                    </li>
+                    {/* Tab item */}
+                    <li className="nav-item me-2 me-sm-5" role="presentation">
+                        <button
+                            className="nav-link"
+                            id="course-pills-tab-2"
+                            data-bs-toggle="pill"
+                            data-bs-target="#course-pills-tab2"
+                            type="button"
+                            role="tab"
+                            aria-controls="course-pills-tab2"
+                            aria-selected="false"
+                        >
+                            FÍSICA
+                        </button>
+                    </li>
+                    {/* Tab item */}
+                    <li className="nav-item me-2 me-sm-5" role="presentation">
+                        <button
+                            className="nav-link"
+                            id="course-pills-tab-3"
+                            data-bs-toggle="pill"
+                            data-bs-target="#course-pills-tab3"
+                            type="button"
+                            role="tab"
+                            aria-controls="course-pills-tab3"
+                            aria-selected="false"
+                        >
+                            RAZONAMIENTO LÓGICO NUMÉRICO
+                        </button>
+                    </li>
+                    {/* Tab item */}
+                    <li className="nav-item me-2 me-sm-5" role="presentation">
+                        <button
+                            className="nav-link"
+                            id="course-pills-tab-4"
+                            data-bs-toggle="pill"
+                            data-bs-target="#course-pills-tab4"
+                            type="button"
+                            role="tab"
+                            aria-controls="course-pills-tab4"
+                            aria-selected="false"
+                        >
+                            ESTADÍSTICA
+                        </button>
+                    </li>
+                </ul>
+                {/* Outer tabs END */}
+                {/* Outer tabs contents START */}
+                <div className="tab-content mb-0" id="course-pills-tabContent">
+                    {/* Outer content START */}
+                    <div
+                        className="tab-pane fade show active"
+                        id="course-pills-tab1"
+                        role="tabpanel"
+                        aria-labelledby="course-pills-tab-1"
+                    >
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="row justify-content-between">
+                                    {/* Left content START */}
+                                    <div className="col-lg-6">
+                                        {/* Title */}
+                                        <h3>Art &amp; Design</h3>
+                                        <p className="mb-3">
+                                            Perceived end knowledge certainly day sweetness why
+                                            cordially. Ask a quick six seven offer see among. Handsome
+                                            met debating sir dwelling age material. As style lived he
+                                            worse dried. Offered related so visitors we private removed.
+                                        </p>
+                                        {/* Inner tabs START */}
+                                        <ul
+                                            className="nav nav-pills nav-pill-dark-soft mb-0"
+                                            id="course-pills-tab-inner"
+                                            role="tablist"
+                                        >
+                                            {/* Tab item */}
+                                            <li className="nav-item me-2 me-sm-3" role="presentation">
+                                                <button
+                                                    className="nav-link active"
+                                                    id="course-pills-tab-01"
+                                                    data-bs-toggle="pill"
+                                                    data-bs-target="#course-pills-tab01"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="course-pills-tab01"
+                                                    aria-selected="true"
+                                                >
+                                                    Art &amp; Design
+                                                </button>
+                                            </li>
+                                            {/* Tab item */}
+                                            <li className="nav-item me-2 me-sm-3" role="presentation">
+                                                <button
+                                                    className="nav-link"
+                                                    id="course-pills-tab-02"
+                                                    data-bs-toggle="pill"
+                                                    data-bs-target="#course-pills-tab02"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="course-pills-tab02"
+                                                    aria-selected="false"
+                                                >
+                                                    Graphic Design
+                                                </button>
+                                            </li>
+                                            {/* Tab item */}
+                                            <li className="nav-item me-2 me-sm-3" role="presentation">
+                                                <button
+                                                    className="nav-link"
+                                                    id="course-pills-tab-03"
+                                                    data-bs-toggle="pill"
+                                                    data-bs-target="#course-pills-tab03"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="course-pills-tab03"
+                                                    aria-selected="false"
+                                                >
+                                                    Web Design
+                                                </button>
+                                            </li>
+                                        </ul>
+                                        {/* Inner tabs END */}
+                                        {/* Rating */}
+                                        <div className="d-flex align-items-center mb-3">
+                                            <h2 className="me-3 mb-0">4.5</h2>
+                                            <div>
+                                                <ul className="list-inline mb-0">
+                                                    <li className="list-inline-item me-0 small">
+                                                        <i className="fas fa-star text-warning"/>
+                                                    </li>
+                                                    <li className="list-inline-item me-0 small">
+                                                        <i className="fas fa-star text-warning"/>
+                                                    </li>
+                                                    <li className="list-inline-item me-0 small">
+                                                        <i className="fas fa-star text-warning"/>
+                                                    </li>
+                                                    <li className="list-inline-item me-0 small">
+                                                        <i className="fas fa-star text-warning"/>
+                                                    </li>
+                                                    <li className="list-inline-item me-0 small">
+                                                        <i className="fas fa-star-half-alt text-warning"/>
+                                                    </li>
+                                                </ul>
+                                                <p className="mb-0">Review from our students</p>
                                             </div>
                                         </div>
-                                        {/* Left content END */}
-                                        {/* Right content START */}
-                                        <div className="col-lg-6 position-relative">
-                                            {/* SVG decoration */}
-                                            <figure
-                                                className="position-absolute top-0 start-100 translate-middle z-index-1 mt-5 pt-5 ms-3 d-none d-md-block">
-                                                <svg>
-                                                    <path
-                                                        className="fill-primary"
-                                                        d="m105.32 16.607c-3.262 5.822-12.294 0.748-9.037-5.064 3.262-5.821 12.294-0.747 9.037 5.064zm-6.865 21.74c-5.481 9.779-20.654 1.255-15.182-8.509 5.48-9.779 20.653-1.255 15.182 8.509zm-36.466-11.481c6.134-10.943 23.113-1.404 16.99 9.522-6.133 10.943-23.113 1.404-16.99-9.522zm5.08-24.019c3.002-5.355 11.311-0.687 8.314 4.66-3.001 5.355-11.31 0.687-8.314-4.66zm-4.357 58.171c6.507-0.155 10.785 7.113 7.628 12.746-3.156 5.634-11.589 5.779-14.853 0.148-0.108-0.186-0.215-0.371-0.322-0.556-3.091-5.332 0.744-12.175 6.905-12.322 0.214-5e-3 0.428-0.011 0.642-0.016zm-14.997-8.34c-2.57 0.843-5.367 0.264-7.715-0.917-2.262-1.137-4.134-3.706-4.81-6.102-0.706-2.505-0.358-5.443 0.914-7.712 1.344-2.399 3.54-3.965 6.101-4.806 2.571-0.843 5.368-0.263 7.715 0.917 2.262 1.138 4.134 3.706 4.81 6.102 0.706 2.506 0.358 5.444-0.913 7.713-1.345 2.398-3.541 3.965-6.102 4.805zm-4.824-41.632c3.915-6.985 14.753-0.896 10.845 6.078-3.915 6.985-14.753 0.896-10.845-6.078zm-11.502 89.749c-1.138 1.37-3.658 2.357-5.408 2.314-1.387-0.035-2.719-0.374-3.958-0.997-1.529-0.769-2.655-2.243-3.307-3.773-0.615-1.445-0.989-3.345-0.459-4.903 0.039-0.113 0.077-0.227 0.116-0.341 0.929-2.724 2.63-4.878 5.509-5.688 1.943-0.547 4.222-0.276 5.984 0.711 1.861 1.043 3.077 2.746 3.729 4.732 0.922 2.805-0.2 5.531-1.976 7.668-0.077 0.093-0.153 0.185-0.23 0.277zm-7.657-31.402c2.806-5.006 10.573-0.642 7.772 4.356-2.806 5.006-10.573 0.642-7.772-4.356zm-3.281-18.47c3.262-5.821 12.294-0.747 9.037 5.065-3.262 5.821-12.294 0.747-9.037-5.065zm-4.63-25.623c3.849-6.869 14.506-0.881 10.663 5.976-3.849 6.869-14.507 0.882-10.663-5.976zm-0.416 16.398c-3.785 6.753-14.261 0.867-10.483-5.874 3.784-6.753 14.261-0.867 10.483 5.874zm-6.41 13.04c-2.871 5.122-10.819 0.657-7.953-4.457 2.871-5.123 10.819-0.658 7.953 4.457zm3.665 16.114c2.701 1.359 3.576 5.061 2.147 7.612-1.533 2.735-4.903 3.506-7.613 2.143-2.702-1.359-3.577-5.061-2.147-7.612 1.532-2.735 4.903-3.506 7.613-2.143zm6.319 39.375c-2.936 5.239-11.064 0.673-8.133-4.558 2.936-5.239 11.064-0.672 8.133 4.558zm30.789-17.287c-3.98 7.101-14.998 0.911-11.025-6.179 3.98-7.102 14.998-0.912 11.025 6.179zm7.01 23.118c-5.807 10.362-21.883 1.33-16.086-9.015 5.807-10.361 21.884-1.329 16.086 9.015z"
-                                                        fill="#f00"
-                                                        fillRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </figure>
-                                            {/* Inner tab content START */}
+                                    </div>
+                                    {/* Left content END */}
+                                    {/* Right content START */}
+                                    <div className="col-lg-6 position-relative">
+                                        {/* SVG decoration */}
+                                        <figure
+                                            className="position-absolute top-0 start-100 translate-middle z-index-1 mt-5 pt-5 ms-3 d-none d-md-block">
+                                            <svg>
+                                                <path
+                                                    className="fill-primary"
+                                                    d="m105.32 16.607c-3.262 5.822-12.294 0.748-9.037-5.064 3.262-5.821 12.294-0.747 9.037 5.064zm-6.865 21.74c-5.481 9.779-20.654 1.255-15.182-8.509 5.48-9.779 20.653-1.255 15.182 8.509zm-36.466-11.481c6.134-10.943 23.113-1.404 16.99 9.522-6.133 10.943-23.113 1.404-16.99-9.522zm5.08-24.019c3.002-5.355 11.311-0.687 8.314 4.66-3.001 5.355-11.31 0.687-8.314-4.66zm-4.357 58.171c6.507-0.155 10.785 7.113 7.628 12.746-3.156 5.634-11.589 5.779-14.853 0.148-0.108-0.186-0.215-0.371-0.322-0.556-3.091-5.332 0.744-12.175 6.905-12.322 0.214-5e-3 0.428-0.011 0.642-0.016zm-14.997-8.34c-2.57 0.843-5.367 0.264-7.715-0.917-2.262-1.137-4.134-3.706-4.81-6.102-0.706-2.505-0.358-5.443 0.914-7.712 1.344-2.399 3.54-3.965 6.101-4.806 2.571-0.843 5.368-0.263 7.715 0.917 2.262 1.138 4.134 3.706 4.81 6.102 0.706 2.506 0.358 5.444-0.913 7.713-1.345 2.398-3.541 3.965-6.102 4.805zm-4.824-41.632c3.915-6.985 14.753-0.896 10.845 6.078-3.915 6.985-14.753 0.896-10.845-6.078zm-11.502 89.749c-1.138 1.37-3.658 2.357-5.408 2.314-1.387-0.035-2.719-0.374-3.958-0.997-1.529-0.769-2.655-2.243-3.307-3.773-0.615-1.445-0.989-3.345-0.459-4.903 0.039-0.113 0.077-0.227 0.116-0.341 0.929-2.724 2.63-4.878 5.509-5.688 1.943-0.547 4.222-0.276 5.984 0.711 1.861 1.043 3.077 2.746 3.729 4.732 0.922 2.805-0.2 5.531-1.976 7.668-0.077 0.093-0.153 0.185-0.23 0.277zm-7.657-31.402c2.806-5.006 10.573-0.642 7.772 4.356-2.806 5.006-10.573 0.642-7.772-4.356zm-3.281-18.47c3.262-5.821 12.294-0.747 9.037 5.065-3.262 5.821-12.294 0.747-9.037-5.065zm-4.63-25.623c3.849-6.869 14.506-0.881 10.663 5.976-3.849 6.869-14.507 0.882-10.663-5.976zm-0.416 16.398c-3.785 6.753-14.261 0.867-10.483-5.874 3.784-6.753 14.261-0.867 10.483 5.874zm-6.41 13.04c-2.871 5.122-10.819 0.657-7.953-4.457 2.871-5.123 10.819-0.658 7.953 4.457zm3.665 16.114c2.701 1.359 3.576 5.061 2.147 7.612-1.533 2.735-4.903 3.506-7.613 2.143-2.702-1.359-3.577-5.061-2.147-7.612 1.532-2.735 4.903-3.506 7.613-2.143zm6.319 39.375c-2.936 5.239-11.064 0.673-8.133-4.558 2.936-5.239 11.064-0.672 8.133 4.558zm30.789-17.287c-3.98 7.101-14.998 0.911-11.025-6.179 3.98-7.102 14.998-0.912 11.025 6.179zm7.01 23.118c-5.807 10.362-21.883 1.33-16.086-9.015 5.807-10.361 21.884-1.329 16.086 9.015z"
+                                                    fill="#f00"
+                                                    fillRule="evenodd"
+                                                />
+                                            </svg>
+                                        </figure>
+                                        {/* Inner tab content START */}
+                                        <div
+                                            className="tab-content mb-0 pb-0"
+                                            id="course-pills-tabContent1"
+                                        >
+                                            {/* Inner content item START */}
                                             <div
-                                                className="tab-content mb-0 pb-0"
-                                                id="course-pills-tabContent1"
+                                                className="tab-pane fade show active"
+                                                id="course-pills-tab01"
+                                                role="tabpanel"
+                                                aria-labelledby="course-pills-tab-01"
                                             >
-                                                {/* Inner content item START */}
-                                                <div
-                                                    className="tab-pane fade show active"
-                                                    id="course-pills-tab01"
-                                                    role="tabpanel"
-                                                    aria-labelledby="course-pills-tab-01"
-                                                >
-                                                    {/* Card START */}
-                                                    <div className="card p-2 pb-0 shadow">
-                                                        <div className="overflow-hidden h-xl-200px">
-                                                            <img
-                                                                src="assets/images/about/13.jpg"
-                                                                className="card-img-top"
-                                                                alt="course image"
-                                                            />
-                                                            <div className="card-img-overlay d-flex p-3">
-                                                                {/* Video button and link */}
-                                                                <div className="m-auto">
-                                                                    <a
-                                                                        href="https://www.youtube.com/embed/tXHviS-4ygo"
-                                                                        className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
-                                                                        data-glightbox=""
-                                                                        data-gallery="course-video"
-                                                                    >
-                                                                        <i className="fas fa-play"/>
-                                                                    </a>
-                                                                </div>
+                                                {/* Card START */}
+                                                <div className="card p-2 pb-0 shadow">
+                                                    <div className="overflow-hidden h-xl-200px">
+                                                        <img
+                                                            src="assets/images/about/13.jpg"
+                                                            className="card-img-top"
+                                                            alt="course image"
+                                                        />
+                                                        <div className="card-img-overlay d-flex p-3">
+                                                            {/* Video button and link */}
+                                                            <div className="m-auto">
+                                                                <a
+                                                                    href="https://www.youtube.com/embed/tXHviS-4ygo"
+                                                                    className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
+                                                                    data-glightbox=""
+                                                                    data-gallery="course-video"
+                                                                >
+                                                                    <i className="fas fa-play"/>
+                                                                </a>
                                                             </div>
                                                         </div>
-                                                        {/* Card body */}
-                                                        <div className="card-body">
-                                                            {/* Price and cart */}
-                                                            <div className="row g-3">
-                                                                {/* Item */}
-                                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                                    <div className="d-flex align-items-center">
-                                                                        <a
-                                                                            href="index-3.html#"
-                                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                                        >
-                                                                            <i className="bi bi-cart3 fs-5"/>
-                                                                        </a>
-                                                                        <div>
-                                                                            {/* Badge */}
-                                                                            <span className="badge text-bg-info mb-1">
+                                                    </div>
+                                                    {/* Card body */}
+                                                    <div className="card-body">
+                                                        {/* Price and cart */}
+                                                        <div className="row g-3">
+                                                            {/* Item */}
+                                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                                <div className="d-flex align-items-center">
+                                                                    <a
+                                                                        href="index-3.html#"
+                                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                                    >
+                                                                        <i className="bi bi-cart3 fs-5"/>
+                                                                    </a>
+                                                                    <div>
+                                                                        {/* Badge */}
+                                                                        <span className="badge text-bg-info mb-1">
                                     6 months
                                   </span>
-                                                                            <h5 className="mb-0">$134</h5>
-                                                                        </div>
+                                                                        <h5 className="mb-0">$134</h5>
                                                                     </div>
                                                                 </div>
-                                                                {/* Item */}
-                                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                                    <div className="d-flex align-items-center">
-                                                                        <a
-                                                                            href="index-3.html#"
-                                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                                        >
-                                                                            <i className="bi bi-cart3 fs-5"/>
-                                                                        </a>
-                                                                        <div>
-                                                                            {/* Badge */}
-                                                                            <span className="badge text-bg-info mb-1">
+                                                            </div>
+                                                            {/* Item */}
+                                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                                <div className="d-flex align-items-center">
+                                                                    <a
+                                                                        href="index-3.html#"
+                                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                                    >
+                                                                        <i className="bi bi-cart3 fs-5"/>
+                                                                    </a>
+                                                                    <div>
+                                                                        {/* Badge */}
+                                                                        <span className="badge text-bg-info mb-1">
                                     12 months
                                   </span>
-                                                                            <h5 className="mb-0">$355</h5>
-                                                                        </div>
+                                                                        <h5 className="mb-0">$355</h5>
                                                                     </div>
                                                                 </div>
-                                                                {/* Item */}
-                                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                                    <div className="d-flex align-items-center">
-                                                                        <a
-                                                                            href="index-3.html#"
-                                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                                        >
-                                                                            <i className="bi bi-cart3 fs-5"/>
-                                                                        </a>
-                                                                        <div>
-                                                                            {/* Badge */}
-                                                                            <span className="badge text-bg-info mb-1">
+                                                            </div>
+                                                            {/* Item */}
+                                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                                <div className="d-flex align-items-center">
+                                                                    <a
+                                                                        href="index-3.html#"
+                                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                                    >
+                                                                        <i className="bi bi-cart3 fs-5"/>
+                                                                    </a>
+                                                                    <div>
+                                                                        {/* Badge */}
+                                                                        <span className="badge text-bg-info mb-1">
                                     18 months
                                   </span>
-                                                                            <h5 className="mb-0">$654</h5>
-                                                                        </div>
+                                                                        <h5 className="mb-0">$654</h5>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {/* Card END */}
                                                 </div>
-                                                {/* Inner content item END */}
-                                                {/* Inner content item START */}
-                                                <div
-                                                    className="tab-pane fade"
-                                                    id="course-pills-tab02"
-                                                    role="tabpanel"
-                                                    aria-labelledby="course-pills-tab-02"
-                                                >
-                                                    {/* Card START */}
-                                                    <div className="card p-2 pb-0 shadow">
-                                                        <div className="overflow-hidden h-xl-200px">
-                                                            <img
-                                                                src="assets/images/about/11.jpg"
-                                                                className="card-img-top"
-                                                                alt="course image"
-                                                            />
-                                                            <div className="card-img-overlay d-flex p-3">
-                                                                {/* Video button and link */}
-                                                                <div className="m-auto">
-                                                                    <a
-                                                                        href="https://www.youtube.com/embed/tXHviS-4ygo"
-                                                                        className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
-                                                                        data-glightbox=""
-                                                                        data-gallery="course-video"
-                                                                    >
-                                                                        <i className="fas fa-play"/>
-                                                                    </a>
-                                                                </div>
+                                                {/* Card END */}
+                                            </div>
+                                            {/* Inner content item END */}
+                                            {/* Inner content item START */}
+                                            <div
+                                                className="tab-pane fade"
+                                                id="course-pills-tab02"
+                                                role="tabpanel"
+                                                aria-labelledby="course-pills-tab-02"
+                                            >
+                                                {/* Card START */}
+                                                <div className="card p-2 pb-0 shadow">
+                                                    <div className="overflow-hidden h-xl-200px">
+                                                        <img
+                                                            src="assets/images/about/11.jpg"
+                                                            className="card-img-top"
+                                                            alt="course image"
+                                                        />
+                                                        <div className="card-img-overlay d-flex p-3">
+                                                            {/* Video button and link */}
+                                                            <div className="m-auto">
+                                                                <a
+                                                                    href="https://www.youtube.com/embed/tXHviS-4ygo"
+                                                                    className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
+                                                                    data-glightbox=""
+                                                                    data-gallery="course-video"
+                                                                >
+                                                                    <i className="fas fa-play"/>
+                                                                </a>
                                                             </div>
                                                         </div>
-                                                        {/* Card body */}
-                                                        <div className="card-body">
-                                                            {/* Price and cart */}
-                                                            <div className="row g-3">
-                                                                {/* Item */}
-                                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                                    <div className="d-flex align-items-center">
-                                                                        <a
-                                                                            href="index-3.html#"
-                                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                                        >
-                                                                            <i className="bi bi-cart3 fs-5"/>
-                                                                        </a>
-                                                                        <div>
-                                                                            {/* Badge */}
-                                                                            <span className="badge text-bg-info mb-1">
+                                                    </div>
+                                                    {/* Card body */}
+                                                    <div className="card-body">
+                                                        {/* Price and cart */}
+                                                        <div className="row g-3">
+                                                            {/* Item */}
+                                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                                <div className="d-flex align-items-center">
+                                                                    <a
+                                                                        href="index-3.html#"
+                                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                                    >
+                                                                        <i className="bi bi-cart3 fs-5"/>
+                                                                    </a>
+                                                                    <div>
+                                                                        {/* Badge */}
+                                                                        <span className="badge text-bg-info mb-1">
                                     6 month
                                   </span>
-                                                                            <h5 className="mb-0">$150</h5>
-                                                                        </div>
+                                                                        <h5 className="mb-0">$150</h5>
                                                                     </div>
                                                                 </div>
-                                                                {/* Item */}
-                                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                                    <div className="d-flex align-items-center">
-                                                                        <a
-                                                                            href="index-3.html#"
-                                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                                        >
-                                                                            <i className="bi bi-cart3 fs-5"/>
-                                                                        </a>
-                                                                        <div>
-                                                                            {/* Badge */}
-                                                                            <span className="badge text-bg-info mb-1">
+                                                            </div>
+                                                            {/* Item */}
+                                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                                <div className="d-flex align-items-center">
+                                                                    <a
+                                                                        href="index-3.html#"
+                                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                                    >
+                                                                        <i className="bi bi-cart3 fs-5"/>
+                                                                    </a>
+                                                                    <div>
+                                                                        {/* Badge */}
+                                                                        <span className="badge text-bg-info mb-1">
                                     12 month
                                   </span>
-                                                                            <h5 className="mb-0">$385</h5>
-                                                                        </div>
+                                                                        <h5 className="mb-0">$385</h5>
                                                                     </div>
                                                                 </div>
-                                                                {/* Item */}
-                                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                                    <div className="d-flex align-items-center">
-                                                                        <a
-                                                                            href="index-3.html#"
-                                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                                        >
-                                                                            <i className="bi bi-cart3 fs-5"/>
-                                                                        </a>
-                                                                        <div>
-                                                                            {/* Badge */}
-                                                                            <span className="badge text-bg-info mb-1">
+                                                            </div>
+                                                            {/* Item */}
+                                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                                <div className="d-flex align-items-center">
+                                                                    <a
+                                                                        href="index-3.html#"
+                                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                                    >
+                                                                        <i className="bi bi-cart3 fs-5"/>
+                                                                    </a>
+                                                                    <div>
+                                                                        {/* Badge */}
+                                                                        <span className="badge text-bg-info mb-1">
                                     18 month
                                   </span>
-                                                                            <h5 className="mb-0">$800</h5>
-                                                                        </div>
+                                                                        <h5 className="mb-0">$800</h5>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {/* Card END */}
                                                 </div>
-                                                {/* Inner content item END */}
-                                                {/* Inner content item START */}
-                                                <div
-                                                    className="tab-pane fade"
-                                                    id="course-pills-tab03"
-                                                    role="tabpanel"
-                                                    aria-labelledby="course-pills-tab-03"
-                                                >
-                                                    {/* Card START */}
-                                                    <div className="card p-2 shadow">
-                                                        <div className="overflow-hidden h-xl-200px">
-                                                            <img
-                                                                src="assets/images/about/14.jpg"
-                                                                className="card-img-top"
-                                                                alt="course image"
-                                                            />
-                                                            <div className="card-img-overlay d-flex p-3">
-                                                                {/* Video button and link */}
-                                                                <div className="m-auto">
-                                                                    <a
-                                                                        href="https://www.youtube.com/embed/tXHviS-4ygo"
-                                                                        className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
-                                                                        data-glightbox=""
-                                                                        data-gallery="course-video"
-                                                                    >
-                                                                        <i className="fas fa-play"/>
-                                                                    </a>
-                                                                </div>
+                                                {/* Card END */}
+                                            </div>
+                                            {/* Inner content item END */}
+                                            {/* Inner content item START */}
+                                            <div
+                                                className="tab-pane fade"
+                                                id="course-pills-tab03"
+                                                role="tabpanel"
+                                                aria-labelledby="course-pills-tab-03"
+                                            >
+                                                {/* Card START */}
+                                                <div className="card p-2 shadow">
+                                                    <div className="overflow-hidden h-xl-200px">
+                                                        <img
+                                                            src="assets/images/about/14.jpg"
+                                                            className="card-img-top"
+                                                            alt="course image"
+                                                        />
+                                                        <div className="card-img-overlay d-flex p-3">
+                                                            {/* Video button and link */}
+                                                            <div className="m-auto">
+                                                                <a
+                                                                    href="https://www.youtube.com/embed/tXHviS-4ygo"
+                                                                    className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
+                                                                    data-glightbox=""
+                                                                    data-gallery="course-video"
+                                                                >
+                                                                    <i className="fas fa-play"/>
+                                                                </a>
                                                             </div>
                                                         </div>
-                                                        {/* Card body */}
-                                                        <div className="card-body px-2">
-                                                            <p className="mb-0">
-                                                                <span className="h6 mb-0 fw-bold me-1">Note:</span>
-                                                                Before you learning this video you need to first
-                                                                learn Beginner course
-                                                            </p>
-                                                        </div>
+                                                    </div>
+                                                    {/* Card body */}
+                                                    <div className="card-body px-2">
+                                                        <p className="mb-0">
+                                                            <span className="h6 mb-0 fw-bold me-1">Note:</span>
+                                                            Before you learning this video you need to first
+                                                            learn Beginner course
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                {/* Inner content item END */}
                                             </div>
-                                            {/* Inner tab content END */}
+                                            {/* Inner content item END */}
                                         </div>
-                                        {/* Right content END */}
+                                        {/* Inner tab content END */}
                                     </div>
+                                    {/* Right content END */}
                                 </div>
                             </div>
-                            {" "}
-                            {/* Row END */}
                         </div>
-                        {/* Outer content END */}
-                        {/* Outer content START */}
-                        <div
-                            className="tab-pane fade"
-                            id="course-pills-tab2"
-                            role="tabpanel"
-                            aria-labelledby="course-pills-tab-2"
-                        >
-                            <div className="row">
-                                {/* Left content START */}
-                                <div className="col-lg-6">
-                                    {/* Title */}
-                                    <h3>Development</h3>
-                                    <p className="mb-3">
-                                        Ask a quick six seven offer see among. Handsome met debating sir
-                                        dwelling age material. As style lived he worse dried. Offered
-                                        related so visitors we private removed.
-                                    </p>
-                                    <h6 className="mt-4">What you’ll learn</h6>
-                                    <ul className="list-group list-group-borderless mb-3">
-                                        <li className="list-group-item h6 fw-light d-flex mb-0">
-                                            <i className="bi bi-patch-check-fill text-success me-2"/>
-                                            Create responsive, accessible, and beautiful layouts
-                                        </li>
-                                        <li className="list-group-item h6 fw-light d-flex mb-0">
-                                            <i className="bi bi-patch-check-fill text-success me-2"/>
-                                            Course Videos &amp; Readings
-                                        </li>
-                                        <li className="list-group-item h6 fw-light d-flex mb-0">
-                                            <i className="bi bi-patch-check-fill text-success me-2"/>
-                                            Manipulate the DOM with vanilla JS
-                                        </li>
-                                        <li className="list-group-item h6 fw-light d-flex mb-0">
-                                            <i className="bi bi-patch-check-fill text-success me-2"/>
-                                            Master the command line interface
-                                        </li>
-                                        <li className="list-group-item h6 fw-light d-flex mb-0">
-                                            <i className="bi bi-patch-check-fill text-success me-2"/>
-                                            Create your own Node modules
-                                        </li>
-                                    </ul>
-                                </div>
-                                {/* Left content END */}
-                                {/* Right content START */}
-                                <div className="col-lg-6">
-                                    {/* Card START */}
-                                    <div className="card p-2 pb-0 shadow">
-                                        <div className="overflow-hidden h-xl-200px">
-                                            <img
-                                                src="assets/images/about/14.jpg"
-                                                className="card-img-top"
-                                                alt="course image"
-                                            />
-                                            <div className="card-img-overlay d-flex p-3">
-                                                {/* Video button and link */}
-                                                <div className="m-auto">
-                                                    <a
-                                                        href="https://www.youtube.com/embed/tXHviS-4ygo"
-                                                        className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
-                                                        data-glightbox=""
-                                                        data-gallery="course-video"
-                                                    >
-                                                        <i className="fas fa-play"/>
-                                                    </a>
-                                                </div>
+                        {" "}
+                        {/* Row END */}
+                    </div>
+                    {/* Outer content END */}
+                    {/* Outer content START */}
+                    <div
+                        className="tab-pane fade"
+                        id="course-pills-tab2"
+                        role="tabpanel"
+                        aria-labelledby="course-pills-tab-2"
+                    >
+                        <div className="row">
+                            {/* Left content START */}
+                            <div className="col-lg-6">
+                                {/* Title */}
+                                <h3>Development</h3>
+                                <p className="mb-3">
+                                    Ask a quick six seven offer see among. Handsome met debating sir
+                                    dwelling age material. As style lived he worse dried. Offered
+                                    related so visitors we private removed.
+                                </p>
+                                <h6 className="mt-4">What you’ll learn</h6>
+                                <ul className="list-group list-group-borderless mb-3">
+                                    <li className="list-group-item h6 fw-light d-flex mb-0">
+                                        <i className="bi bi-patch-check-fill text-success me-2"/>
+                                        Create responsive, accessible, and beautiful layouts
+                                    </li>
+                                    <li className="list-group-item h6 fw-light d-flex mb-0">
+                                        <i className="bi bi-patch-check-fill text-success me-2"/>
+                                        Course Videos &amp; Readings
+                                    </li>
+                                    <li className="list-group-item h6 fw-light d-flex mb-0">
+                                        <i className="bi bi-patch-check-fill text-success me-2"/>
+                                        Manipulate the DOM with vanilla JS
+                                    </li>
+                                    <li className="list-group-item h6 fw-light d-flex mb-0">
+                                        <i className="bi bi-patch-check-fill text-success me-2"/>
+                                        Master the command line interface
+                                    </li>
+                                    <li className="list-group-item h6 fw-light d-flex mb-0">
+                                        <i className="bi bi-patch-check-fill text-success me-2"/>
+                                        Create your own Node modules
+                                    </li>
+                                </ul>
+                            </div>
+                            {/* Left content END */}
+                            {/* Right content START */}
+                            <div className="col-lg-6">
+                                {/* Card START */}
+                                <div className="card p-2 pb-0 shadow">
+                                    <div className="overflow-hidden h-xl-200px">
+                                        <img
+                                            src="assets/images/about/14.jpg"
+                                            className="card-img-top"
+                                            alt="course image"
+                                        />
+                                        <div className="card-img-overlay d-flex p-3">
+                                            {/* Video button and link */}
+                                            <div className="m-auto">
+                                                <a
+                                                    href="https://www.youtube.com/embed/tXHviS-4ygo"
+                                                    className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
+                                                    data-glightbox=""
+                                                    data-gallery="course-video"
+                                                >
+                                                    <i className="fas fa-play"/>
+                                                </a>
                                             </div>
                                         </div>
-                                        {/* Card body */}
-                                        <div className="card-body">
-                                            {/* Price and cart */}
-                                            <div className="row g-3">
-                                                {/* Item */}
-                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                    <div className="d-flex align-items-center">
-                                                        <a
-                                                            href="index-3.html#"
-                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                        >
-                                                            <i className="bi bi-cart3 fs-5"/>
-                                                        </a>
-                                                        <div>
-                                                            {/* Badge */}
-                                                            <span className="badge text-bg-info mb-1">
+                                    </div>
+                                    {/* Card body */}
+                                    <div className="card-body">
+                                        {/* Price and cart */}
+                                        <div className="row g-3">
+                                            {/* Item */}
+                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                <div className="d-flex align-items-center">
+                                                    <a
+                                                        href="index-3.html#"
+                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                    >
+                                                        <i className="bi bi-cart3 fs-5"/>
+                                                    </a>
+                                                    <div>
+                                                        {/* Badge */}
+                                                        <span className="badge text-bg-info mb-1">
                             6 month
                           </span>
-                                                            <h5 className="mb-0">$134</h5>
-                                                        </div>
+                                                        <h5 className="mb-0">$134</h5>
                                                     </div>
                                                 </div>
-                                                {/* Item */}
-                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                    <div className="d-flex align-items-center">
-                                                        <a
-                                                            href="index-3.html#"
-                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                        >
-                                                            <i className="bi bi-cart3 fs-5"/>
-                                                        </a>
-                                                        <div>
-                                                            {/* Badge */}
-                                                            <span className="badge text-bg-info mb-1">
+                                            </div>
+                                            {/* Item */}
+                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                <div className="d-flex align-items-center">
+                                                    <a
+                                                        href="index-3.html#"
+                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                    >
+                                                        <i className="bi bi-cart3 fs-5"/>
+                                                    </a>
+                                                    <div>
+                                                        {/* Badge */}
+                                                        <span className="badge text-bg-info mb-1">
                             12 month
                           </span>
-                                                            <h5 className="mb-0">$355</h5>
-                                                        </div>
+                                                        <h5 className="mb-0">$355</h5>
                                                     </div>
                                                 </div>
-                                                {/* Item */}
-                                                <div className="col-sm-4 col-lg-6 col-xl-4">
-                                                    <div className="d-flex align-items-center">
-                                                        <a
-                                                            href="index-3.html#"
-                                                            className="btn btn-orange rounded-2 me-3 mb-0"
-                                                        >
-                                                            <i className="bi bi-cart3 fs-5"/>
-                                                        </a>
-                                                        <div>
-                                                            {/* Badge */}
-                                                            <span className="badge text-bg-info mb-1">
+                                            </div>
+                                            {/* Item */}
+                                            <div className="col-sm-4 col-lg-6 col-xl-4">
+                                                <div className="d-flex align-items-center">
+                                                    <a
+                                                        href="index-3.html#"
+                                                        className="btn btn-orange rounded-2 me-3 mb-0"
+                                                    >
+                                                        <i className="bi bi-cart3 fs-5"/>
+                                                    </a>
+                                                    <div>
+                                                        {/* Badge */}
+                                                        <span className="badge text-bg-info mb-1">
                             18 month
                           </span>
-                                                            <h5 className="mb-0">$654</h5>
-                                                        </div>
+                                                        <h5 className="mb-0">$654</h5>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    {/* Card END */}
                                 </div>
-                                {/* Right content END */}
+                                {/* Card END */}
                             </div>
-                            {" "}
-                            {/* Row END */}
+                            {/* Right content END */}
                         </div>
-                        {/* Outer content END */}
-                        {/* Outer content START */}
-                        <div
-                            className="tab-pane fade"
-                            id="course-pills-tab3"
-                            role="tabpanel"
-                            aria-labelledby="course-pills-tab-3"
-                        >
-                            <div className="row g-4">
-                                {/* Left content START */}
-                                <div className="col-lg-6">
-                                    {/* Title */}
-                                    <h3>Data Science</h3>
-                                    <p className="mb-3">
-                                        Handsome met debating sir dwelling age material. As style lived
-                                        he worse dried. Offered related so visitors we private removed.
-                                    </p>
-                                    {/* Rating */}
-                                    <div className="d-flex align-items-center mb-3">
-                                        <h2 className="me-3 mb-0">4.0</h2>
-                                        <div>
-                                            <ul className="list-inline mb-0">
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="far fa-star text-warning"/>
-                                                </li>
-                                            </ul>
-                                            <p className="mb-0">Review from our students </p>
-                                        </div>
-                                    </div>
-                                    {/* Buttons */}
-                                    <div className="mt-3">
-                                        <a href="index-3.html#" className="btn btn-success">
-                                            Free trial
-                                        </a>
-                                        <a href="index-3.html#" className="btn btn-danger">
-                                            Buy course
-                                        </a>
-                                    </div>
-                                </div>
-                                {/* Left content END */}
-                                {/* Right content START */}
-                                <div className="col-lg-6">
-                                    {/* Card START */}
-                                    <div className="card p-2 shadow">
-                                        <div className="overflow-hidden rounded-3 h-xl-200px">
-                                            <img
-                                                src="assets/images/about/15.jpg"
-                                                className="card-img rounded-3"
-                                                alt="course image"
-                                            />
-                                            <div className="card-img-overlay d-flex p-3">
-                                                {/* Video button and link */}
-                                                <div className="m-auto">
-                                                    <a
-                                                        href="https://www.youtube.com/embed/tXHviS-4ygo"
-                                                        className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
-                                                        data-glightbox=""
-                                                        data-gallery="course-video"
-                                                    >
-                                                        <i className="fas fa-play"/>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* Card END */}
-                                </div>
-                                {/* Right content END */}
-                            </div>
-                        </div>
-                        {/* Outer content END */}
-                        {/* Outer content START */}
-                        <div
-                            className="tab-pane fade"
-                            id="course-pills-tab4"
-                            role="tabpanel"
-                            aria-labelledby="course-pills-tab-4"
-                        >
-                            <div className="row g-4">
-                                {/* Left content START */}
-                                <div className="col-lg-6">
-                                    {/* Title */}
-                                    <h3>Marketing</h3>
-                                    <p className="mb-3">
-                                        Handsome met debating sir dwelling age material. As style lived
-                                        he worse dried. Offered related so visitors we private removed.
-                                    </p>
-                                    {/* Rating */}
-                                    <div className="d-flex align-items-center mb-3">
-                                        <h2 className="me-3 mb-0">4.0</h2>
-                                        <div>
-                                            <ul className="list-inline mb-0">
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="far fa-star text-warning"/>
-                                                </li>
-                                            </ul>
-                                            <p className="mb-0">Review from our students </p>
-                                        </div>
-                                    </div>
-                                    {/* Buttons */}
-                                    <div className="mt-3">
-                                        <a href="index-3.html#" className="btn btn-success">
-                                            Free trial
-                                        </a>
-                                        <a href="index-3.html#" className="btn btn-danger">
-                                            Buy course
-                                        </a>
-                                    </div>
-                                </div>
-                                {/* Left content END */}
-                                {/* Right content START */}
-                                <div className="col-lg-6">
-                                    {/* Card START */}
-                                    <div className="card p-2 shadow">
-                                        <div className="overflow-hidden rounded-3 h-xl-200px">
-                                            <img
-                                                src="assets/images/about/12.jpg"
-                                                className="card-img rounded-3"
-                                                alt="course image"
-                                            />
-                                            <div className="card-img-overlay d-flex p-3">
-                                                {/* Video button and link */}
-                                                <div className="m-auto">
-                                                    <a
-                                                        href="https://www.youtube.com/embed/tXHviS-4ygo"
-                                                        className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
-                                                        data-glightbox=""
-                                                        data-gallery="course-video"
-                                                    >
-                                                        <i className="fas fa-play"/>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* Card END */}
-                                </div>
-                                {/* Right content END */}
-                            </div>
-                        </div>
-                        {/* Outer content END */}
-                        {/* Outer content START */}
-                        <div
-                            className="tab-pane fade"
-                            id="course-pills-tab5"
-                            role="tabpanel"
-                            aria-labelledby="course-pills-tab-5"
-                        >
-                            <div className="row g-4">
-                                {/* Left content START */}
-                                <div className="col-lg-6">
-                                    {/* Title */}
-                                    <h3>Finance</h3>
-                                    <p className="mb-3">
-                                        Handsome met debating sir dwelling age material. As style lived
-                                        he worse dried. Offered related so visitors we private removed.
-                                    </p>
-                                    {/* Rating */}
-                                    <div className="d-flex align-items-center mb-3">
-                                        <h2 className="me-3 mb-0">4.0</h2>
-                                        <div>
-                                            <ul className="list-inline mb-0">
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="fas fa-star text-warning"/>
-                                                </li>
-                                                <li className="list-inline-item me-0 small">
-                                                    <i className="far fa-star text-warning"/>
-                                                </li>
-                                            </ul>
-                                            <p className="mb-0">Review from our students </p>
-                                        </div>
-                                    </div>
-                                    {/* Buttons */}
-                                    <div className="mt-3">
-                                        <a href="index-3.html#" className="btn btn-success">
-                                            Free trial
-                                        </a>
-                                        <a href="index-3.html#" className="btn btn-danger">
-                                            Buy course
-                                        </a>
-                                    </div>
-                                </div>
-                                {/* Left content END */}
-                                {/* Right content START */}
-                                <div className="col-lg-6">
-                                    {/* Card START */}
-                                    <div className="card p-2 shadow">
-                                        <div className="overflow-hidden rounded-3 h-xl-200px">
-                                            <img
-                                                src="assets/images/about/11.jpg"
-                                                className="card-img rounded-3"
-                                                alt="course image"
-                                            />
-                                            <div className="card-img-overlay d-flex p-3">
-                                                {/* Video button and link */}
-                                                <div className="m-auto">
-                                                    <a
-                                                        href="https://www.youtube.com/embed/tXHviS-4ygo"
-                                                        className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
-                                                        data-glightbox=""
-                                                        data-gallery="course-video"
-                                                    >
-                                                        <i className="fas fa-play"/>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* Card END */}
-                                </div>
-                                {/* Right content END */}
-                            </div>
-                        </div>
-                        {/* Outer content END */}
+                        {" "}
+                        {/* Row END */}
                     </div>
-                    {/* Outer tabs contents END */}
+                    {/* Outer content END */}
+                    {/* Outer content START */}
+                    <div
+                        className="tab-pane fade"
+                        id="course-pills-tab3"
+                        role="tabpanel"
+                        aria-labelledby="course-pills-tab-3"
+                    >
+                        <div className="row g-4">
+                            {/* Left content START */}
+                            <div className="col-lg-6">
+                                {/* Title */}
+                                <h3>Data Science</h3>
+                                <p className="mb-3">
+                                    Handsome met debating sir dwelling age material. As style lived
+                                    he worse dried. Offered related so visitors we private removed.
+                                </p>
+                                {/* Rating */}
+                                <div className="d-flex align-items-center mb-3">
+                                    <h2 className="me-3 mb-0">4.0</h2>
+                                    <div>
+                                        <ul className="list-inline mb-0">
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="far fa-star text-warning"/>
+                                            </li>
+                                        </ul>
+                                        <p className="mb-0">Review from our students </p>
+                                    </div>
+                                </div>
+                                {/* Buttons */}
+                                <div className="mt-3">
+                                    <a href="index-3.html#" className="btn btn-success">
+                                        Free trial
+                                    </a>
+                                    <a href="index-3.html#" className="btn btn-danger">
+                                        Buy course
+                                    </a>
+                                </div>
+                            </div>
+                            {/* Left content END */}
+                            {/* Right content START */}
+                            <div className="col-lg-6">
+                                {/* Card START */}
+                                <div className="card p-2 shadow">
+                                    <div className="overflow-hidden rounded-3 h-xl-200px">
+                                        <img
+                                            src="assets/images/about/15.jpg"
+                                            className="card-img rounded-3"
+                                            alt="course image"
+                                        />
+                                        <div className="card-img-overlay d-flex p-3">
+                                            {/* Video button and link */}
+                                            <div className="m-auto">
+                                                <a
+                                                    href="https://www.youtube.com/embed/tXHviS-4ygo"
+                                                    className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
+                                                    data-glightbox=""
+                                                    data-gallery="course-video"
+                                                >
+                                                    <i className="fas fa-play"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Card END */}
+                            </div>
+                            {/* Right content END */}
+                        </div>
+                    </div>
+                    {/* Outer content END */}
+                    {/* Outer content START */}
+                    <div
+                        className="tab-pane fade"
+                        id="course-pills-tab4"
+                        role="tabpanel"
+                        aria-labelledby="course-pills-tab-4"
+                    >
+                        <div className="row g-4">
+                            {/* Left content START */}
+                            <div className="col-lg-6">
+                                {/* Title */}
+                                <h3>Marketing</h3>
+                                <p className="mb-3">
+                                    Handsome met debating sir dwelling age material. As style lived
+                                    he worse dried. Offered related so visitors we private removed.
+                                </p>
+                                {/* Rating */}
+                                <div className="d-flex align-items-center mb-3">
+                                    <h2 className="me-3 mb-0">4.0</h2>
+                                    <div>
+                                        <ul className="list-inline mb-0">
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="far fa-star text-warning"/>
+                                            </li>
+                                        </ul>
+                                        <p className="mb-0">Review from our students </p>
+                                    </div>
+                                </div>
+                                {/* Buttons */}
+                                <div className="mt-3">
+                                    <a href="index-3.html#" className="btn btn-success">
+                                        Free trial
+                                    </a>
+                                    <a href="index-3.html#" className="btn btn-danger">
+                                        Buy course
+                                    </a>
+                                </div>
+                            </div>
+                            {/* Left content END */}
+                            {/* Right content START */}
+                            <div className="col-lg-6">
+                                {/* Card START */}
+                                <div className="card p-2 shadow">
+                                    <div className="overflow-hidden rounded-3 h-xl-200px">
+                                        <img
+                                            src="assets/images/about/12.jpg"
+                                            className="card-img rounded-3"
+                                            alt="course image"
+                                        />
+                                        <div className="card-img-overlay d-flex p-3">
+                                            {/* Video button and link */}
+                                            <div className="m-auto">
+                                                <a
+                                                    href="https://www.youtube.com/embed/tXHviS-4ygo"
+                                                    className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
+                                                    data-glightbox=""
+                                                    data-gallery="course-video"
+                                                >
+                                                    <i className="fas fa-play"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Card END */}
+                            </div>
+                            {/* Right content END */}
+                        </div>
+                    </div>
+                    {/* Outer content END */}
+                    {/* Outer content START */}
+                    <div
+                        className="tab-pane fade"
+                        id="course-pills-tab5"
+                        role="tabpanel"
+                        aria-labelledby="course-pills-tab-5"
+                    >
+                        <div className="row g-4">
+                            {/* Left content START */}
+                            <div className="col-lg-6">
+                                {/* Title */}
+                                <h3>Finance</h3>
+                                <p className="mb-3">
+                                    Handsome met debating sir dwelling age material. As style lived
+                                    he worse dried. Offered related so visitors we private removed.
+                                </p>
+                                {/* Rating */}
+                                <div className="d-flex align-items-center mb-3">
+                                    <h2 className="me-3 mb-0">4.0</h2>
+                                    <div>
+                                        <ul className="list-inline mb-0">
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="fas fa-star text-warning"/>
+                                            </li>
+                                            <li className="list-inline-item me-0 small">
+                                                <i className="far fa-star text-warning"/>
+                                            </li>
+                                        </ul>
+                                        <p className="mb-0">Review from our students </p>
+                                    </div>
+                                </div>
+                                {/* Buttons */}
+                                <div className="mt-3">
+                                    <a href="index-3.html#" className="btn btn-success">
+                                        Free trial
+                                    </a>
+                                    <a href="index-3.html#" className="btn btn-danger">
+                                        Buy course
+                                    </a>
+                                </div>
+                            </div>
+                            {/* Left content END */}
+                            {/* Right content START */}
+                            <div className="col-lg-6">
+                                {/* Card START */}
+                                <div className="card p-2 shadow">
+                                    <div className="overflow-hidden rounded-3 h-xl-200px">
+                                        <img
+                                            src="assets/images/about/11.jpg"
+                                            className="card-img rounded-3"
+                                            alt="course image"
+                                        />
+                                        <div className="card-img-overlay d-flex p-3">
+                                            {/* Video button and link */}
+                                            <div className="m-auto">
+                                                <a
+                                                    href="https://www.youtube.com/embed/tXHviS-4ygo"
+                                                    className="btn btn-lg text-danger btn-round btn-white-shadow mb-0"
+                                                    data-glightbox=""
+                                                    data-gallery="course-video"
+                                                >
+                                                    <i className="fas fa-play"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Card END */}
+                            </div>
+                            {/* Right content END */}
+                        </div>
+                    </div>
+                    {/* Outer content END */}
                 </div>
-            </section>
-            {/* =======================
-Popular course END */}
-        </>
+                {/* Outer tabs contents END */}
+            </div>
+        </section>
     )
 }

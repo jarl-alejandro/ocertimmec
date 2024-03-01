@@ -2,7 +2,7 @@ import express from 'express'
 import phantomHtmlToPdf from 'phantom-html-to-pdf'
 import QRCode from 'qrcode'
 
-import Student from '../../../courses/domain/student'
+import Student from '../../../inscriptions/domain/student'
 import template from './template'
 import config from '../../../../enviroments/config'
 

@@ -1,6 +1,6 @@
 import phantomHtmlToPdf from 'phantom-html-to-pdf'
 import template from './template'
-import Student from '../../../courses/domain/student'
+import Student from '../../../inscriptions/domain/student'
 
 const conversion = phantomHtmlToPdf()
 
