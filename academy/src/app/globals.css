@@ -1,3 +1,11 @@
+body {
+    font-size: 16px;
+}
 .bg-occertimm {
     background-color: #90bbd7fa;
+}
+.grid-container-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)); /* Dos columnas en pantallas grandes */
+    gap: 20px;
 }

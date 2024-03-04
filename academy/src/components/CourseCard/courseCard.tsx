@@ -2,8 +2,7 @@ import Link from "next/link";
 
 export default function CourseCard() {
     return (
-    <div className="col-md-6 col-xl-4">
-        <div className="card shadow-hover overflow-hidden bg-transparent">
+        <div className="card border shadow-hover overflow-hidden bg-transparent">
             <div className="position-relative">
                 {/* Image */}
                 <img
@@ -20,7 +19,6 @@ export default function CourseCard() {
                 <div className="d-flex justify-content-between mb-3">
                     <div className="hstack gap-2">
                         <a
-                            href="javascript:void(0)"
                             className="badge bg-orange bg-opacity-10 text-orange"
                         >
                             Todos los niveles
@@ -58,6 +56,5 @@ export default function CourseCard() {
                 {/* Divider */}
             </div>
         </div>
-    </div>
     )
 }

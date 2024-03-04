@@ -1,4 +1,11 @@
 import styles from './brands.module.css';
+import anes from './anes.jpeg';
+import ingauto from './ingauto.png';
+import setec from './setec.png';
+import senescyt from './senescyt.png';
+import comercio from './comercio.jpeg';
+import aecap from './aecap.jpg';
+import Image from "next/image";
 
 
 export default function Brands() {
@@ -12,29 +19,55 @@ export default function Brands() {
                             <div
                                 className="d-flex justify-content-between align-items-center"
                             >
-                                {/* Slide item START */}
                                 <div className={styles.item}>
-                                    <img src="assets/images/client/coca-cola.svg" alt=""/>
+                                    <Image
+                                        src={anes}
+                                        width={160}
+                                        height={100}
+                                        alt="Anes"
+                                    />
                                 </div>
                                 <div className={styles.item}>
-                                    <img src="assets/images/client/android.svg" alt=""/>
+                                    <Image
+                                        src={ingauto}
+                                        width={260}
+                                        height={100}
+                                        alt="ingauto"
+                                    />
                                 </div>
                                 <div className={styles.item}>
-                                    <img src="assets/images/client/envato.svg" alt=""/>
+                                    <Image
+                                        src={setec}
+                                        width={260}
+                                        height={100}
+                                        alt="setec"
+                                    />
                                 </div>
                                 <div className={styles.item}>
-                                    <img src="assets/images/client/microsoft.svg" alt=""/>
+                                    <Image
+                                        src={senescyt}
+                                        width={260}
+                                        height={100}
+                                        alt="senescyt"
+                                    />
                                 </div>
                                 <div className={styles.item}>
-                                    <img src="assets/images/client/netflix.svg" alt=""/>
+                                    <Image
+                                        src={comercio}
+                                        width={160}
+                                        height={60}
+                                        alt="comercio"
+                                    />
                                 </div>
                                 <div className={styles.item}>
-                                    <img src="assets/images/client/google.svg" alt=""/>
+                                    <Image
+                                        src={aecap}
+                                        width={260}
+                                        height={100}
+                                        alt="aecap"
+                                    />
                                 </div>
-                                <div className={styles.item}>
-                                    <img src="assets/images/client/linkedin.svg" alt=""/>
-                                </div>
-                                {/* Slide item END */}
+
                             </div>
                         </div>
                         {/* Slider END */}

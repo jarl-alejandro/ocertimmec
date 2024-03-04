@@ -1,5 +1,6 @@
 import lang from '@/dictionaries/es.json';
 import CourseCard from "@/components/CourseCard/courseCard";
+import Link from "next/link";
 
 export default function TrendingCourses() {
     return (
@@ -22,13 +23,21 @@ export default function TrendingCourses() {
                               </span>
                             </span>
                         </h2>
-                        <p className="mb-0">Descubre programas de capacitación y certificación ideales para tu profesión.</p>
+                        <p className="mb-0">Descubre programas de capacitación y certificación ideales para tu
+                            profesión.</p>
                     </div>
                 </div>
-                <div className="row g-4">
-                    <CourseCard />
-                    <CourseCard />
-                    <CourseCard />
+                <div className="grid-container-card">
+                    <CourseCard/>
+                    <CourseCard/>
+                    <CourseCard/>
+                </div>
+
+                <div className="col-12 text-center mt-5">
+                    <Link href="/training-certification" className="btn btn-primary-soft mb-0">
+                        Ver más capacitaciones y certificaciones
+                        <i className="fas fa-graduation-cap fa-fw ms-2"></i>
+                    </Link>
                 </div>
             </div>
         </section>

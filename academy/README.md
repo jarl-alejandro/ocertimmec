@@ -1,3 +1,12 @@
+file:///home/alejandro/workspace/personalProjects/downloader/oc/demo.stackcodes.net/tm/sovware/html-eduhub/course-detail.html
+file:///home/alejandro/workspace/personalProjects/downloader/oc/demo.stackcodes.net/tm/sovware/html-eduhub/course-detail-min.html
+
+file:///home/alejandro/workspace/personalProjects/downloader/oc/demo.stackcodes.net/tm/sovware/html-eduhub/about.html
+
+file:///home/alejandro/workspace/personalProjects/downloader/oc/demo.stackcodes.net/tm/sovware/html-eduhub/error-404.html
+file:///home/alejandro/workspace/personalProjects/downloader/oc/demo.stackcodes.net/tm/sovware/html-eduhub/request-demo.html
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
