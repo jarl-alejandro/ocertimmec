@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={inter.className}>
       <Header />
+
       <main className="main-container">
         {children}
       </main>

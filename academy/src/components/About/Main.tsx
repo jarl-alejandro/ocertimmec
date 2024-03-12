@@ -116,9 +116,7 @@ export default function Main() {
 
                         </h1>
                         <p>
-                            Nuestro dedicado equipo está aquí para ayudar a los profesionales a tener un impacto en el
-                            mundo. ¿Estás listo para alcanzar todo tu potencial? ¡Únete a nosotros! Capacitaciones y
-                            Certificaciones por competencias laborales.
+                            OCCERTIMM es una institución de capacitación y certificación que busca el perfeccionamiento profesional de sus clientes ofreciendo capacitaciones y certificaciones por competencias laborales avaladas por SETEC mediante la resolución SETEC-REC-2018-065, a su vez las mismas se registran en la página de títulos de SENESCYT.
                         </p>
                         <Link className="btn btn-primary mb-0" href="training-certification">
                             {lang.training_certification}

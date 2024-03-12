@@ -2,6 +2,8 @@
     display: grid;
     gap: 2.5rem;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)); /* Dos columnas en pantallas grandes */
+    z-index: 10;
+    position: relative;
 }
 
 .item {
