@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './font-awesome/css/all.min.css';
 import './css/style.css';
 import "./globals.css";
+import Header from "@/components/Header/header";
+import Footer from "@/components/Footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Header />
+      <main className="main-container">
+        {children}
+      </main>
+
+      <Footer />
+      </body>
     </html>
   );
 }

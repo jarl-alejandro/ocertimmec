@@ -85,7 +85,7 @@ export default function Footer() {
                         <div
                             className="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
                             <div className="text-body-secondary">
-                                Copyrights ©2024 Alejandro Rivas
+                                Hecho por ©2024 Alejandro Rivas.
                             </div>
                         </div>
                     </div>

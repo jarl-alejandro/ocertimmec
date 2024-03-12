@@ -9,3 +9,18 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)); /* Dos columnas en pantallas grandes */
     gap: 20px;
 }
+
+
+.main-container {
+    --header: 120px;
+    --footer: 441px;
+    min-height: calc(100vh - var(--header) - var(--footer));
+}
+
+.grid {
+    display: grid;
+}
+header {
+    position: sticky;
+    top: 0;
+}
