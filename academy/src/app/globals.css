@@ -20,6 +20,11 @@ body {
 .grid {
     display: grid;
 }
+.card-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 header {
     position: sticky;
     top: 0;
