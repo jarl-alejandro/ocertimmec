@@ -1,7 +1,8 @@
+import dynamic from "next/dynamic";
 import Main from "@/components/About/Main";
 import CorporateValues from "@/components/About/CorporateValues";
-import Video from "@/components/About/Video";
 
+const Video = dynamic(() => import("@/components/About/Video"), { ssr: false });
 
 export default function About() {
     return (

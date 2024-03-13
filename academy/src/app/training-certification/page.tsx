@@ -1,5 +1,11 @@
+import MainSection from "@/components/TrainingCertification/MainSection";
+
 export default function TrainingCertification() {
     return (
-        <h1>TrainingCertification</h1>
+        <MainSection>
+            <h1 className="text-center">CAPACITACIÓN Y CERTIFICACIÓN</h1>
+
+
+        </MainSection>
     )
 }

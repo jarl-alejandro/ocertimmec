@@ -1,5 +1,9 @@
+import Main from "@/components/Contact/Main";
+
 export default function Contact() {
     return (
-        <h1>Contact</h1>
+        <>
+            <Main />
+        </>
     )
 }
