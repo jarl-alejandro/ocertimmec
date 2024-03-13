@@ -1,8 +1,22 @@
 import lang from '@/dictionaries/es.json';
 import CourseCard from "@/components/CourseCard/courseCard";
 import Link from "next/link";
+import {TrainingCertificate} from "@/core/domain/TrainingCertification";
 
-export default function TrendingCourses() {
+async function getData() {
+    const res = await fetch(`${process.env.API_URL}/training-certificate`)
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data')
+    }
+
+    const trainingCertificates: TrainingCertificate[] = await res.json();
+    return trainingCertificates.splice(0, 3)
+}
+
+export default async function TrendingCourses() {
+    const data: TrainingCertificate[] = await getData()
+
     return (
         <section className="pt-0 pt-lg-5">
             <div className="container">
@@ -28,9 +42,9 @@ export default function TrendingCourses() {
                     </div>
                 </div>
                 <div className="grid-container-card">
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
+                    {data.map(item => (
+                        <CourseCard course={item} key={item._id} />
+                    ))}
                 </div>
 
                 <div className="col-12 text-center mt-5">

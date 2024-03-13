@@ -1,4 +1,8 @@
 import Link from "next/link";
+import student from './01.png';
+import pencil from './pencil.svg';
+import graduated from './graduated.svg';
+import Image from "next/image";
 
 export default function BecomeStudentNow() {
     return (
@@ -8,17 +12,30 @@ export default function BecomeStudentNow() {
                     <div className="col-12 position-relative z-index-1">
                         {/* Image */}
                         <div className="d-none d-lg-block position-absolute bottom-0 start-0 ms-3 ms-xl-5">
-                            <img src="assets/images/element/01.png" alt=""/>
+                            <Image
+                                src={student}
+                                width={260}
+                                height={323}
+                                alt="Estudiante"
+                            />
                         </div>
                         {/* Pencil and cap SVG */}
                         <div className="position-absolute top-0 end-0 mt-n4 me-5">
-                            <img src="assets/images/client/pencil.svg" alt=""/>
+                            <Image
+                                src={pencil}
+                                width={74}
+                                height={64}
+                                alt="Pencil"
+                            />
                         </div>
                         <div className="position-absolute bottom-0 start-50 mb-n4">
-                            <img
-                                src="assets/images/client/graduated.svg"
+                            <Image
+                                src={graduated}
+                                width={68}
+                                height={69}
+                                alt="graduated"
                                 className="rotate-74"
-                                alt=""
+
                             />
                         </div>
                         <div className="bg-grad-pink p-4 p-sm-5 rounded position-relative z-index-n1 overflow-hidden">
