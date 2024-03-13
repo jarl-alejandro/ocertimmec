@@ -1,3 +1,5 @@
+import Header from "@/components/TrainingCertification/Detail/Header";
+import Detail from "@/components/TrainingCertification/Detail/Detail";
 
 type PageProps = {
     params: {
@@ -7,6 +9,11 @@ type PageProps = {
 
 export default function TrainingCertificationDetail(props: PageProps) {
     return (
-        <h1>Detalle: { props.params.slug }</h1>
+        <>
+            <Header />
+            <div className="container mt-5">
+                <Detail />
+            </div>
+        </>
     )
 }
