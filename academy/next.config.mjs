@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['api.occertimmec.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'api.occertimmec.com',
+                pathname: '**',
+            },
+        ],
     },
 };
 

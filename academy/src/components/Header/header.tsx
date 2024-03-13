@@ -65,7 +65,7 @@ export default function Header() {
                                 </ActiveLink>
                             </li>
                             <li className="nav-item dropdown">
-                                <ActiveLink className="nav-link" href="training-certification" activeClassName="active">
+                                <ActiveLink className="nav-link" href="/training-certification" activeClassName="active">
                                     {lang.training_certification}
                                 </ActiveLink>
                             </li>
