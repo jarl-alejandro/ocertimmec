@@ -1,5 +1,7 @@
-export default function Content() {
+import TextHtml from "@/components/core/TextHtml";
+
+export default function Content({ content }: { content: string }) {
     return (
-        <>Content</>
+        <TextHtml value={content}  />
     )
 }

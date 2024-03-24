@@ -1,5 +1,7 @@
-export default function Include() {
+import TextHtml from "@/components/core/TextHtml";
+
+export default function Include({ materials }: { materials: string }) {
     return (
-        <>Include</>
+        <TextHtml value={materials}  />
     )
 }

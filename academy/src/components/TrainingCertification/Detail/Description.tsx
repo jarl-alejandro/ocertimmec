@@ -1,5 +1,6 @@
-export default function Description() {
-    return (
-        <>Description</>
-    )
+import TextHtml from "@/components/core/TextHtml";
+
+export default function Description({ description }: { description: string }) {
+    return <TextHtml value={description}  />
+
 }

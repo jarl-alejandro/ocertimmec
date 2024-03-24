@@ -12,6 +12,7 @@ import Skills from "@/components/TrainingCertification/Detail/Skills";
 import Requirements from "@/components/TrainingCertification/Detail/Requirements";
 import Note from "@/components/TrainingCertification/Detail/Note";
 import TabDetailContent from "@/components/TrainingCertification/Detail/TabDetailContent";
+import {TrainingCertificate} from "@/core/domain/TrainingCertification";
 
 export interface Tab {
     label: string;
@@ -35,19 +36,19 @@ const tabsTraining: Tab[] = [
 ];
 
 
+export default function Detail({ type, courseDetail } : { type: TypeCourse, courseDetail: TrainingCertificate }) {
 
-export default function Detail({ type } : { type: TypeCourse }) {
     const tabs = type === TypeCourse.Certificate ? tabsCertificate : tabsTraining;
     const [tab, setTab] = useState(tabs[0].value);
     const tabDetails: TabDetail[] = type === TypeCourse.Certificate ? [
-        { value: 'requirements', component: <Requirements /> },
-        { value: 'skills', component: <Skills /> },
-        { value: 'competence-units', component: <CompetenceUnits /> },
-        { value: 'description', component: <Description /> },
-        { value: 'note', component: <Note /> },
+        { value: 'requirements', component: <Requirements requirements={courseDetail.requirements} /> },
+        { value: 'skills', component: <Skills competition={courseDetail.competition} /> },
+        { value: 'competence-units', component: <CompetenceUnits competitionUnits={courseDetail.competitionUnits} /> },
+        { value: 'description', component: <Description description={courseDetail.description} /> },
+        { value: 'note', component: <Note note={courseDetail.note} /> },
     ] : [
-        { value: 'content', component: <Content /> },
-        { value: 'include', component: <Include /> },
+        { value: 'content', component: <Content content={courseDetail.content} /> },
+        { value: 'include', component: <Include materials={courseDetail.materials} /> },
     ]
 
     const onChangeTab = (tab: string) => {
@@ -57,7 +58,6 @@ export default function Detail({ type } : { type: TypeCourse }) {
     return (
         <div className="row">
             <div className="col-12">
-                {/* Tabs START */}
                 <Tabs
                     tabs={tabs}
                     onChangeTab={onChangeTab}
@@ -67,7 +67,9 @@ export default function Detail({ type } : { type: TypeCourse }) {
                 <article className="tab-content pt-4 px-3" id="course-pills-tabContent">
                     {tabDetails.map(item => (
                         <TabDetailContent tabSelected={tab} tab={item.value} key={item.value}>
-                            { item.component }
+                            <section className="mt-0 pt-0">
+                                {item.component}
+                            </section>
                         </TabDetailContent>
                     ))}
                 </article>

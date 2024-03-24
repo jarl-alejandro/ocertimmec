@@ -14,7 +14,9 @@ export interface Certificate {
     squemaCode: string,
 }
 
-export interface TrainingCertificate extends Training, Certificate{
+
+
+export interface TrainingCertificate extends Training, Certificate {
     _id: string;
     id_user: any;
     cost: number;
@@ -23,4 +25,9 @@ export interface TrainingCertificate extends Training, Certificate{
     type: string;
     photo: string,
     isActive: boolean;
+}
+
+export interface CourseDetail {
+    training?: TrainingCertificate;
+    certificate?: TrainingCertificate;
 }
