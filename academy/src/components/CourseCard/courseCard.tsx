@@ -34,7 +34,7 @@ export default function CourseCard({ course }: { course: TrainingCertificate }) 
 
                     {/* Title */}
                     <h5 className="card-title">
-                        <Link href={`/training-certification/${course?._id}`}>
+                        <Link href={`/training-certification/${course?._id}/${course?.type}`}>
                             {course?.name}
                         </Link>
                     </h5>
@@ -65,7 +65,7 @@ export default function CourseCard({ course }: { course: TrainingCertificate }) 
                     </ul>
 
                     <div className="d-flex align-items-center">
-                        <Link  href={`/training-certification/${course?._id}`}
+                        <Link  href={`/training-certification/${course?._id}/${course?.type}`}
                                style={{ marginInlineEnd: '1rem' }}
                                className="btn btn-sm btn-info-soft mb-0">
                             {course?.type === 'Training' ? 'Ver Capacitación' : 'Ver Certificación'}

@@ -1,10 +1,54 @@
 "use client";
 
-import {useState} from "react";
+import React, {useState} from "react";
 import classNames from "classnames";
+import Tabs from "@/components/TrainingCertification/Detail/Tabs";
+import {TypeCourse} from "@/core/domain/TypeCourse";
+import Include from "@/components/TrainingCertification/Detail/Include";
+import Content from "@/components/TrainingCertification/Detail/Content";
+import Description from "@/components/TrainingCertification/Detail/Description";
+import CompetenceUnits from "@/components/TrainingCertification/Detail/CompetenceUnits";
+import Skills from "@/components/TrainingCertification/Detail/Skills";
+import Requirements from "@/components/TrainingCertification/Detail/Requirements";
+import Note from "@/components/TrainingCertification/Detail/Note";
+import TabDetailContent from "@/components/TrainingCertification/Detail/TabDetailContent";
 
-export default function Detail() {
-    const [tab, setTab] = useState("main1");
+export interface Tab {
+    label: string;
+    value: string;
+}
+export interface TabDetail {
+    value: string;
+    component: React.ReactNode
+}
+
+const tabsCertificate: Tab[] = [
+    { label: 'Requisitos', value: 'requirements' },
+    { label: 'Competencias', value: 'skills' },
+    { label: 'Unidades de competencia', value: 'competence-units' },
+    { label: 'Descripción', value: 'description' },
+    { label: 'Nota', value: 'note' },
+];
+const tabsTraining: Tab[] = [
+    { label: 'Contenido', value: 'content' },
+    { label: 'Incluye', value: 'include' },
+];
+
+
+
+export default function Detail({ type } : { type: TypeCourse }) {
+    const tabs = type === TypeCourse.Certificate ? tabsCertificate : tabsTraining;
+    const [tab, setTab] = useState(tabs[0].value);
+    const tabDetails: TabDetail[] = type === TypeCourse.Certificate ? [
+        { value: 'requirements', component: <Requirements /> },
+        { value: 'skills', component: <Skills /> },
+        { value: 'competence-units', component: <CompetenceUnits /> },
+        { value: 'description', component: <Description /> },
+        { value: 'note', component: <Note /> },
+    ] : [
+        { value: 'content', component: <Content /> },
+        { value: 'include', component: <Include /> },
+    ]
 
     const onChangeTab = (tab: string) => {
         setTab(tab);
@@ -14,138 +58,19 @@ export default function Detail() {
         <div className="row">
             <div className="col-12">
                 {/* Tabs START */}
-                <ul
-                    className="nav nav-pills nav-pills-bg-soft px-3"
-                    id="course-pills-tab"
-                    role="tablist"
-                >
-                    {/* Tab item */}
-                    <li className="nav-item me-2 me-sm-4" role="presentation">
-                        <button
-                            onClick={() => onChangeTab("main1")}
-                            className={classNames("nav-link mb-0", {
-                                "active": tab === "main1"
-                            })}
-                            id="course-pills-tab-1"
-                            data-bs-toggle="pill"
-                            data-bs-target="#course-pills-1"
-                            type="button"
-                            role="tab"
-                            aria-controls="course-pills-1"
-                            aria-selected="false"
-                            tabIndex={-1}
-                        >
-                            Overview
-                        </button>
-                    </li>
-                    {/* Tab item */}
-                    <li className="nav-item me-2 me-sm-4" role="presentation">
-                        <button
-                            onClick={() => onChangeTab("main2")}
-                            className={classNames("nav-link mb-0", {
-                                "active": tab === "main2"
-                            })}
-                            id="course-pills-tab-2"
-                            data-bs-toggle="pill"
-                            data-bs-target="#course-pills-2"
-                            type="button"
-                            role="tab"
-                            aria-controls="course-pills-2"
-                            aria-selected="false"
-                            tabIndex={-1}
-                        >
-                            Reviews
-                        </button>
-                    </li>
-                    {/* Tab item */}
-                    <li className="nav-item me-2 me-sm-4" role="presentation">
-                        <button
-                            onClick={() => onChangeTab("main3")}
-                            className={classNames("nav-link mb-0", {
-                                "active": tab === "main3"
-                            })}
-                            id="course-pills-tab-3"
-                            data-bs-toggle="pill"
-                            data-bs-target="#course-pills-3"
-                            type="button"
-                            role="tab"
-                            aria-controls="course-pills-3"
-                            aria-selected="false"
-                            tabIndex={-1}
-                        >
-                            FAQs{" "}
-                        </button>
-                    </li>
-                    {/* Tab item */}
-                    <li className="nav-item me-2 me-sm-4" role="presentation">
-                        <button
-                            onClick={() => onChangeTab("main4")}
-                            className={classNames("nav-link mb-0", {
-                                "active": tab === "main4"
-                            })}
-                            id="course-pills-tab-4"
-                            data-bs-toggle="pill"
-                            data-bs-target="#course-pills-4"
-                            type="button"
-                            role="tab"
-                            aria-controls="course-pills-4"
-                            aria-selected="true"
-                        >
-                            Comment
-                        </button>
-                    </li>
-                </ul>
-                <div className="tab-content pt-4 px-3" id="course-pills-tabContent">
-                    <div
-                        className={classNames("tab-pane fade", {
-                            "active show": tab === "main1"
-                        })}
-                        id="course-pills-1"
-                        role="tabpanel"
-                        aria-labelledby="course-pills-tab-1"
-                    >
-                        <h5 className="mb-3">Course Description</h5>
+                <Tabs
+                    tabs={tabs}
+                    onChangeTab={onChangeTab}
+                    tab={tab}
+                />
 
-                    </div>
-
-                    <div
-                        className={classNames("tab-pane fade", {
-                            "active show": tab === "main2"
-                        })}
-                        id="course-pills-2"
-                        role="tabpanel"
-                        aria-labelledby="course-pills-tab-2"
-                    >
-                        <div className="row mb-4">
-                            <h5 className="mb-4">Our Student Reviews</h5>
-                        </div>
-                    </div>
-
-                    <div
-                        className={classNames("tab-pane fade", {
-                            "active show": tab === "main3"
-                        })}
-                        id="course-pills-3"
-                        role="tabpanel"
-                        aria-labelledby="course-pills-tab-3"
-                    >
-                        <h5 className="mb-3">Frequently Asked Questions</h5>
-                    </div>
-                    <div
-                        className={classNames("tab-pane fade", {
-                            "active show": tab === "main4"
-                        })}
-                        id="course-pills-4"
-                        role="tabpanel"
-                        aria-labelledby="course-pills-tab-4"
-                    >
-                        <div className="row mb-4">
-                            <div className="col-12">
-                                <h5 className="mb-4">Ask Your Question</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <article className="tab-content pt-4 px-3" id="course-pills-tabContent">
+                    {tabDetails.map(item => (
+                        <TabDetailContent tabSelected={tab} tab={item.value} key={item.value}>
+                            { item.component }
+                        </TabDetailContent>
+                    ))}
+                </article>
             </div>
         </div>
     )
