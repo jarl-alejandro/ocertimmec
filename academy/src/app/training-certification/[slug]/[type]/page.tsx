@@ -34,9 +34,9 @@ export default async function TrainingCertificationDetail(props: PageProps) {
 
     return (
         <>
-            <Header courseDetail={courseDetail} />
+            <Header courseDetail={courseDetail} type={props?.params?.type} />
             <div className="container mt-5">
-                <Detail type={props?.params?.type} courseDetail={courseDetail} />
+                <Detail type={props?.params?.type} courseDetail={courseDetail}/>
             </div>
         </>
     )
