@@ -29,3 +29,7 @@ header {
     position: sticky;
     top: 0;
 }
+
+td {
+    padding: .75rem .4rem !important;
+}
