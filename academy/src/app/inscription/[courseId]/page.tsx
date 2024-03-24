@@ -1,4 +1,5 @@
-import {TypeCourse} from "@/core/domain/TypeCourse";
+import React from "react";
+import InscriptionForm from "@/components/Inscription/InscriptionForm";
 
 interface RouterParams {
     courseId: string,
@@ -10,6 +11,8 @@ type PageProps = {
 
 export default function Inscription(props: PageProps) {
     return (
-        <h1>Inscripcion { props.params.courseId } </h1>
+        <div className="container position-relative mt-4">
+            <InscriptionForm />
+        </div>
     )
 }
