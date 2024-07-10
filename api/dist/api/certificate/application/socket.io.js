@@ -1,0 +1,60 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const model_1 = __importDefault(require("../domain/model"));
+const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
+async function created(data, io) {
+    let certificateToSave = new model_1.default({
+        id_user: data.userId,
+        name: data.nameCertificate,
+        description: data.description,
+        competition: data.competition,
+        competitionUnits: data.competitionUnits,
+        requirements: data.requirements,
+        cost: data.cost,
+        place: data.place,
+        note: data.note,
+        uc: data.uc,
+        squemaCode: data.squemaCode,
+        sector: data.sector,
+    });
+    const create = await certificateToSave.save();
+    let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');
+    if (data.photo) {
+        create.photo = `${create._id}-${data.photo}`;
+        fs_1.default.writeFile(`${pathFiles}/${create.photo}`, data.photoFile, err => {
+            if (err)
+                console.log(err);
+        });
+    }
+    const created = await create.save();
+    const query = await model_1.default.findById(created._id).populate('id_user');
+    io.emit('created::certificate', query);
+}
+async function updated(data, io) {
+    let pathFiles = path_1.default.join(__dirname, '..', '..', '..', 'media');
+    if (data.isPhoto) {
+        data.photo = `updated_${Date.now()}${data.id}-${data.photo}`;
+    }
+    let updated = await model_1.default.findByIdAndUpdate(data.id, { ...data }, { new: true });
+    io.emit('updated::certificate');
+    if (data.isPhoto) {
+        fs_1.default.writeFile(`${pathFiles}/${updated.photo}`, data.photoFile, err => {
+            if (err)
+                console.log(err);
+        });
+    }
+}
+async function deleted(data, io) {
+    let updated = await model_1.default.findByIdAndUpdate(data.id, { isActive: false }, { new: true });
+    io.emit('updated::certificate');
+}
+function ioCertificate(socket, io) {
+    socket.on('created::certificate', data => created(data, io));
+    socket.on('updated::certificate', data => updated(data, io));
+    socket.on('deleted::certificate', data => deleted(data, io));
+}
+exports.default = ioCertificate;

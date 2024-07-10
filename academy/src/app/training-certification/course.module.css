@@ -1,0 +1,6 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)); /* Dos columnas en pantallas grandes */
+    gap: 2rem;
+    grid-auto-rows: auto;
+}

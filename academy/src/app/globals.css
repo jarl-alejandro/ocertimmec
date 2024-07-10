@@ -1,0 +1,35 @@
+body {
+    font-size: 16px;
+}
+.bg-occertimm {
+    background-color: #90bbd7fa;
+}
+.grid-container-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)); /* Dos columnas en pantallas grandes */
+    gap: 20px;
+}
+
+
+.main-container {
+    --header: 120px;
+    --footer: 441px;
+    min-height: calc(100vh - var(--header) - var(--footer));
+}
+
+.grid {
+    display: grid;
+}
+.card-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+header {
+    position: sticky;
+    top: 0;
+}
+
+td {
+    padding: .75rem .4rem !important;
+}

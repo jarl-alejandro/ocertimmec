@@ -1,0 +1,7 @@
+.item {
+    margin-inline-end: 2rem;
+}
+
+.item:last-child {
+    margin-inline-end: 0;
+}

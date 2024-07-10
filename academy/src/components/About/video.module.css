@@ -1,0 +1,14 @@
+.video_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; /* Espacio entre los elementos */
+    width: 95%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        grid-template-columns: 1fr; /* Cambia a una sola columna en dispositivos móviles */
+    }
+}
