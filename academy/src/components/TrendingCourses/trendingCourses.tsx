@@ -4,14 +4,14 @@ import {TrainingCertificate} from "@/core/domain/TrainingCertification";
 import lang from '@/dictionaries/es.json';
 
 async function getData() {
-    const res = await fetch(`${process.env.API_URL}/training-certificate`)
+    const res = await fetch(`${process.env.API_URL}/best-courses`)
 
     if (!res.ok) {
         throw new Error('Failed to fetch data')
     }
 
     const trainingCertificates: TrainingCertificate[] = await res.json();
-    return trainingCertificates.splice(0, 3)
+    return trainingCertificates;
 }
 
 export default async function TrendingCourses() {

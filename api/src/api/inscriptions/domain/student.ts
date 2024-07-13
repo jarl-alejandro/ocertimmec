@@ -1,7 +1,7 @@
-import mongoose, { Document, Schema, model, Types, PopulatedDoc } from 'mongoose';
+import mongoose, { Document, PopulatedDoc, Schema, Types, model } from 'mongoose';
+
 import {Certificate} from "../../certificate/domain/model";
 import {Training} from "../../training/domain/model";
-
 
 export interface Student extends Document {
 	_id: Types.ObjectId;
