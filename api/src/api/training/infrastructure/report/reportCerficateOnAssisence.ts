@@ -1,11 +1,9 @@
+import QRCode from 'qrcode'
+import Student from '../../../inscriptions/domain/student'
+import config from '../../../../enviroments/config'
 import express from 'express'
 import phantomHtmlToPdf from 'phantom-html-to-pdf'
-import QRCode from 'qrcode'
-
-import Student from '../../../inscriptions/domain/student'
 import template from './template'
-import config from '../../../../enviroments/config'
-
 
 const conversion = phantomHtmlToPdf()
 

@@ -22595,3 +22595,6 @@ html[dir=rtl] .choices__input {
 
 /*User CSS*/
 /*# sourceMappingURL=style.css.map */
+.navbar {
+  padding-block-start: 1rem;
+}

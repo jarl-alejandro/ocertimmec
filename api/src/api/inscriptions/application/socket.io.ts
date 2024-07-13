@@ -1,6 +1,7 @@
 import path from 'path'
 import nodemailer from 'nodemailer'
 import fs from 'fs'
+import type { Certificate as CertificateType } from "../../certificate/domain/model";
 
 import Student from '../domain/student'
 import emailFinishRegisterOnCourse from '../infrastructure/emails/emailFinishRegisterOnCourse'
@@ -41,7 +42,7 @@ async function finalizarInscripcion (payload, io, socket) {
 
 async function finishRegister (payload, io) {
 	const student = await Student.findById(payload.id).populate('certificateId')
-	const name = student.certificateId.name.toString().toUpperCase()
+	const name = (student.certificateId as CertificateType).name.toString().toUpperCase()
 
 	let param = await Params.findOneAndUpdate(
 		{ name },
@@ -110,7 +111,7 @@ async function verificarEmail (payload, io) {
 	const mailOptions = {
 		from: config.EMAIL,
 		to: query.email as string,
-		subject: `CERTIFICACIÓN DE ${query.certificateId.name.toUpperCase()}`,
+		subject: `CERTIFICACIÓN DE ${(query.certificateId as CertificateType).name.toUpperCase()}`,
 		html: emailFinishRegisterOnCourse(query._id, query)
 	}
 

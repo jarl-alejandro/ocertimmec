@@ -33,3 +33,11 @@ header {
 td {
     padding: .75rem .4rem !important;
 }
+.translate-cicle {
+    display: inline-flex;
+    transform: translate(-10vw, 3rem);
+}
+.badge-dark {
+    color: #fff;
+    background-color: #343a40;
+}

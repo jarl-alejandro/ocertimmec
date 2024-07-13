@@ -1,15 +1,16 @@
-import lang from '@/dictionaries/es.json';
+import Image from "next/image";
+import { InputSearch } from '../Header/InputSearch';
 import Link from "next/link";
 import avatar01 from './img/01.jpg';
 import avatar02 from './img/02.jpg';
 import avatar03 from './img/03.jpg';
 import avatar04 from './img/04.jpg';
 import element06 from './img/06.png';
-import Image from "next/image";
+import lang from '@/dictionaries/es.json';
 
 export default function MainBanner() {
     return (
-        <section className="position-relative overflow-hidden pb-0 pb-sm-5">
+        <section className="position-relative  pb-0 pb-sm-5">
             {/* SVG decoration */}
             <figure className="ms-5 position-absolute top-0 start-0">
                 <svg width="29px" height="29px">
@@ -48,19 +49,12 @@ export default function MainBanner() {
                             Certifícate en Ocertimm, la principal operadora de certificaciones por competencia
                         </p>
                         {/* Search bar */}
-                        <form className="border rounded p-2 mb-4">
-                            <div className="input-group">
-                                <input
-                                    className="form-control border-0 me-1"
-                                    type="search"
-                                    placeholder={lang.search_training_certification}
-                                />
-                                <button type="button" className="btn btn-primary mb-0 rounded">
-                                    <i className="fas fa-search"/>
-                                </button>
-                            </div>
-                        </form>
-
+                        <InputSearch
+                          formClass="border rounded  p2 mb-4"
+                          inputClass="form-control border-0 me-1"
+                          buttonClass="btn btn-primary mb-0 rounded"
+                          iconClass="fas fa-search"
+                        />
                     </div>
                     {/* Left content END */}
                     {/* Right content START */}

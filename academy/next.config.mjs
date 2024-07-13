@@ -7,6 +7,12 @@ const nextConfig = {
                 hostname: 'api.occertimmec.com',
                 pathname: '**',
             },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '8001',
+                pathname: '**',
+            },
         ],
     },
 };

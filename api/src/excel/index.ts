@@ -1,6 +1,9 @@
 import Student from '../api/inscriptions/domain/student'
 import Planning from '../api/planning/domain/model'
 
+import type { Certificate as CertificateType } from "../api/certificate/domain/model";
+import {UserDocument} from "../api/users/domain/model";
+
 import path from 'path'
 import Excel from 'exceljs'
 
@@ -20,6 +23,9 @@ async function generateExcel (req, res) {
 		let planning = await Planning.find({ rel: item.certificateId._id.toString() })
 		let row = worksheet.getRow(start)
 
+		const certificate = item.certificateId as CertificateType & Document;
+		const user = certificate.id_user as UserDocument & Document;
+
 		row.getCell(1).value = indice
 		row.getCell(2).value = formatDate(item.fechaAplicacion)
 		row.getCell(3).value = formatDate(item.fechaAplicacion)
@@ -32,13 +38,13 @@ async function generateExcel (req, res) {
 		row.getCell(10).value = item.celphone as string
 		row.getCell(11).value = "NO"
 		row.getCell(12).value = "NO"
-		row.getCell(13).value = item.certificateId.name
-		row.getCell(14).value = item.certificateId.uc >= 1 ? 'X' : ''
-		row.getCell(15).value = item.certificateId.uc >= 2 ? 'X' : ''
-		row.getCell(16).value = item.certificateId.uc >= 3 ? 'X' : ''
-		row.getCell(17).value = item.certificateId.uc >= 4 ? 'X' : ''
-		row.getCell(18).value = item.certificateId.uc >= 5 ? 'X' : ''
-		row.getCell(19).value = item.certificateId.uc >= 6 ? 'X' : ''
+		row.getCell(13).value = certificate.name.toString();
+		row.getCell(14).value = certificate.uc.toString() >= '1' ? 'X' : ''
+		row.getCell(15).value = certificate.uc.toString() >= '2' ? 'X' : ''
+		row.getCell(16).value = certificate.uc.toString() >= '3' ? 'X' : ''
+		row.getCell(17).value = certificate.uc.toString() >= '4' ? 'X' : ''
+		row.getCell(18).value = certificate.uc.toString() >= '5' ? 'X' : ''
+		row.getCell(19).value = certificate.uc.toString() >= '6' ? 'X' : ''
 		row.getCell(20).value = "SI"
 		row.getCell(21).value = "SI"
 		row.getCell(22).value = "NO"
@@ -46,38 +52,38 @@ async function generateExcel (req, res) {
 		row.getCell(24).value = "NO"
 		row.getCell(25).value = formatDate(item.dateCertificate)
 		row.getCell(26).value = "SI"
-		row.getCell(27).value = item.certificateId.uc >= 1 ? 'X' : ''
-		row.getCell(28).value = item.certificateId.uc >= 1 ? 'X' : ''
-		row.getCell(29).value = item.certificateId.uc >= 1 ? '100' : ''
-		row.getCell(30).value = item.certificateId.uc >= 2 ? 'X' : ''
-		row.getCell(31).value = item.certificateId.uc >= 2 ? 'X' : ''
-		row.getCell(32).value = item.certificateId.uc >= 2 ? '100' : ''
-		row.getCell(33).value = item.certificateId.uc >= 3 ? 'X' : ''
-		row.getCell(34).value = item.certificateId.uc >= 3 ? 'X' : ''
-		row.getCell(35).value = item.certificateId.uc >= 3 ? '100' : ''
-		row.getCell(36).value = item.certificateId.uc >= 4 ? 'X' : ''
-		row.getCell(37).value = item.certificateId.uc >= 4 ? 'X' : ''
-		row.getCell(38).value = item.certificateId.uc >= 4 ? '100' : ''
-		row.getCell(39).value = item.certificateId.uc >= 5 ? 'X' : ''
-		row.getCell(40).value = item.certificateId.uc >= 5 ? 'X' : ''
-		row.getCell(41).value = item.certificateId.uc >= 5 ? '100' : ''
-		row.getCell(42).value = item.certificateId.uc >= 6 ? 'X' : ''
-		row.getCell(43).value = item.certificateId.uc >= 6 ? 'X' : ''
-		row.getCell(44).value = item.certificateId.uc >= 6 ? '100' : ''
+		row.getCell(27).value = certificate.uc.toString() >= '1' ? 'X' : ''
+		row.getCell(28).value = certificate.uc.toString() >= '1' ? 'X' : ''
+		row.getCell(29).value = certificate.uc.toString() >= '1' ? '100' : ''
+		row.getCell(30).value = certificate.uc.toString() >= '2' ? 'X' : ''
+		row.getCell(31).value = certificate.uc.toString() >= '2' ? 'X' : ''
+		row.getCell(32).value = certificate.uc.toString() >= '2' ? '100' : ''
+		row.getCell(33).value = certificate.uc.toString() >= '3' ? 'X' : ''
+		row.getCell(34).value = certificate.uc.toString() >= '3' ? 'X' : ''
+		row.getCell(35).value = certificate.uc.toString() >= '3' ? '100' : ''
+		row.getCell(36).value = certificate.uc.toString() >= '4' ? 'X' : ''
+		row.getCell(37).value = certificate.uc.toString() >= '4' ? 'X' : ''
+		row.getCell(38).value = certificate.uc.toString() >= '4' ? '100' : ''
+		row.getCell(39).value = certificate.uc.toString() >= '5' ? 'X' : ''
+		row.getCell(40).value = certificate.uc.toString() >= '5' ? 'X' : ''
+		row.getCell(41).value = certificate.uc.toString() >= '5' ? '100' : ''
+		row.getCell(42).value = certificate.uc.toString() >= '6' ? 'X' : ''
+		row.getCell(43).value = certificate.uc.toString() >= '6' ? 'X' : ''
+		row.getCell(44).value = certificate.uc.toString() >= '6' ? '100' : ''
 		row.getCell(45).value = "NO"
-		row.getCell(46).value = item.certificateId.id_user.name
+		row.getCell(46).value = user.name.toString();
 		row.getCell(47).value = "MIKE PINEDA"
 		row.getCell(48).value = formatDate(item.dateCertificate)
 		row.getCell(49).value = "SI"
-		row.getCell(50).value = item.certificateId.uc >= 1 ? 'X' : ''
-		row.getCell(51).value = item.certificateId.uc >= 2 ? 'X' : ''
-		row.getCell(52).value = item.certificateId.uc >= 3 ? 'X' : ''
-		row.getCell(53).value = item.certificateId.uc >= 4 ? 'X' : ''
-		row.getCell(54).value = item.certificateId.uc >= 5 ? 'X' : ''
-		row.getCell(55).value = item.certificateId.uc >= 6 ? 'X' : ''
+		row.getCell(50).value = certificate.uc.toString() >= '1' ? 'X' : ''
+		row.getCell(51).value = certificate.uc.toString() >= '2' ? 'X' : ''
+		row.getCell(52).value = certificate.uc.toString() >= '3' ? 'X' : ''
+		row.getCell(53).value = certificate.uc.toString() >= '4' ? 'X' : ''
+		row.getCell(54).value = certificate.uc.toString() >= '5' ? 'X' : ''
+		row.getCell(55).value = certificate.uc.toString() >= '6' ? 'X' : ''
 		row.getCell(56).value = "NO"
 		row.getCell(57).value = "MIKE PINEDA"
-		row.getCell(58).value = item.certificateId.id_user.name
+		row.getCell(58).value = user.name.toString();
 		row.getCell(59).value = formatDate(item.dateCertificate)
 		row.getCell(60).value = formatDate(item.dateCertificate)
 		row.getCell(61).value = formatDate(item.dateCertificate)
@@ -86,9 +92,9 @@ async function generateExcel (req, res) {
 		row.getCell(64).value = formatDate(item.dateCertificate)
 		row.getCell(65).value = "NO"
 		row.getCell(66).value = item.codigoCertificado as string
-		row.getCell(67).value = item.certificateId.name
-		row.getCell(68).value = ucFormat(item.certificateId.uc)
-		row.getCell(69).value = ucFormat(item.certificateId.uc)
+		row.getCell(67).value = certificate.name.toString();
+		row.getCell(68).value = ucFormat(certificate.uc.toString())
+		row.getCell(69).value = ucFormat(certificate.uc.toString())
 		row.getCell(70).value = formatDate(item.dateCertificate)
 		row.getCell(71).value = formatDatePlus(item.dateCertificate)
 		row.getCell(72).value = "V-001"

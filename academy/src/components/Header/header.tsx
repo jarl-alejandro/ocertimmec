@@ -4,6 +4,7 @@ import logo from './logo.png';
 import Link from 'next/link';
 import lang from '@/dictionaries/es.json';
 import ActiveLink from "@/components/Header/ActiveLink";
+import { InputSearch } from './InputSearch'
 
 const Theme = dynamic(() => import("./Theme"), { ssr: false });
 
@@ -11,6 +12,8 @@ export default function Header() {
 
     return (
         <header className="navbar-light navbar-sticky">
+            <Theme />
+
             {/* Nav START */}
             <nav className="navbar navbar-expand-xl z-index-9">
                 <div className="container">
@@ -44,16 +47,12 @@ export default function Header() {
                         <div className="col-xxl-6">
                             <div className="nav my-3 my-xl-0 px-4 flex-nowrap align-items-center">
                                 <div className="nav-item w-100">
-                                    <form className="rounded position-relative">
-                                        <input className="form-control pe-5 bg-secondary bg-opacity-10 border-0"
-                                               type="search" placeholder={lang.search_training_certification}
-                                               aria-label="Search"/>
-                                        <button
-                                            className="btn btn-link bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
-                                            type="submit">
-                                            <i className="fas fa-search fs-6 text-primary"></i>
-                                        </button>
-                                    </form>
+                                    <InputSearch
+                                      formClass="rounded position-relative"
+                                      inputClass="form-control pe-5 bg-secondary bg-opacity-10 border-0"
+                                      buttonClass="btn btn-link bg-transparent px-2 py-0 position-absolute top-50 end-0 translate-middle-y"
+                                      iconClass="fas fa-search fs-6 text-primary"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -81,7 +80,6 @@ export default function Header() {
                 </div>
             </nav>
 
-            <Theme />
 
             {/* Nav END */}
             <hr className="my-0"/>

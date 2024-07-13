@@ -71,7 +71,7 @@ export default function CourseCard({ course }: { course: TrainingCertificate }) 
                             {course?.type === 'Training' ? 'Ver Capacitación' : 'Ver Certificación'}
                         </Link>
 
-                        <Link  href={`/training-certification/${course?._id}`} className="btn btn-sm btn-primary-soft mb-0">
+                        <Link  href={`/inscription/${course?._id}`} className="btn btn-sm btn-primary-soft mb-0">
                             {course?.type === 'Training' ? 'Capacítate' : 'Certifícate'}
                         </Link>
                     </div>

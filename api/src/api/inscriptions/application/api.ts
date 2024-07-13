@@ -1,5 +1,7 @@
 import express from 'express'
 import Certificate from '../../certificate/domain/model'
+import type { Certificate as CertificateType } from "../../certificate/domain/model";
+
 import Training from '../../training/domain/model'
 import Planning from '../../planning/domain/model'
 import Student from '../domain/student'
@@ -58,10 +60,19 @@ async function register (req, res) {
 				},
 			})
 
+			let certificateName = '';
+
+			if (query && query.certificateId && typeof query.certificateId === 'object' && 'name' in query.certificateId) {
+				const certificate = query.certificateId as CertificateType & Document;
+				certificateName = certificate.name.toUpperCase();
+			} else {
+				certificateName = 'Nombre no disponible';
+			}
+
 			const mailOptions = {
 				from: config.EMAIL,
 				to: query.email as string,
-				subject: `CERTIFICACIÓN DE ${query.certificateId.name.toUpperCase()}`,
+				subject: `CERTIFICACIÓN DE ${certificateName}`,
 				html: emailFinishRegisterOnCourse(query._id, query)
 			}
 

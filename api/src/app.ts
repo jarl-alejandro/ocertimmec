@@ -1,20 +1,18 @@
-import express             from 'express'
 import bodyParser          from 'body-parser'
-import cors                from 'cors'
-import path                from 'path'
-import fs                  from 'fs'
-
-
-import users               from './api/users/application/api'
-import courses             from './api/inscriptions/application/api'
-import training            from './api/training/application/api'
 import certificate         from './api/certificate/application/api'
-import planning            from './api/planning/application/api'
-import pdf                 from './api/managementSystemForms/infrastructure/routerReports'
-import messages            from './api/messages/application/api'
-import trainingCertificate from './api/training/infrastructure/report/reportCerficateOnAssisence'
-
+import cors                from 'cors'
+import courses             from './api/courses/application/api'
 import excel               from './excel'
+import express             from 'express'
+import fs                  from 'fs'
+import inscriptions        from './api/inscriptions/application/api'
+import messages            from './api/messages/application/api'
+import path                from 'path'
+import pdf                 from './api/managementSystemForms/infrastructure/routerReports'
+import planning            from './api/planning/application/api'
+import training            from './api/training/application/api'
+import trainingCertificate from './api/training/infrastructure/report/reportCerficateOnAssisence'
+import users               from './api/users/application/api'
 
 const app = express()
 const corsOptions: cors.CorsOptions = {
@@ -82,12 +80,13 @@ app.get('/fotos-pdf/:foto', (req, res) => {
 app.get('/excel', excel)
 
 app.use(users)
-app.use(courses)
+app.use(inscriptions)
 app.use(training)
 app.use(certificate)
 app.use(planning)
 app.use(pdf)
 app.use(messages)
 app.use(trainingCertificate)
+app.use(courses)
 
 export default app

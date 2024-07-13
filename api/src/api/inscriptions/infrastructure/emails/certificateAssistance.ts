@@ -3,6 +3,7 @@ import config from '../../../../enviroments/config'
 import nodemailer from 'nodemailer'
 import emailCertificateAssist from './emailCertificateAssist'
 import Mail from "nodemailer/lib/mailer";
+import type { Training } from "../../../training/domain/model";
 
 
 export default async function certificateAssistance(data: any) {
@@ -38,7 +39,7 @@ export default async function certificateAssistance(data: any) {
 	const mailOptions: Mail.Options = {
 		from: config.EMAIL,
 		to: student.email as string,
-		subject: `CERTIFICACIÓN DE ${student.trainingId.name.toUpperCase()}`,
+		subject: `CERTIFICACIÓN DE ${(student.trainingId as Training).name.toUpperCase()}`,
 		html: emailCertificateAssist(student)
 	}
 

@@ -1,7 +1,7 @@
-import lang from '@/dictionaries/es.json';
 import CourseCard from "@/components/CourseCard/courseCard";
 import Link from "next/link";
 import {TrainingCertificate} from "@/core/domain/TrainingCertification";
+import lang from '@/dictionaries/es.json';
 
 async function getData() {
     const res = await fetch(`${process.env.API_URL}/training-certificate`)
@@ -24,10 +24,10 @@ export default async function TrendingCourses() {
                 <div className="row mb-4">
                     <div className="col-12">
                         <h2 className="fs-1 fw-bold">
-                            <span className="position-relative z-index-9">Tendencias en </span>
-                            <span className="position-relative z-index-1">{lang.training_certification}
+                            <span className="">Tendencias en </span>
+                            <span className="">{lang.training_certification}
                                 {/* SVG START */}
-                                <span className="position-absolute top-50 start-50 translate-middle z-index-n1">
+                                <span className="translate-cicle">
                                     <svg width="163.9px" height="48.6px">
                                       <path
                                           className="fill-warning"
