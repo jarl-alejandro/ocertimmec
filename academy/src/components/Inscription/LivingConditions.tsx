@@ -1,4 +1,9 @@
-export default function LivingConditions() {
+interface Props {
+    register: any;
+    errors?: any;
+}
+
+export default function LivingConditions(props: Props) {
     return (
         <div className="table-responsive">
             <table className="table table-borderless">

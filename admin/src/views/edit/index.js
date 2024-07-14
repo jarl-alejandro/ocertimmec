@@ -1,7 +1,9 @@
+import './style.css'
+
 import React, { Component } from 'react'
+
 import AppBase from '../../components/AppBase'
 import Form from './Form/Form'
-import './style.css'
 
 class EditCertificate extends Component {
 

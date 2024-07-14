@@ -1,4 +1,9 @@
-export default function WorkingConditions() {
+interface Props {
+    register: any;
+    errors?: any;
+}
+
+export default function WorkingConditions(props: Props) {
     return (
         <div className="table-responsive">
             <table className="table table-borderless">

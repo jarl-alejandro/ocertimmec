@@ -1,4 +1,9 @@
-export default function WorkExperience() {
+interface Props {
+    register: any;
+    errors?: any;
+}
+
+export default function WorkExperience(props: Props) {
     return (
         <div className="table-responsive">
             <table className="table table-borderless">

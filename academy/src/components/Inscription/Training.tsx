@@ -1,4 +1,10 @@
-export default function Training() {
+interface Props {
+    register: any;
+    errors?: any;
+}
+
+
+export default function Training(props: Props) {
     return (
         <div className="table-responsive">
             <table className="table table-borderless">

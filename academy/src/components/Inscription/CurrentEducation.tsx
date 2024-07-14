@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function CurrentEducation() {
+interface Props {
+    register: any;
+    errors?: any;
+}
+
+export default function CurrentEducation(props: Props) {
     return (
         <div className="table-responsive">
             <table className="table table-borderless">
@@ -17,11 +22,7 @@ export default function CurrentEducation() {
                 <tr>
                     <td className="table-text">Primaria</td>
                     <td>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="primaryInstitutionName"
-                        />
+                        <input type="text" className="form-control" name="primaryInstitutionName" />
                     </td>
                     <td>
                         <input type="text" className="form-control" name="primaryCountry" />

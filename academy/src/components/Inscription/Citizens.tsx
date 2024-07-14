@@ -1,4 +1,9 @@
-export default function Citizens() {
+interface Props {
+    register: any;
+    errors?: any;
+}
+
+export default function Citizens(props: Props) {
     return (
         <div className="table-responsive">
             <table className="table table-borderless">

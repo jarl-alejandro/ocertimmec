@@ -1,22 +1,20 @@
 import React, { PureComponent } from 'react'
-import socketIo from 'socket.io-client'
-import Experience from './Experience'
-import Training from './Training'
-import Laboral from './Laboral'
-import DatosEncuesta from './DatosEncuesta'
+
+import { BASE_URL } from '../../../config'
+import Button from '@material-ui/core/Button'
 import Ciudadanos from './Ciudadanos'
 import CondicionLaboral from './CondicionLaboral'
 import CondicionVida from './CondicionVida'
-import Studiant from './Studiant'
-import { withRouter } from 'react-routerReports-dom'
-
-import initialState from './state'
-
+import DatosEncuesta from './DatosEncuesta'
+import Experience from './Experience'
+import Laboral from './Laboral'
 import Snackbar from '@material-ui/core/Snackbar'
-import Button from '@material-ui/core/Button'
-
-import { BASE_URL } from '../../../config'
+import Studiant from './Studiant'
+import Training from './Training'
+import initialState from './state'
+import socketIo from 'socket.io-client'
 import { validCedula } from './valid'
+import { withRouter } from 'react-routerReports-dom'
 
 class Form extends PureComponent {
 
