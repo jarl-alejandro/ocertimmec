@@ -11,7 +11,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">RECIBE SEGURO MÉDICO</td>
                     <td width="40%">
-                        <select className="form-select" {...props.register('seguroMedico')}>
+                        <select className="form-select" {...props.register('workingConditionsSeguroMedico')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>

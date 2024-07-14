@@ -22,28 +22,28 @@ export default function Training(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('course1-nameCourse')}
+                            {...props.register('course1NameCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('course1-institutionName')}
+                            {...props.register('course1InstitutionName')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('course1-dateCourse')}
+                            {...props.register('course1DateCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="number"
                             className="form-control"
-                            {...props.register('course1-hourCourse')}
+                            {...props.register('course1HourCourse')}
                         />
                     </td>
                 </tr>
@@ -52,28 +52,28 @@ export default function Training(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('course2-nameCourse')}
+                            {...props.register('course2NameCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('course2-institutionName')}
+                            {...props.register('course2InstitutionName')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('course2-dateCourse')}
+                            {...props.register('course2DateCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="number"
                             className="form-control"
-                            {...props.register('course2-hourCourse')}
+                            {...props.register('course2HourCourse')}
                         />
                     </td>
                 </tr>
@@ -82,28 +82,28 @@ export default function Training(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('course3-nameCourse')}
+                            {...props.register('course3NameCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('course3-institutionName')}
+                            {...props.register('course3InstitutionName')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('course3-dateCourse')}
+                            {...props.register('course3DateCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="number"
                             className="form-control"
-                            {...props.register('course3-hourCourse')}
+                            {...props.register('course3HourCourse')}
                         />
                     </td>
                 </tr>

@@ -1,16 +1,15 @@
-import { PureComponent } from 'react'
-import socketIo from 'socket.io-client'
-import Experience from './Experience'
-import Training from './Training'
-import Laboral from './Laboral'
-import DatosEncuesta from './DatosEncuesta'
 import Ciudadanos from './Ciudadanos'
 import CondicionLaboral from './CondicionLaboral'
 import CondicionVida from './CondicionVida'
-import initialState from './state'
+import DatosEncuesta from './DatosEncuesta'
+import Experience from './Experience'
+import Laboral from './Laboral'
+import { PureComponent } from 'react'
 import Snackbar from '@material-ui/core/Snackbar'
-
+import Training from './Training'
 import config from '../../config'
+import initialState from './state'
+import socketIo from 'socket.io-client'
 
 class Form extends PureComponent {
 

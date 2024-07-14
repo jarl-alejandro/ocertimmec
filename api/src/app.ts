@@ -13,6 +13,7 @@ import planning            from './api/planning/application/api'
 import training            from './api/training/application/api'
 import trainingCertificate from './api/training/infrastructure/report/reportCerficateOnAssisence'
 import users               from './api/users/application/api'
+import inscriptionController from './api/inscriptions/infrastructure/controller/inscriptionController'
 
 const app = express()
 const corsOptions: cors.CorsOptions = {
@@ -88,5 +89,6 @@ app.use(pdf)
 app.use(messages)
 app.use(trainingCertificate)
 app.use(courses)
+app.use(inscriptionController)
 
 export default app

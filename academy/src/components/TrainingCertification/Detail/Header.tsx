@@ -1,6 +1,6 @@
+import Link from "next/link";
 import {TrainingCertificate} from "@/core/domain/TrainingCertification";
 import {TypeCourse} from "@/core/domain/TypeCourse";
-import Link from "next/link";
 
 export default function Header({ courseDetail, type }: { type: TypeCourse, courseDetail: TrainingCertificate }) {
     return (
@@ -27,7 +27,7 @@ export default function Header({ courseDetail, type }: { type: TypeCourse, cours
 
 
                         <Link
-                            href={`/inscription/${courseDetail?._id}`}
+                            href={`/inscription/${courseDetail?._id}/${courseDetail?.type}`}
                             className="btn btn btn-primary-shadow mt-3 mb-0">
                             {type === TypeCourse.Certificate ? 'Certificarme' : 'Capacitarme'}
                         </Link>

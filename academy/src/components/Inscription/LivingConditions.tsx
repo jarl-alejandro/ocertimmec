@@ -11,7 +11,7 @@ export default function LivingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">USTED O SU FAMILIA POSEE DE UN SEGURO MEDICO</td>
                     <td width="40%">
-                        <select className="form-control" {...props.register('seguroMedico')}>
+                        <select className="form-control" {...props.register('livingConditionsSeguroMedico')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>

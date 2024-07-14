@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import {TrainingCertificate} from "@/core/domain/TrainingCertification";
-import Image from "next/image";
 
 export default function CourseCard({ course }: { course: TrainingCertificate }) {
     return (
@@ -71,7 +71,7 @@ export default function CourseCard({ course }: { course: TrainingCertificate }) 
                             {course?.type === 'Training' ? 'Ver Capacitación' : 'Ver Certificación'}
                         </Link>
 
-                        <Link  href={`/inscription/${course?._id}`} className="btn btn-sm btn-primary-soft mb-0">
+                        <Link  href={`/inscription/${course?._id}/${course?.type}`} className="btn btn-sm btn-primary-soft mb-0">
                             {course?.type === 'Training' ? 'Capacítate' : 'Certifícate'}
                         </Link>
                     </div>

@@ -1,14 +1,12 @@
-import path from 'path'
-import nodemailer from 'nodemailer'
-import fs from 'fs'
 import type { Certificate as CertificateType } from "../../certificate/domain/model";
-
-import Student from '../domain/student'
-import emailFinishRegisterOnCourse from '../infrastructure/emails/emailFinishRegisterOnCourse'
 import Params from '../domain/params'
+import Student from '../domain/student'
 import certificateAssistance from '../infrastructure/emails/certificateAssistance'
 import config from "../../../enviroments/config";
-
+import emailFinishRegisterOnCourse from '../infrastructure/emails/emailFinishRegisterOnCourse'
+import fs from 'fs'
+import nodemailer from 'nodemailer'
+import path from 'path'
 
 async function finalizarInscripcion (payload, io, socket) {
 	let id_user = socket.id

@@ -126,7 +126,7 @@ export interface Student extends Document {
 	autoidentificacion: string,
 	tipoOcupacion: string,
 	contrato: string,
-	seguroMedio: string,
+	seguroMedio: string, // CondicionLaboral
 	sueldoTrece: string,
 	sueldoCatorce: string,
 	sueldo: string,
@@ -137,7 +137,7 @@ export interface Student extends Document {
 	jefesRecoTrab: string,
 	riesgoLaboral: string,
 	deseariaCambiarTrabajo: string,
-	seguroMedico: string,
+	seguroMedico: string, //CondicionVida
 	hijos: string,
 	cuantoHijos: string,
 	hijosMayorTres: string,

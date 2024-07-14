@@ -1,5 +1,5 @@
 {
-  "compilerOptions": {
+	"compilerOptions": {
 		"paths": {
 			"@": ["./src/*"]
 		},
@@ -7,7 +7,7 @@
 		"rootDir": "./src",
 		"outDir": "./dist",
 		"types": ["node", "nodemailer"],
-		"typeRoots": ["node_modules/@types"],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "target": "ES2018",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "module": "commonjs",                                /* Specify what module code is generated. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */

@@ -13,7 +13,7 @@ export default function PersonalData(props: Props) {
                     <td width="50%" className="table-title">AUTOIDENTIFICACION (Blanco, Mestizo, Indigena, Afrodecendiente)
                     </td>
                     <td width="40%">
-                        <select className="form-select" {...props.register('experience3-autoidentificacion')}>
+                        <select className="form-select" {...props.register('experience3Autoidentificacion')}>
                             <option value="">-</option>
                             <option value="BLANCO">BLANCO</option>
                             <option value="MESTIZO">MESTIZO</option>

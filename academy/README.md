@@ -1,3 +1,11 @@
+/**
+    reset({
+      query: 'Initial query value',
+      name: 'Initial name',
+      email: 'initial@example.com',
+    });
+ */
+
 file:///home/alejandro/workspace/personalProjects/downloader/oc/demo.stackcodes.net/tm/sovware/html-eduhub/course-detail.html
 file:///home/alejandro/workspace/personalProjects/downloader/oc/demo.stackcodes.net/tm/sovware/html-eduhub/course-detail-min.html
 

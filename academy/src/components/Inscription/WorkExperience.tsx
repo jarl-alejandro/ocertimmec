@@ -23,42 +23,42 @@ export default function WorkExperience(props: Props) {
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('experience1-from')}
+                            {...props.register('experience1From')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('experience1-to')}
+                            {...props.register('experience1To')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience1-companyName')}
+                            {...props.register('experience1CompanyName')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience1-companyAddress')}
+                            {...props.register('experience1CompanyAddress')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience1-companyPhone')}
+                            {...props.register('experience1CompanyPhone')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience1-jobFunction')}
+                            {...props.register('experience1JobFunction')}
                         />
                     </td>
                 </tr>
@@ -67,42 +67,42 @@ export default function WorkExperience(props: Props) {
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('experience2-from')}
+                            {...props.register('experience2From')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('experience2-to')}
+                            {...props.register('experience2To')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience2-companyName')}
+                            {...props.register('experience2CompanyName')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience2-companyAddress')}
+                            {...props.register('experience2CompanyAddress')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience2-companyPhone')}
+                            {...props.register('experience2CompanyPhone')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience2-jobFunction')}
+                            {...props.register('experience2JobFunction')}
                         />
                     </td>
                 </tr>
@@ -111,42 +111,42 @@ export default function WorkExperience(props: Props) {
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('experience3-from')}
+                            {...props.register('experience3From')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            {...props.register('experience3-to')}
+                            {...props.register('experience3To')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience3-companyName')}
+                            {...props.register('experience3CompanyName')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience3-companyAddress')}
+                            {...props.register('experience3CompanyAddress')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience3-companyPhone')}
+                            {...props.register('experience3CompanyPhone')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            {...props.register('experience3-jobFunction')}
+                            {...props.register('experience3JobFunction')}
                         />
                     </td>
                 </tr>
