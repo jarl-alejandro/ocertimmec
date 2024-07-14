@@ -11,7 +11,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">RECIBE SEGURO MÉDICO</td>
                     <td width="40%">
-                        <select className="form-select" name="seguroMedico">
+                        <select className="form-select" {...props.register('seguroMedico')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -22,7 +22,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">RECIBE 13 SUELDO</td>
                     <td width="40%">
-                        <select className="form-select" name="sueldoTrece">
+                        <select className="form-select" {...props.register('sueldoTrece')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -33,7 +33,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">RECIBE 14 SUELDO</td>
                     <td width="40%">
-                        <select className="form-select" name="sueldoCatorce">
+                        <select className="form-select" {...props.register('sueldoCatorce')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -44,7 +44,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">Rango de sueldo</td>
                     <td width="40%">
-                        <select className="form-select" name="sueldo">
+                        <select className="form-select" {...props.register('sueldo')}>
                             <option value="">-</option>
                             <option value="$386 - $400">$386 - $400</option>
                             <option value="$401 - $600">$401 - $600</option>
@@ -60,7 +60,7 @@ export default function WorkingConditions(props: Props) {
                         EMPRESA
                     </td>
                     <td width="40%">
-                        <select className="form-select" name="cambioPuesto">
+                        <select className="form-select" {...props.register('cambioPuesto')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -71,7 +71,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">ESTÁ SATISFECHO CON EL EMPLEO ACTUAL</td>
                     <td width="40%">
-                        <select className="form-select" name="satisfechoEmpleo">
+                        <select className="form-select" {...props.register('satisfechoEmpleo')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -82,7 +82,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">SE SIENTE AGOTADO, DEBIDO A LA CARGA DE TRABAJO</td>
                     <td width="40%">
-                        <select className="form-select" name="agotadoEmpleo">
+                        <select className="form-select" {...props.register('agotadoEmpleo')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -93,7 +93,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">SUS COMPAÑEROS RESPETAN SU TRABAJO Y SUS CAPACIDADES</td>
                     <td width="40%">
-                        <select className="form-select" name="respetanTrabajo">
+                        <select className="form-select" {...props.register('respetanTrabajo')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -104,7 +104,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">SUS JEFES RECONOCEN LA CALIDAD DE SU TRABAJO</td>
                     <td width="40%">
-                        <select className="form-select" name="jefesReconocenTrabajo">
+                        <select className="form-select" {...props.register('jefesReconocenTrabajo')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -115,7 +115,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">EN SU TRABAJO EXISTEN RIESGOS LABORALES</td>
                     <td width="40%">
-                        <select className="form-select" name="riesgosLaborales">
+                        <select className="form-select" {...props.register('riesgosLaborales')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>
@@ -126,7 +126,7 @@ export default function WorkingConditions(props: Props) {
                 <tr>
                     <td width="50%" className="table-title">DESEARÍA CAMBIAR DE TRABAJO</td>
                     <td width="40%">
-                        <select className="form-select" name="deseaCambiarTrabajo">
+                        <select className="form-select" {...props.register('deseaCambiarTrabajo')}>
                             <option value="">-</option>
                             <option value="Si">Si</option>
                             <option value="No">No</option>

@@ -13,7 +13,7 @@ export default function Citizens(props: Props) {
                         Empleado empresa publica):
                     </td>
                     <td width="40%">
-                        <select className="form-select" name="tipoOcupacion">
+                        <select className="form-select" {...props.register('tipoOcupacion')}>
                             <option value="">-</option>
                             <option value="EMPLEADO PÚBLICO">EMPLEADO PÚBLICO</option>
                             <option value="EMPLEADO PRIVADO">EMPLEADO PRIVADO</option>
@@ -26,7 +26,7 @@ export default function Citizens(props: Props) {
                         NOMBRAMIENTO):
                     </td>
                     <td width="40%">
-                        <select className="form-select" name="contrato">
+                        <select className="form-select" {...props.register('contrato')}>
                             <option value="">-</option>
                             <option value="CONTRATO INDEFINIDO">CONTRATO INDEFINIDO</option>
                             <option value="CONTRATO PROVISIONAL">CONTRATO PROVISIONAL</option>

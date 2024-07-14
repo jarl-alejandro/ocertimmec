@@ -22,28 +22,28 @@ export default function Training(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            name="course1-nameCourse"
+                            {...props.register('course1-nameCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            name="course1-institutionName"
+                            {...props.register('course1-institutionName')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            name="course1-dateCourse"
+                            {...props.register('course1-dateCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="number"
                             className="form-control"
-                            name="course1-hourCourse"
+                            {...props.register('course1-hourCourse')}
                         />
                     </td>
                 </tr>
@@ -52,28 +52,28 @@ export default function Training(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            name="course2-nameCourse"
+                            {...props.register('course2-nameCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            name="course2-institutionName"
+                            {...props.register('course2-institutionName')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            name="course2-dateCourse"
+                            {...props.register('course2-dateCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="number"
                             className="form-control"
-                            name="course2-hourCourse"
+                            {...props.register('course2-hourCourse')}
                         />
                     </td>
                 </tr>
@@ -82,28 +82,28 @@ export default function Training(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            name="course3-nameCourse"
+                            {...props.register('course3-nameCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="text"
                             className="form-control"
-                            name="course3-institutionName"
+                            {...props.register('course3-institutionName')}
                         />
                     </td>
                     <td>
                         <input
                             type="date"
                             className="form-control"
-                            name="course3-dateCourse"
+                            {...props.register('course3-dateCourse')}
                         />
                     </td>
                     <td>
                         <input
                             type="number"
                             className="form-control"
-                            name="course3-hourCourse"
+                            {...props.register('course3-hourCourse')}
                         />
                     </td>
                 </tr>

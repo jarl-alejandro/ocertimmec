@@ -22,16 +22,16 @@ export default function CurrentEducation(props: Props) {
                 <tr>
                     <td className="table-text">Primaria</td>
                     <td>
-                        <input type="text" className="form-control" name="primaryInstitutionName" />
+                        <input type="text" className="form-control" {...props.register('primaryInstitutionName')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="primaryCountry" />
+                        <input type="text" className="form-control" {...props.register('primaryCountry')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="primaryCity" />
+                        <input type="text" className="form-control" {...props.register('primaryCity')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="primaryDegree"/>
+                        <input type="text" className="form-control" {...props.register('primaryDegree')}/>
                     </td>
                 </tr>
                 <tr>
@@ -40,17 +40,17 @@ export default function CurrentEducation(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            name="secondaryInstitutionName"
+                            {...props.register('secondaryInstitutionName')}
                         />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="secondaryCountry" />
+                        <input type="text" className="form-control" {...props.register('secondaryCountry')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="secondaryCity" />
+                        <input type="text" className="form-control" {...props.register('secondaryCity')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="secondaryDegree" />
+                        <input type="text" className="form-control" {...props.register('secondaryDegree')} />
                     </td>
                 </tr>
                 <tr>
@@ -59,18 +59,17 @@ export default function CurrentEducation(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            name="technicalInstitutionName"
-
+                            {...props.register('technicalInstitutionName')}
                         />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="technicalCountry" />
+                        <input type="text" className="form-control" {...props.register('technicalCountry')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="technicalCity" />
+                        <input type="text" className="form-control" {...props.register('technicalCity')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="technicalDegree" />
+                        <input type="text" className="form-control" {...props.register('technicalDegree')} />
                     </td>
                 </tr>
                 <tr>
@@ -79,18 +78,17 @@ export default function CurrentEducation(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            name="tertiaryInstitutionName"
-
+                            {...props.register('tertiaryInstitutionName')}
                         />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="tertiaryCountry" />
+                        <input type="text" className="form-control" {...props.register('tertiaryCountry')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="tertiaryCity" />
+                        <input type="text" className="form-control" {...props.register('tertiaryCity')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="tertiaryDegree" />
+                        <input type="text" className="form-control" {...props.register('tertiaryDegree')} />
                     </td>
                 </tr>
                 <tr>
@@ -99,18 +97,17 @@ export default function CurrentEducation(props: Props) {
                         <input
                             type="text"
                             className="form-control"
-                            name="quaternaryInstitutionName"
-
+                            {...props.register('quaternaryInstitutionName')}
                         />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="quaternaryCountry" />
+                        <input type="text" className="form-control" {...props.register('quaternaryCountry')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="quaternaryCity" />
+                        <input type="text" className="form-control" {...props.register('quaternaryCity')} />
                     </td>
                     <td>
-                        <input type="text" className="form-control" name="quaternaryDegree" />
+                        <input type="text" className="form-control" {...props.register('quaternaryDegree')} />
                     </td>
                 </tr>
                 </tbody>

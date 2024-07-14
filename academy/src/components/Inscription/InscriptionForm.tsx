@@ -105,11 +105,6 @@ export default function InscriptionForm() {
         </div>
 
         <div className="d-flex justify-content-between align-items-center p-4">  {/* Button and upload section */}
-            <button
-                className="btn btn-primary"
-            >
-                Guardar
-            </button>
             <div className="d-flex flex-column align-items-center">
                 <input
                     type="file"
@@ -118,7 +113,9 @@ export default function InscriptionForm() {
                     className="d-none"
                 />
                 <div className="btn btn-outline-primary">Subir requisitos</div>
+
             </div>
+            <button className="btn btn-primary">Guardar</button>
         </div>
     </form>
     )
