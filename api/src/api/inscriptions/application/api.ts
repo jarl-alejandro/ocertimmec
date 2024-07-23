@@ -1,15 +1,13 @@
-import express from 'express'
 import Certificate from '../../certificate/domain/model'
 import type { Certificate as CertificateType } from "../../certificate/domain/model";
-
-import Training from '../../training/domain/model'
 import Planning from '../../planning/domain/model'
 import Student from '../domain/student'
-import path from 'path'
+import Training from '../../training/domain/model'
 import config from '../../../enviroments/config'
 import emailFinishRegisterOnCourse from '../infrastructure/emails/emailFinishRegisterOnCourse'
+import express from 'express'
 import nodemailer from 'nodemailer'
-
+import path from 'path'
 
 async function register (req, res) {
 

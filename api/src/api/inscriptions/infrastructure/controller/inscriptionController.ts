@@ -2,6 +2,9 @@ import express, { Request, Response } from 'express';
 
 import { CreateInscription } from '../../application/CreateInscription'
 import { InscriptionCommand } from 'api/inscriptions/domain/InscriptionCommand';
+import { MongoAndExternalStudentInfoRepository } from '../MongoAndExternalStudentInfoRepository';
+import { SearchStudentInfo } from '../../application/SearchStudentInfo';
+import { StudentInfoRepository } from 'api/inscriptions/domain/StudentInfoRepository';
 import multer from 'multer'
 import path from 'path'
 
@@ -135,6 +138,16 @@ router.post('/inscription', upload.single('requirementsPDF'),  (req: Request, re
   res
     .status(201)
     .json({ message: 'success saved inscription' })
+})
+
+router.get('/find/student/:identity', async (req: Request, res: Response) => {
+  const identity: string = req.params.identity;
+  const repo: StudentInfoRepository = new MongoAndExternalStudentInfoRepository();
+  const searchStudentInfo = new SearchStudentInfo(repo);
+
+  
+  res.status(200)
+    .json({ studentInfo: await searchStudentInfo.find(identity) })
 })
 
 export default router;

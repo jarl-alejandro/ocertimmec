@@ -1,13 +1,13 @@
 const env = process.env.NODE_ENV
 
 const dev = {
-	DB: 'mongodb://localhost/db-occertimm-v2',
+	DB: 'mongodb://localhost/db-occertimm',
 	API: 'http://localhost:8001',
 	URL: 'http://localhost:3001',
 }
 
 const prod = {
-	DB: 'mongodb://localhost/db-occertimm-v2',
+	DB: 'mongodb://localhost/db-occertimm',
 	API: 'https://apiv2.occertimmec.com',
 	URL: 'http://v2.occertimmec.com',
 }
