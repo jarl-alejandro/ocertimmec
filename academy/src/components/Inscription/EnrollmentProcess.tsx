@@ -11,6 +11,19 @@ export function EnrollmentProcess(props: Props) {
     <table className="table table-borderless">
       <tbody>
         <tr>
+          <td width="30%" className="table-title">N° de Cédula:</td>
+          <td width="70%">
+            <input
+                id="document"
+                className={classNames("form-control", { "is-invalid": props.errors.document?.type === 'required' })}
+                type="text"
+                {...props.register('document',  { required: true })}
+            />
+            {props.errors.name?.type === 'required' && <div className="invalid-feedback" role="alert">El N° de cédula es obligatorio</div>}
+          </td>
+        </tr>
+        <tr>
+
           <td width="30%" className="table-title">Nombres completo:</td>
           <td width="70%">
             <input
@@ -32,18 +45,7 @@ export function EnrollmentProcess(props: Props) {
             {props.errors.lastName?.type === 'required' && <div className="invalid-feedback" role="alert">El apellido es obligatorio</div>}
           </td>
         </tr>
-        <tr>
-          <td width="30%" className="table-title">N° de Cédula:</td>
-          <td width="70%">
-            <input
-              id="document"
-              className={classNames("form-control", { "is-invalid": props.errors.document?.type === 'required' })}
-              type="text"
-             {...props.register('document',  { required: true })}
-            />
-            {props.errors.name?.type === 'required' && <div className="invalid-feedback" role="alert">El N° de cédula es obligatorio</div>}
-          </td>
-        </tr>
+
 
         <tr>
           <td width="30%" className="table-title">Fecha de nacimiento d/m/año:</td>

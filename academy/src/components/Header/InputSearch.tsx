@@ -33,9 +33,9 @@ export function InputSearch(props: Props) {
   useEffect(() => {
 		onChange$.current = new Subject().pipe(debounceTime(500))
 		subscription.current = onChange$.current.subscribe((debounced: string) => {
-      if (!isNullOrEmpty(debounced)) {
-        listCourses(debounced);
-      }
+          if (!isNullOrEmpty(debounced)) {
+            listCourses(debounced);
+          }
 		})
 
 		return () => {
@@ -65,7 +65,7 @@ export function InputSearch(props: Props) {
 
   const handleChangeValue = (event: any) => {
     setSearchValue(event.target.value)
-		onChange$.current.next(event.target.value)
+    onChange$.current.next(event.target.value)
   }
 
   const resetSearch = () => {

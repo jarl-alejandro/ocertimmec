@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -10,10 +10,14 @@ import { EnrollmentProcess } from "./EnrollmentProcess";
 import { InscriptionCommand } from '@/core/domain/InscriptionCommand';
 import LivingConditions from "@/components/Inscription/LivingConditions";
 import PersonalData from "@/components/Inscription/PersonalData";
+import {Subject} from "rxjs";
 import Training from "@/components/Inscription/Training";
 import WorkExperience from "@/components/Inscription/WorkExperience";
 import WorkingConditions from "@/components/Inscription/WorkingConditions";
+import {debounceTime} from "rxjs/operators";
 import { useRouter } from 'next/navigation'
+import {StudentInfo} from "@/core/domain/StudentInfo";
+import {isNullOrUndefined} from "@/utils/isNullOrUndefined";
 
 interface Props {
     trainingId: string | null;
@@ -22,9 +26,54 @@ interface Props {
 
 
 export default function InscriptionForm(props: Props) {
-    const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<InscriptionCommand>({});
+    const { register, handleSubmit, setValue, formState: { errors }, reset, watch } = useForm<InscriptionCommand>({});
     const [isSendForm, setSendForm] = useState(false)
-    const router = useRouter()
+    const router = useRouter();
+
+    const onChange$ = useRef(new Subject<string>());
+    const subscription = useRef<any>(null);
+  
+    // Manejar cambios en el valor
+    const handleChangeValue = useCallback((value: string) => {
+      onChange$.current.next(value);
+    }, []);
+
+    const findStudent = (document: string) => {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/find/student/${document}`)
+        .then(response => response.json())
+        .then(data => {
+            const studentInfo: StudentInfo = data?.studentInfo;
+            console.log(studentInfo);
+            if (!isNullOrUndefined(studentInfo)) {
+                setValue('name', studentInfo.name)
+                setValue('lastName', studentInfo.lastName)
+            }
+        })
+    }
+  
+    useEffect(() => {
+      const sub = onChange$.current.pipe(debounceTime(800))
+      .subscribe((debounced: string) => {
+            if (debounced) {
+                findStudent(debounced);
+            }
+        });
+  
+      subscription.current = sub;
+  
+      return () => {
+        if (subscription.current) {
+          subscription.current.unsubscribe();
+        }
+      };
+    }, []);
+  
+    // Watch the 'search' field
+    const searchValue = watch('document', '');
+    
+    useEffect(() => {
+      handleChangeValue(searchValue);
+    }, [searchValue]);
 
     const onSubmit: SubmitHandler<InscriptionCommand> = async (data: InscriptionCommand) => {
         if (isSendForm) {
