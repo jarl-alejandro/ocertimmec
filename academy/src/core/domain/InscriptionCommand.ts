@@ -10,6 +10,12 @@ export interface InscriptionCommand {
   phone: string;
   email: string;
   requirementsPDF: FileList | null;
+  courses: {
+    [key: string]: {
+      id: string;
+      type: string;
+    } | null;
+  };
 
   //CurrentEducation
   primaryInstitutionName: string;
