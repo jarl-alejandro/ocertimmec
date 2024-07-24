@@ -41,7 +41,7 @@ export default function Training(props: Props) {
                     </td>
                     <td>
                         <input
-                            type="number"
+                            type="type"
                             className="form-control"
                             {...props.register('course1HourCourse')}
                         />
@@ -71,7 +71,7 @@ export default function Training(props: Props) {
                     </td>
                     <td>
                         <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             {...props.register('course2HourCourse')}
                         />
@@ -101,7 +101,7 @@ export default function Training(props: Props) {
                     </td>
                     <td>
                         <input
-                            type="number"
+                            type="text"
                             className="form-control"
                             {...props.register('course3HourCourse')}
                         />

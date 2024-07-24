@@ -6,7 +6,7 @@ export interface StudentInfo {
   lastInscription?: LastInscription;
 }
 
-interface LastInscription {
+export interface LastInscription {
   primaria: Education;
   secundaria: Education;
   tecnico: Education;

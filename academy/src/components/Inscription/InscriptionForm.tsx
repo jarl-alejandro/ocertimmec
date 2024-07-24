@@ -1,13 +1,13 @@
 "use client";
 
 import React, {useCallback, useEffect, useRef, useState} from "react";
-import { SubmitHandler, useForm } from 'react-hook-form';
-import toast, { Toaster } from 'react-hot-toast';
+import {SubmitHandler, useForm} from 'react-hook-form';
+import toast, {Toaster} from 'react-hot-toast';
 
 import Citizens from "@/components/Inscription/Citizens";
 import CurrentEducation from "@/components/Inscription/CurrentEducation";
-import { EnrollmentProcess } from "./EnrollmentProcess";
-import { InscriptionCommand } from '@/core/domain/InscriptionCommand';
+import {EnrollmentProcess} from "./EnrollmentProcess";
+import {InscriptionCommand} from '@/core/domain/InscriptionCommand';
 import LivingConditions from "@/components/Inscription/LivingConditions";
 import PersonalData from "@/components/Inscription/PersonalData";
 import {Subject} from "rxjs";
@@ -15,9 +15,10 @@ import Training from "@/components/Inscription/Training";
 import WorkExperience from "@/components/Inscription/WorkExperience";
 import WorkingConditions from "@/components/Inscription/WorkingConditions";
 import {debounceTime} from "rxjs/operators";
-import { useRouter } from 'next/navigation'
+import {useRouter} from 'next/navigation'
 import {StudentInfo} from "@/core/domain/StudentInfo";
 import {isNullOrUndefined} from "@/utils/isNullOrUndefined";
+import {fillFormFromStudentInfo} from "@/core/domain/studentInfoToInscriptionCommandAdapter";
 
 interface Props {
     trainingId: string | null;
@@ -43,23 +44,23 @@ export default function InscriptionForm(props: Props) {
         .then(response => response.json())
         .then(data => {
             const studentInfo: StudentInfo = data?.studentInfo;
-            console.log(studentInfo);
             if (!isNullOrUndefined(studentInfo)) {
                 setValue('name', studentInfo.name)
                 setValue('lastName', studentInfo.lastName)
+            }
+            if (!isNullOrUndefined(studentInfo?.lastInscription)) {
+                fillFormFromStudentInfo(setValue, studentInfo);
             }
         })
     }
   
     useEffect(() => {
-      const sub = onChange$.current.pipe(debounceTime(800))
-      .subscribe((debounced: string) => {
-            if (debounced) {
-                findStudent(debounced);
-            }
-        });
-  
-      subscription.current = sub;
+        subscription.current = onChange$.current.pipe(debounceTime(800))
+          .subscribe((debounced: string) => {
+              if (debounced) {
+                  findStudent(debounced);
+              }
+          });
   
       return () => {
         if (subscription.current) {

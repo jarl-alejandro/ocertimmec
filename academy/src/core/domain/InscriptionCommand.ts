@@ -9,7 +9,7 @@ export interface InscriptionCommand {
   celphone: string;
   phone: string;
   email: string;
-  requirementsPDF: FileList;
+  requirementsPDF: FileList | null;
 
   //CurrentEducation
   primaryInstitutionName: string;
@@ -36,32 +36,32 @@ export interface InscriptionCommand {
   // Training
   course1NameCourse: string;
   course1InstitutionName: string;
-  course1DateCourse: Date;
+  course1DateCourse: Date | string;
   course1HourCourse: string;
   course2NameCourse: string;
   course2InstitutionName: string;
-  course2DateCourse: Date;
+  course2DateCourse: Date | string;
   course2HourCourse: string;
   course3NameCourse: string;
   course3InstitutionName: string;
-  course3DateCourse: Date;
+  course3DateCourse: Date | string;
   course3HourCourse: string;
 
   // WorkExperience
-  experience1From: Date;
-  experience1To: Date;
+  experience1From: Date | string;
+  experience1To: Date | string;
   experience1CompanyName: string;
   experience1CompanyAddress: string;
   experience1CompanyPhone: string;
   experience1JobFunction: string;
-  experience2From: Date;
-  experience2To: Date;
+  experience2From: Date | string;
+  experience2To: Date | string;
   experience2CompanyName: string;
   experience2CompanyAddress: string;
   experience2CompanyPhone: string;
   experience2JobFunction: string;
-  experience3From: Date;
-  experience3To: Date;
+  experience3From: Date | string;
+  experience3To: Date | string;
   experience3CompanyName: string;
   experience3CompanyAddress: string;
   experience3CompanyPhone: string;
