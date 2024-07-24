@@ -86,13 +86,17 @@ export default function InscriptionForm(props: Props) {
         setSendForm(true);
         // Append all form fields to FormData
         Object.entries(data).forEach(([key, value]) => {
-          if (key === "requirementsPDF" && value instanceof FileList) {
-            if (value.length > 0) {
-              formData.append(key, value[0]);
+            if (key === "courses" && value instanceof FileList) {
+                const jsonString = JSON.stringify(value);
+                formData.append('courses', jsonString);
             }
-          } else {
-            formData.append(key, value as string);
-          }
+            if (key === "requirementsPDF" && value instanceof FileList) {
+                if (value.length > 0) {
+                    formData.append(key, value[0]);
+                }
+            } else {
+                formData.append(key, value as string);
+            }
         });
 
         formData.append('trainingId', props.trainingId as string);
