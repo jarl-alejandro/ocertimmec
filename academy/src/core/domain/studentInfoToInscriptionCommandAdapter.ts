@@ -113,8 +113,5 @@ export function transformStudentInfoToInscriptionCommandAdapter(studentInfo: Stu
         discapacidad: lastInscription.discapacidad,
         tipoDiscapacidad: lastInscription.tipoDiscapacidad,
         socioEmpleo: lastInscription.socioEmpleo,
-
-        trainingId: lastInscription.trainingId,
-        certificateId: lastInscription.certificateId
     };
 }

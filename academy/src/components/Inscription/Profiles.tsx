@@ -37,11 +37,20 @@ export function Profiles(props: ProfilesProps) {
         const newSelectedCourses = { ...selectedCourses, [id]: !selectedCourses[id] };
         setSelectedCourses(newSelectedCourses);
 
-        if (newSelectedCourses[id]) {
-            props.setValue(`courses.${id}`, { id, type });
-        } else {
-            props.setValue(`courses.${id}`, null);
-        }
+        const coursesToChecked = Object.keys(newSelectedCourses)
+            .filter(courseId =>  newSelectedCourses[courseId])
+            .map(courseId => {
+                const find: TrainingCertificate | null = courses.find(item => item._id === courseId) as TrainingCertificate;
+                if (!isNullOrUndefined(find)) {
+                    return {
+                        id: find._id,
+                        type: find.type
+                    }
+                }
+                return null;
+            })
+            .filter(Boolean);
+        props.setValue(`courses`, coursesToChecked);
     };
 
     return (

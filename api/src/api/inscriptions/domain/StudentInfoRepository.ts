@@ -1,5 +1,6 @@
 import { StudentInfo } from "./StudentInfo";
+import {FindInscriptionCommand} from "./FindInscriptionCommand";
 
 export interface StudentInfoRepository {
-  findStudentInfo: (identity: string) => Promise<StudentInfo>;
+  findStudentInfo: (command: FindInscriptionCommand) => Promise<StudentInfo>;
 }

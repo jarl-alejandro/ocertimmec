@@ -34,14 +34,22 @@ export default function InscriptionForm(props: Props) {
 
     const onChange$ = useRef(new Subject<string>());
     const subscription = useRef<any>(null);
-  
+
     // Manejar cambios en el valor
     const handleChangeValue = useCallback((value: string) => {
       onChange$.current.next(value);
     }, []);
 
     const findStudent = (document: string) => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/find/student/${document}`)
+        const courseId = props.certificateId || props.trainingId;
+        const isCertificate = !isNullOrUndefined(props.certificateId);
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/find/student/${document}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify( { document, courseId, isCertificate }),
+        })
         .then(response => response.json())
         .then(data => {
             const studentInfo: StudentInfo = data?.studentInfo;
@@ -51,6 +59,8 @@ export default function InscriptionForm(props: Props) {
             }
             if (!isNullOrUndefined(studentInfo?.lastInscription)) {
                 fillFormFromStudentInfo(setValue, studentInfo);
+
+                console.log(studentInfo)
             }
         })
     }
@@ -86,11 +96,11 @@ export default function InscriptionForm(props: Props) {
         setSendForm(true);
         // Append all form fields to FormData
         Object.entries(data).forEach(([key, value]) => {
-            if (key === "courses" && value instanceof FileList) {
+            if (key === "courses") {
                 const jsonString = JSON.stringify(value);
-                formData.append('courses', jsonString);
+                formData.append(key, jsonString);
             }
-            if (key === "requirementsPDF" && value instanceof FileList) {
+            else if (key === "requirementsPDF" && value instanceof FileList) {
                 if (value.length > 0) {
                     formData.append(key, value[0]);
                 }
@@ -98,9 +108,6 @@ export default function InscriptionForm(props: Props) {
                 formData.append(key, value as string);
             }
         });
-
-        formData.append('trainingId', props.trainingId as string);
-        formData.append('certificateId', props.certificateId as string);
 
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/inscription`, {
           method: 'POST',

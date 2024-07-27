@@ -1,3 +1,8 @@
+interface Course {
+  id: string;
+  type: string;
+}
+
 export interface InscriptionCommand {
   name: string;
   lastName: string;
@@ -10,13 +15,7 @@ export interface InscriptionCommand {
   phone: string;
   email: string;
   requirementsPDF: FileList | null;
-  courses: {
-    [key: string]: {
-      id: string;
-      type: string;
-    } | null;
-  };
-
+  courses?: Course[];
   //CurrentEducation
   primaryInstitutionName: string;
   primaryCountry: string;
@@ -105,7 +104,4 @@ export interface InscriptionCommand {
   discapacidad: string;
   tipoDiscapacidad: string;
   socioEmpleo: string;
-
-  trainingId?: string | null;
-  certificateId?: string | null;
 }

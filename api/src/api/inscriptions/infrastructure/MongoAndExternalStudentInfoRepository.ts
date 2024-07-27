@@ -4,15 +4,19 @@ import type { Student } from "../domain/student";
 import StudentEntity from '../domain/student';
 import { StudentInfo } from "../domain/StudentInfo";
 import { StudentInfoRepository } from "../domain/StudentInfoRepository";
+import {FindInscriptionCommand} from "../domain/FindInscriptionCommand";
 
 export class MongoAndExternalStudentInfoRepository implements StudentInfoRepository {
 
-  public async findStudentInfo (identity: string): Promise<StudentInfo> {
-    const studentEntity: Student | null | undefined = await StudentEntity.findOne({
-      document: identity
-    });
+  public async findStudentInfo (command: FindInscriptionCommand): Promise<StudentInfo> {
+		let studentEntity: Student | null = await StudentEntity.findOne({
+			document: command.document,
+			...(command.isCertificate ? { certificateId: command.courseId } : { trainingId: command.courseId })
+		}).sort({ fechaAceptacion: -1 });
 
-    console.log(studentEntity)
+		if (!studentEntity) {
+			studentEntity = await StudentEntity.findOne({ document: command.document }).sort({ fechaAceptacion: -1 });
+		}
 
     const externalSystemStrategies: ExternalSystemStrategy[] = [
       new SriExternalSystemStrategy(),
@@ -20,7 +24,7 @@ export class MongoAndExternalStudentInfoRepository implements StudentInfoReposit
 
     if (!studentEntity) {
       for (const externalSystemStrategy of externalSystemStrategies) {
-        const findStudent = externalSystemStrategy.find(identity);
+        const findStudent = externalSystemStrategy.find(command.document);
         if (!!findStudent) {
           return findStudent;
         }

@@ -13,8 +13,8 @@ export default function LivingConditions(props: Props) {
                     <td width="40%">
                         <select className="form-control" {...props.register('livingConditionsSeguroMedico')}>
                             <option value="">-</option>
-                            <option value="Si">Si</option>
-                            <option value="No">No</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
                         </select>
                     </td>
                 </tr>
@@ -23,8 +23,8 @@ export default function LivingConditions(props: Props) {
                     <td width="40%">
                         <select className="form-control" {...props.register('hijos')}>
                             <option value="">-</option>
-                            <option value="Si">Si</option>
-                            <option value="No">No</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
                         </select>
                     </td>
                 </tr>
@@ -63,8 +63,8 @@ export default function LivingConditions(props: Props) {
                     <td width="40%">
                         <select className="form-control" {...props.register('estudian')}>
                             <option value="">-</option>
-                            <option value="Si">Si</option>
-                            <option value="No">No</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
                         </select>
                     </td>
                 </tr>
@@ -109,8 +109,8 @@ export default function LivingConditions(props: Props) {
                     <td width="40%">
                         <select className="form-control" {...props.register('discapacidad')}>
                             <option value="">-</option>
-                            <option value="Si">Si</option>
-                            <option value="No">No</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
                         </select>
                     </td>
                 </tr>
@@ -125,8 +125,8 @@ export default function LivingConditions(props: Props) {
                     <td width="40%">
                         <select className="form-control" {...props.register('socioEmpleo')}>
                             <option value="">-</option>
-                            <option value="Si">Si</option>
-                            <option value="No">No</option>
+                            <option value="SI">SI</option>
+                            <option value="NO">NO</option>
                         </select>
                     </td>
                 </tr>
