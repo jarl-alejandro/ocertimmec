@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-routerReports-dom'
+import { Link } from 'react-router-dom'
 
 import {BASE_URL} from '../../config'
 

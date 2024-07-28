@@ -14,7 +14,7 @@ import Training from './Training'
 import initialState from './state'
 import socketIo from 'socket.io-client'
 import { validCedula } from './valid'
-import { withRouter } from 'react-routerReports-dom'
+import { withRouter } from 'react-router-dom'
 
 class Form extends PureComponent {
 

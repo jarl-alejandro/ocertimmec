@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-	BrowserRouter as Router,
-	Route,
-	Switch
-} from 'react-routerReports-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Login from './views/login/Login'
 import Users from './views/users/Users'
@@ -18,7 +14,7 @@ import Edit from './views/edit'
 
 export default () => (
 	<Router>
-		<Switch>
+		<Routes>
 			<Route path='/' exact component={Login} />
 			<Route path='/app' exact component={Student} />
 
@@ -30,6 +26,6 @@ export default () => (
 			<Route path='/usuarios' exact component={Users} />
 			<Route path='/messages' exact component={Messages} />
 			<Route path='/edit/:id' exact component={Edit} />
-		</Switch>
+		</Routes>
 	</Router>
 )

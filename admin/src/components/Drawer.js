@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react'
-import { Link } from 'react-routerReports-dom'
+import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
