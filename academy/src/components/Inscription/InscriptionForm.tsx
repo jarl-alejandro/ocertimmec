@@ -16,28 +16,37 @@ import WorkExperience from "@/components/Inscription/WorkExperience";
 import WorkingConditions from "@/components/Inscription/WorkingConditions";
 import {debounceTime} from "rxjs/operators";
 import {useRouter} from 'next/navigation'
-import {StudentInfo} from "@/core/domain/StudentInfo";
+import {LastInscription, StudentInfo} from "@/core/domain/StudentInfo";
 import {isNullOrUndefined} from "@/utils/isNullOrUndefined";
 import {fillFormFromStudentInfo} from "@/core/domain/studentInfoToInscriptionCommandAdapter";
 import {Profiles} from "@/components/Inscription/Profiles";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
+import {TypeCourse} from "@/core/domain/TypeCourse";
 
 interface Props {
-    trainingId: string | null;
-    certificateId: string | null;
+    trainingId: string | null,
+    certificateId: string | null,
+    name?: string | undefined
 }
+
+const MySwal = withReactContent(Swal)
 
 
 export default function InscriptionForm(props: Props) {
-    const { register, handleSubmit, setValue, formState: { errors }, reset, watch } = useForm<InscriptionCommand>({});
+    const {register, handleSubmit, setValue, formState: {errors}, reset, watch} = useForm<InscriptionCommand>({});
     const [isSendForm, setSendForm] = useState(false)
+    const [isEdit, setEdit] = useState(false)
+    const [inputFileName, setInputFileName] = useState<string | null>(null)
     const router = useRouter();
 
     const onChange$ = useRef(new Subject<string>());
     const subscription = useRef<any>(null);
+    const requirementsPDF = watch('requirementsPDF');
 
     // Manejar cambios en el valor
     const handleChangeValue = useCallback((value: string) => {
-      onChange$.current.next(value);
+        onChange$.current.next(value);
     }, []);
 
     const findStudent = (document: string) => {
@@ -48,43 +57,86 @@ export default function InscriptionForm(props: Props) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify( { document, courseId, isCertificate }),
+            body: JSON.stringify({document, courseId, isCertificate}),
         })
-        .then(response => response.json())
-        .then(data => {
-            const studentInfo: StudentInfo = data?.studentInfo;
-            if (!isNullOrUndefined(studentInfo)) {
-                setValue('name', studentInfo.name)
-                setValue('lastName', studentInfo.lastName)
-            }
-            if (!isNullOrUndefined(studentInfo?.lastInscription)) {
-                fillFormFromStudentInfo(setValue, studentInfo);
-
-                console.log(studentInfo)
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                const studentInfo: StudentInfo = data?.studentInfo;
+                if (!isNullOrUndefined(studentInfo)) {
+                    setValue('name', studentInfo.name)
+                    setValue('lastName', studentInfo.lastName)
+                }
+                if (!isNullOrUndefined(studentInfo?.lastInscription)) {
+                    initializeInscription(studentInfo);
+                }
+            })
     }
-  
+
     useEffect(() => {
         subscription.current = onChange$.current.pipe(debounceTime(800))
-          .subscribe((debounced: string) => {
-              if (debounced) {
-                  findStudent(debounced);
-              }
-          });
-  
-      return () => {
-        if (subscription.current) {
-          subscription.current.unsubscribe();
-        }
-      };
+            .subscribe((debounced: string) => {
+                if (debounced) {
+                    findStudent(debounced);
+                }
+            });
+
+        return () => {
+            if (subscription.current) {
+                subscription.current.unsubscribe();
+            }
+        };
     }, []);
-  
+
+    const initializeInscription = (studentInfo: StudentInfo) => {
+        fillFormFromStudentInfo(setValue, studentInfo);
+        const inscription: LastInscription = studentInfo?.lastInscription as LastInscription;
+
+        if (inscription?.certificateId === props.certificateId && !inscription.isAll) {
+            MySwal.fire({
+                title: <p>¡Ya estás inscrito en {props.name}!</p>,
+                html: <p>¿Qué te gustaría hacer ahora?</p>,
+                showDenyButton: true,
+                showCancelButton: true,
+                cancelButtonText: "Ver otras certificaciones",
+                confirmButtonText: "Editar inscripción",
+                denyButtonText: 'Nueva inscripción',
+                buttonsStyling: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                allowEnterKey: false,
+                customClass: {
+                    confirmButton: 'btn btn-primary',
+                    denyButton: 'btn btn-success',
+                    cancelButton: 'btn btn-warning'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    toast.success(`¡Ahora puedes editar tu inscripción en ${props.name}!`);
+
+                    setValue('id', inscription?._id);
+                    setValue(`courses`, [{
+                        id: (props?.certificateId || props?.trainingId) as string,
+                        type: !isNullOrUndefined(props?.certificateId) ? TypeCourse.Certificate : TypeCourse.Training
+                    }]);
+                    setEdit(true);
+                    setInputFileName(inscription?.pdfRequisitos);
+                } else if (result.isDismissed) {
+                    // other inscription
+                    toast.success('¡Explora más certificaciones y capacitaciones disponibles!');
+                    setTimeout(() => router.replace('/training-certification'), 1000);
+                } else if (result.isDenied) {
+                    // new inscription
+                    toast.success(`¡Te registrarás de nuevo en ${props.name}!`);
+                }
+            });
+        }
+    }
+
     // Watch the 'search' field
     const searchValue = watch('document', '');
 
     useEffect(() => {
-      handleChangeValue(searchValue);
+        handleChangeValue(searchValue);
     }, [searchValue]);
 
     const onSubmit: SubmitHandler<InscriptionCommand> = async (data: InscriptionCommand) => {
@@ -99,8 +151,7 @@ export default function InscriptionForm(props: Props) {
             if (key === "courses") {
                 const jsonString = JSON.stringify(value);
                 formData.append(key, jsonString);
-            }
-            else if (key === "requirementsPDF" && value instanceof FileList) {
+            } else if (key === "requirementsPDF" && value instanceof FileList) {
                 if (value.length > 0) {
                     formData.append(key, value[0]);
                 }
@@ -110,16 +161,16 @@ export default function InscriptionForm(props: Props) {
         });
 
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/inscription`, {
-          method: 'POST',
-          body: formData,
+            method: isEdit ? 'PUT' : 'POST',
+            body: formData,
         })
-        .then(response => response.json())
-        .then(result => {
-            setSendForm(false);
-            toast.dismiss(toastId);
-            toast.success('¡Su inscripción se ha realizado con éxito!')
-            setTimeout(() => router.replace('/'), 1000);
-        });
+            .then(response => response.json())
+            .then(result => {
+                setSendForm(false);
+                toast.dismiss(toastId);
+                toast.success('¡Su inscripción se ha realizado con éxito!')
+                setTimeout(() => router.replace('/'), 1000);
+            });
     };
 
     return (
@@ -130,6 +181,8 @@ export default function InscriptionForm(props: Props) {
                         <h5 className="card-title text-primary">PERFILES</h5>
                     </header>
                     <Profiles
+                        isEdit={isEdit}
+                        name={props.name}
                         courseId={props.certificateId || props.trainingId}
                         register={register}
                         setValue={setValue}
@@ -140,7 +193,7 @@ export default function InscriptionForm(props: Props) {
                     <header className="card-header bg-transparent">
                         <h5 className="card-title text-primary">1.- PROCESO DE INSCRIPCIÓN</h5>
                     </header>
-                    <EnrollmentProcess errors={errors} register={register} />
+                    <EnrollmentProcess errors={errors} register={register}/>
                 </article>
 
                 <article className="card border mb-3 bg-light">
@@ -201,13 +254,14 @@ export default function InscriptionForm(props: Props) {
                         id="requirementsPDF"
                         accept="application/pdf"
                         className="d-none"
-                    {...register('requirementsPDF')}
-                />
-                <label htmlFor='requirementsPDF' className="btn btn-outline-primary">Subir requisitos</label>
+                        {...register('requirementsPDF')}
+                    />
+                    <label htmlFor='requirementsPDF' className="btn btn-outline-primary">Subir requisitos</label>
+                    { requirementsPDF?.[0]?.name || inputFileName}
+                </div>
+                <button className="btn btn-primary">Guardar</button>
             </div>
-            <button className="btn btn-primary">Guardar</button>
-        </div>
-        <Toaster />
-    </form>
+            <Toaster/>
+        </form>
     )
 }

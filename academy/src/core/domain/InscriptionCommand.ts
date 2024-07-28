@@ -4,6 +4,7 @@ interface Course {
 }
 
 export interface InscriptionCommand {
+  id?: string;
   name: string;
   lastName: string;
   document: string;

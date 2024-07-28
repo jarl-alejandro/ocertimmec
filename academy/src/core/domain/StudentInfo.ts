@@ -7,6 +7,7 @@ export interface StudentInfo {
 }
 
 export interface LastInscription {
+  isAll : Boolean,
   primaria: Education;
   secundaria: Education;
   tecnico: Education;

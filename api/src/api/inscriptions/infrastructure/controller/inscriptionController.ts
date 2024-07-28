@@ -8,6 +8,7 @@ import { StudentInfoRepository } from 'api/inscriptions/domain/StudentInfoReposi
 import multer from 'multer'
 import path from 'path'
 import {convertRequestToCommand} from "./convertRequestToCommand";
+import {UpdateInscription} from "../../application/UpdateInscription";
 
 const router = express.Router()
 
@@ -33,16 +34,31 @@ export interface CourseRequest {
 router.post('/inscription', upload.single('requirementsPDF'),  async (req: Request, res: Response) => {
   const documentFile = (req as any).file?.filename;
 	const courses: CourseRequest[] = JSON.parse(req.body.courses);
+	const createInscription = new CreateInscription();
 
 	for (const course of courses) {
 		const command: InscriptionCommand = convertRequestToCommand(req.body, documentFile, course)
-		const createInscription = new CreateInscription();
 		await createInscription.create(command)
 	}
 
   res
     .status(201)
     .json({ message: 'success saved inscription' })
+})
+
+router.put('/inscription', upload.single('requirementsPDF'),  async (req: Request, res: Response) => {
+	const documentFile = (req as any).file?.filename;
+	const courses: CourseRequest[] = JSON.parse(req.body.courses);
+	const updateInscription = new UpdateInscription();
+
+	for (const course of courses) {
+		const command: InscriptionCommand = convertRequestToCommand(req.body, documentFile, course);
+		await updateInscription.update(req.body.id, command)
+	}
+
+	res
+		.status(201)
+		.json({ message: 'success saved inscription' })
 })
 
 router.post('/find/student/:identity', async (req: Request, res: Response) => {

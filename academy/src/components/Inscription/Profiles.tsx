@@ -7,8 +7,10 @@ import {isNullOrUndefined} from "@/utils/isNullOrUndefined";
 
 interface ProfilesProps {
     courseId?: string | null,
-    register?: any;
-    setValue: any;
+    register?: any,
+    setValue: any,
+    name?: string | null,
+    isEdit?: boolean
 }
 
 export function Profiles(props: ProfilesProps) {
@@ -24,21 +26,18 @@ export function Profiles(props: ProfilesProps) {
                 if (!isNullOrUndefined(props.courseId)) {
                     const found: TrainingCertificate = json.find(i => i._id === props.courseId) as TrainingCertificate;
                     if (!isNullOrUndefined(found)) {
-                        const newSelectedCourses = { ...selectedCourses, [found._id]: !selectedCourses[found._id] };
-                        setSelectedCourses(newSelectedCourses);
-
-                        props.setValue(`courses.${props.courseId}`, { id: found._id, type: found.type });
+                        handleCheckboxChange(found._id, found.type);
                     }
                 }
             });
     }, []);
 
     const handleCheckboxChange = (id: string, type: string) => {
-        const newSelectedCourses = { ...selectedCourses, [id]: !selectedCourses[id] };
+        const newSelectedCourses = {...selectedCourses, [id]: !selectedCourses[id]};
         setSelectedCourses(newSelectedCourses);
 
         const coursesToChecked = Object.keys(newSelectedCourses)
-            .filter(courseId =>  newSelectedCourses[courseId])
+            .filter(courseId => newSelectedCourses[courseId])
             .map(courseId => {
                 const find: TrainingCertificate | null = courses.find(item => item._id === courseId) as TrainingCertificate;
                 if (!isNullOrUndefined(find)) {
@@ -52,6 +51,17 @@ export function Profiles(props: ProfilesProps) {
             .filter(Boolean);
         props.setValue(`courses`, coursesToChecked);
     };
+
+    if (props.isEdit) {
+        return (
+            <div className={style['container-profiles']} style={{ paddingBottom: '2rem' }}>
+                <div className="form-check">
+                    <input type="checkbox" className="form-check-input" checked disabled />
+                    <label className="form-check-label">{props.name}</label>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={style['container-profiles']}>

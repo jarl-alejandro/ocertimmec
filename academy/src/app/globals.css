@@ -41,3 +41,14 @@ td {
     color: #fff;
     background-color: #343a40;
 }
+.swal2-modal {
+    background-color: var(--bs-light) !important;
+    width: auto;
+    padding: 2.5rem;
+}
+.swal2-html-container p, .swal2-title {
+    color: var(--bs-heading-color);
+}
+.swal2-actions {
+    gap: 1rem;
+}
