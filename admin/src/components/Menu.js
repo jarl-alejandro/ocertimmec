@@ -1,28 +1,23 @@
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react'
-import { withRouter } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuIcon from '@material-ui/icons/Menu';
+import ExitToApp from '@material-ui/icons/ExitToApp';
+import Security from '@material-ui/icons/Security';
+import NotificationsActive from '@material-ui/icons/NotificationsActive';
+import searchAction from '../actions/search.action.js';
+import Password from './Password';
 
-import MenuIcon from '@material-ui/icons/Menu'
-import ExitToApp from '@material-ui/icons/ExitToApp'
-import Security from '@material-ui/icons/Security'
-
-import NotificationsActive from '@material-ui/icons/NotificationsActive'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-
-import { withStyles } from '@material-ui/core/styles'
-
-import searchAction from '../actions/search.action.js'
-import Password from './Password'
-
-const styles = theme => ({
+const styles = (theme) => ({
 	menuButton: {
 		marginLeft: -18,
 		marginRight: 10,
@@ -40,12 +35,12 @@ const styles = theme => ({
 		marginLeft: 0,
 		width: '100%',
 		[theme.breakpoints.up('sm')]: {
-			marginLeft: theme.spacing.unit,
+			marginLeft: theme.spacing(1),
 			width: 'auto',
 		},
 	},
 	searchIcon: {
-		width: theme.spacing.unit * 9,
+		width: theme.spacing(9),
 		height: '100%',
 		position: 'absolute',
 		pointerEvents: 'none',
@@ -58,13 +53,13 @@ const styles = theme => ({
 		width: '100%',
 	},
 	colorWhite: {
-		color: 'white'
+		color: 'white',
 	},
 	inputInput: {
-		paddingTop: theme.spacing.unit,
-		paddingRight: theme.spacing.unit,
-		paddingBottom: theme.spacing.unit,
-		paddingLeft: theme.spacing.unit * 10,
+		paddingTop: theme.spacing(1),
+		paddingRight: theme.spacing(1),
+		paddingBottom: theme.spacing(1),
+		paddingLeft: theme.spacing(10),
 		transition: theme.transitions.create('width'),
 		width: '100%',
 		[theme.breakpoints.up('sm')]: {
@@ -75,10 +70,10 @@ const styles = theme => ({
 		},
 	},
 	menuItem: {
-		padding: '1rem'
+		padding: '1rem',
 	},
 	colorActive: {
-		color: '#EF5350'
+		color: '#EF5350',
 	},
 	countNotify: {
 		fontSize: '15px',
@@ -94,142 +89,123 @@ const styles = theme => ({
 		borderRadius: '50%',
 		color: 'white',
 		fontWeight: 'bold',
-	}
-})
+	},
+});
 
 const ITEM_HEIGHT = 48;
 
-class MenuApp extends Component {
-	
-	constructor (props) {
-		super(props)
+const MenuApp = ({ classes, toggleDrawer, notify, search, setSearch }) => {
+	const [isPassword, setIsPassword] = useState(false);
+	const [anchorEl, setAnchorEl] = useState(null);
+	const navigate = useNavigate();
+	const open = Boolean(anchorEl);
 
-		this.state = {
-			isPassword: false,
-			anchorEl: null,
-		}
+	const handleExit = () => {
+		localStorage.clear();
+		navigate('/');
+	};
 
-		this.handleClick = this.handleClick.bind(this)
-		this.handleClose = this.handleClose.bind(this)
-		this.handleExit = this.handleExit.bind(this)
-		this.handlePassword = this.handlePassword.bind(this)
-	}
+	const handlePassword = () => {
+		setIsPassword(!isPassword);
+	};
 
-	handleExit () {
-		localStorage.clear()
-		this.props.history.push('/')
-	}
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
 
-	handlePassword () {
-		this.setState(state => ({
-			isPassword: !state.isPassword
-		}))
-	}
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
 
-	handleClick (event) {
-		this.setState({ anchorEl: event.currentTarget })
-	}
+	return (
+		<React.Fragment>
+			<AppBar position="fixed">
+				<Toolbar variant="dense">
+					<IconButton
+						onClick={toggleDrawer}
+						className={classes.menuButton}
+						color="inherit"
+						aria-label="Menu"
+					>
+						<MenuIcon />
+					</IconButton>
 
-	handleClose () {
-		this.setState({ anchorEl: null });
-	}
-
-	render () {
-		const { classes, toggleDrawer } = this.props
-		const { anchorEl } = this.state
-		const open = Boolean(anchorEl);
-
-		return (
-			<Fragment>
-				<AppBar position="fixed">
-					<Toolbar variant="dense">
+					<div className={classes.grow} />
+					<div className={classes.search}>
 						<IconButton
-							onClick={toggleDrawer}
-							className={classes.menuButton}
-							color="inherit"
-							aria-label="Menu"
+							aria-label="More"
+							aria-owns={open ? 'long-notificaciones' : undefined}
+							aria-haspopup="true"
+							onClick={handleClick}
+							className={notify.length ? classes.colorActive : classes.colorWhite}
 						>
-							<MenuIcon />
+							<NotificationsActive />
+							{notify.length > 0 && (
+								<span className={classes.countNotify}>{notify.length}</span>
+							)}
 						</IconButton>
-			
-						<div className={classes.grow} />
-						<div className={classes.search}>
-							<IconButton
-								aria-label="More"
-								aria-owns={open ? 'long-notificaciones' : undefined}
-								aria-haspopup="true"
-								onClick={this.handleClick}
-								className={this.props.notify.length ? classes.colorActive : classes.colorWhite}
-							>
-								<NotificationsActive />
-								{ !!this.props.notify.length && (
-									<span className={classes.countNotify}>{ this.props.notify.length }</span>
-								) }
-							</IconButton>
-							<Menu
-								id="long-notificaciones"
-								anchorEl={anchorEl}
-								open={open}
-								onClose={this.handleClose}
-								PaperProps={{
-									style: {
-										maxHeight: ITEM_HEIGHT * 8,
-										width: 300,
-										transform: 'translateX(-1rem) translateY(2rem)'
-									},
-								}}
-							>
-								{ this.props.notify.map(n => {
-									let t = n.type === 'CERTIFICATE' ? 'Certificado' : 'capacitación'
-									let name = n.type.toUpperCase() === 'CERTIFICATE' ? n.certificateId.name : n.trainingId.name
-									let sec = `${t} de ${name}`
+						<Menu
+							id="long-notificaciones"
+							anchorEl={anchorEl}
+							open={open}
+							onClose={handleClose}
+							PaperProps={{
+								style: {
+									maxHeight: ITEM_HEIGHT * 8,
+									width: 300,
+									transform: 'translateX(-1rem) translateY(2rem)',
+								},
+							}}
+						>
+							{notify.map((n) => {
+								let t = n.type === 'CERTIFICATE' ? 'Certificado' : 'capacitación';
+								let name =
+									n.type.toUpperCase() === 'CERTIFICATE'
+										? n.certificateId.name
+										: n.trainingId.name;
+								let sec = `${t} de ${name}`;
 
-									return (
-										<ul key={n._id}>
-											<MenuItem
-												onClick={this.handleClose}
-												className={classes.menuItem}
-											>
-												<ListItemText
-													primary={`${n.name} ${n.lastName}`}
-													secondary={sec}
-												/>
-											</MenuItem>
-											<Divider />
-										</ul>
-									)
-								})}
-							</Menu>
+								return (
+									<ul key={n._id}>
+										<MenuItem
+											onClick={handleClose}
+											className={classes.menuItem}
+										>
+											<ListItemText
+												primary={`${n.name} ${n.lastName}`}
+												secondary={sec}
+											/>
+										</MenuItem>
+										<Divider />
+									</ul>
+								);
+							})}
+						</Menu>
 
-							<IconButton onClick={this.handleExit} className={classes.colorWhite}>
-								<ExitToApp />
-							</IconButton>
-							<IconButton onClick={this.handlePassword} className={classes.colorWhite}>
-								<Security />
-							</IconButton>
-						</div>
-					</Toolbar>
-				</AppBar>
-				<Password
-					onClose={this.handlePassword}
-					isActive={this.state.isPassword}
-				/>
-			</Fragment>
-		)
-	}
-}
+						<IconButton onClick={handleExit} className={classes.colorWhite}>
+							<ExitToApp />
+						</IconButton>
+						<IconButton onClick={handlePassword} className={classes.colorWhite}>
+							<Security />
+						</IconButton>
+					</div>
+				</Toolbar>
+			</AppBar>
+			<Password onClose={handlePassword} isActive={isPassword} />
+		</React.Fragment>
+	);
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
 	search: state.search.value,
-	notify: state.student.notify
-})
+	notify: state.student.notify,
+});
 
-const mapDispatchToProps = dispatch => ({
-	setSearch (e) {
-		const { value } = e.target
+const mapDispatchToProps = (dispatch) => ({
+	setSearch: (e) => {
+		const { value } = e.target;
+		dispatch(searchAction.setSearch(value));
+	},
+});
 
-		dispatch(searchAction.setSearch(value))
-	}
-})
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MenuApp)))
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MenuApp));

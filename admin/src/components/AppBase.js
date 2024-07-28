@@ -1,9 +1,8 @@
  import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Menu from './Menu'
 import Drawer from './Drawer'
-import { withRouter } from 'react-router-dom'
 
 import {
 	OCCERTIMM_AUTH_TOKEN,
@@ -18,60 +17,42 @@ const styles = {
 	}
 }
 
-class AppBase extends Component {
 
-	constructor (props) {
-		super(props)
+function AppBase (props) {
+	const [isDrawer, setDrawer] = useState<Boolean>(false);
 
-		this.state = {
-			isDrawer: false
-		}
+	useEffect(() => {
+		if (!localStorage.getItem(OCCERTIMM_AUTH_TOKEN)) props.history.push('/');
+		else props.fetchMe(localStorage.getItem(OCCERTIMM_USER_ID));
 
-		this.toggleDrawer = this.toggleDrawer.bind(this)
+		props.fetchNotify();
+	}, []);
+
+	const toggleDrawer = () => {
+		setDrawer(!isDrawer);
 	}
 
-	componentWillMount() {
-		if (!localStorage.getItem(OCCERTIMM_AUTH_TOKEN)) {
-			this.props.history.push('/')
-		}
-		else {
-			this.props.fetchMe(localStorage.getItem(OCCERTIMM_USER_ID))
-		}
-	}
-
-	componentDidMount () {
-		this.props.fetchNotify()
-	}
-
-	toggleDrawer () {
-		this.setState({ isDrawer: !this.state.isDrawer })
-	}
-
-	render () {
-		const { classes } = this.props
-
-		return (
-			<Fragment>
-				<Menu toggleDrawer={this.toggleDrawer} />
-				<Drawer
-					isDrawer={this.state.isDrawer}
-					toggleDrawer={this.toggleDrawer}
-				/>
-				<section className={classes.container}>
-					{ this.props.children }
-				</section>
-			</Fragment>
-		)
-	}
+	return (
+		<Fragment>
+			<Menu toggleDrawer={toggleDrawer} />
+			<Drawer
+				isDrawer={isDrawer}
+				toggleDrawer={toggleDrawer}
+			/>
+			<section className={classes.container}>
+				{ props.children }
+			</section>
+		</Fragment>
+	)
 }
 
-const mapDispatchToProps = dispatch => ({
-	fetchMe (id) {
-		dispatch(usersAction.fetchMe(id))
-	},
-	fetchNotify () {
-		dispatch(studentAction.fetchNotificaciones())
-	}
-})
+ const mapDispatchToProps = dispatch => ({
+	 fetchMe (id) {
+		 dispatch(usersAction.fetchMe(id))
+	 },
+	 fetchNotify () {
+		 dispatch(studentAction.fetchNotificaciones())
+	 }
+ })
 
-export default connect(null, mapDispatchToProps)(withRouter(withStyles(styles)(AppBase)))
+export default connect(null, mapDispatchToProps)(withStyles(styles)(AppBase))
