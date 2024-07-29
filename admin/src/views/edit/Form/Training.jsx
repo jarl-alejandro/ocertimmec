@@ -1,0 +1,155 @@
+import React, { Component } from 'react'
+import TextField from '@mui/material/TextField';
+
+class Training extends Component {
+
+	shouldComponentUpdate (nextProps) {
+
+		if (nextProps.state.capacitacion1 !== this.props.state.capacitacion1) return true
+		if (nextProps.state.capacitacion2 !== this.props.state.capacitacion2) return true
+		if (nextProps.state.capacitacion3 !== this.props.state.capacitacion3) return true
+
+		return false
+	}
+
+	render () {
+		const { state, setDepthField } = this.props
+
+		return (
+			<div className="table-container">
+				<table>
+					<thead>
+						<tr>
+							<th width="15%">Nombre del curso</th>
+							<th width="35%">Nombre de la institución que impartió el curso</th>
+							<th width="15%">Fechas del curso</th>
+							<th width="15%">Horas del Curso</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<TextField
+									variant="filled"
+									type="text"
+									name="capacitacion1-nameCourse"
+									value={state.capacitacion1.nameCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="text"
+									name="capacitacion1-nameInstitucion"
+									value={state.capacitacion1.nameInstitucion}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="date"
+									name="capacitacion1-dateCourse"
+									value={state.capacitacion1.dateCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="number"
+									name="capacitacion1-hourCourse"
+									value={state.capacitacion1.hourCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+						</tr>
+		
+						<tr>
+							<td>
+								<TextField
+									variant="filled"
+									type="text"
+									name="capacitacion2-nameCourse"
+									value={state.capacitacion2.nameCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="text"
+									name="capacitacion2-nameInstitucion"
+									value={state.capacitacion2.nameInstitucion}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="date"
+									name="capacitacion2-dateCourse"
+									value={state.capacitacion2.dateCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="number"
+									name="capacitacion2-hourCourse"
+									value={state.capacitacion2.hourCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+						</tr>
+		
+						<tr>
+							<td>
+								<TextField
+									variant="filled"
+									type="text"
+									name="capacitacion3-nameCourse"
+									value={state.capacitacion3.nameCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="text"
+									name="capacitacion3-nameInstitucion"
+									value={state.capacitacion3.nameInstitucion}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="date"
+									name="capacitacion3-dateCourse"
+									value={state.capacitacion3.dateCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+							<td>
+								<TextField
+									variant="filled"
+									type="number"
+									name="capacitacion3-hourCourse"
+									value={state.capacitacion3.hourCourse}
+									onChange={setDepthField}
+								/>
+							</td>
+						</tr>
+		
+					</tbody>
+				</table>
+			</div>
+		)
+	}
+}
+
+
+export default Training

@@ -1,16 +1,8 @@
-occertimmec@gmail.com
-jarl1997
+# React + Vite
 
-git remote add origin https://gitlab.com/jarlalejor/asas.git
-git remote add origin https://gitlab.com/jarlalejor/app-occertimm.git
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+Currently, two official plugins are available:
 
-AC-ADE-18-10-2017 ACTIVIDADES PARA DEPORTES DE EQUIPOS
-ATS-AD-201906 ARBITRAJE DEPORTIVO EN FÚTBOL
-ATS-ADI-201807-001 ASESORÍA DE IMAGEN
-AC-C-201810-001 COSMETOLOGÍA
-AC-CS-201810-001 COSMIATRÍA
-ATS-CDPAM-201902 CUIDADO DE PERSONAS ADULTAS MAYORES
-ATS-M-201805-001 MAQUILLAJE
-ATS-PRL-201901-001 PREVENCIÓN DE RIESGOS LABORALES: CONSTRUCCIÓN Y OBRAS PÚBLICAS
-ATS-PRL-201901-002 PREVENCIÓN DE RIESGOS LABORALES: ENERGÍA ELÉCTRICA
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

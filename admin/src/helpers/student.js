@@ -1,25 +1,29 @@
-function parser (payload) {
-	let data = {}
+function parser(payload) {
+	const data = {};
 
-	payload.map(item => {
-		let type = item.type.toUpperCase() === 'CERTIFICATE' ? 'certificateId' : 'trainingId'
-		let typeName = item.type.toUpperCase() === 'CERTIFICATE' ? 'Certificación' : 'Capacitación'
-		let category = item[type]
+	payload.forEach(item => {
+		const type = item.type.toUpperCase();
+		const typeName = type === 'CERTIFICATE' ? 'Certificación' : 'Capacitación';
+		const key = type === 'CERTIFICATE' ? 'certificateId' : 'trainingId';
+		const category = item[key];
 
-		data[category._id] = {
-			category: {
-				id: category._id,
-				name: `${typeName}: ${category.name}`
-			},
-			payload: !!data[category._id]
-				? [...data[category._id].payload, item]
-				: [item]
+		if (!!category) {
+			if (!data[category?._id]) {
+				data[category._id] = {
+					category: {
+						id: category._id,
+						name: `${typeName}: ${category.name}`
+					},
+					payload: []
+				};
+			}
+
+			data[category._id].payload.push(item);
 		}
 
-		return category
-	})
+	});
 
-	return data
+	return data;
 }
 
-export default parser
+export default parser;

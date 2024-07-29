@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import {BASE_URL, WS_BASE_URL} from '../config'
+import { BASE_URL } from '../config'
 import messageTypes from './messageTypes'
 
 import studentActions from '../actions/student.action'
@@ -10,7 +10,7 @@ import messageActions from '../actions/message.action'
 
 import notify from '../notify'
 
-const socket = io.connect(WS_BASE_URL)
+const socket = io.connect(BASE_URL)
 
 function initSocket (store) {
 
