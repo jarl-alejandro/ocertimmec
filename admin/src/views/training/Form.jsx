@@ -81,7 +81,7 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 	useEffect(() => {
 		dispatch(usersAction.fetchTeacher('Capacitador'))
 
-		if (edit._id) {
+		if (edit?._id) {
 			setFormState({
 				name: edit.name || '',
 				userId: edit.id_user._id || '',
@@ -150,7 +150,7 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 			form.photoFile = formState.photo
 		}
 
-		if (edit._id) {
+		if (edit?._id) {
 			if (formState.photo) {
 				form.isPhoto = true
 				form.photo = edit.photo

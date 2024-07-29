@@ -68,7 +68,7 @@ const Form = ({ isOpen, toggleForm }) => {
 	const [state, setState] = useState(initialState);
 
 	useEffect(() => {
-		if (edit._id) {
+		if (edit?._id) {
 			setState({
 				...initialState,
 				cedula: edit.cedula || '',
@@ -143,7 +143,7 @@ const Form = ({ isOpen, toggleForm }) => {
 			object.photoFile = state.photo;
 		}
 
-		if (edit._id) {
+		if (edit?._id) {
 			if (state.photo) {
 				object.isPhoto = true;
 				object.photo = edit.photo;

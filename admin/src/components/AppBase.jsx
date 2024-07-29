@@ -1,25 +1,28 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Menu from './Menu';
-import Drawer from './Drawer';
-
+import DrawerApp from './DrawerApp';
+import { styled } from '@mui/material/styles';
 import { OCCERTIMM_AUTH_TOKEN, OCCERTIMM_USER_ID } from '../constants';
 import usersAction from '../actions/users.action';
 import studentAction from '../actions/student.action';
-import { makeStyles } from '@mui/styles';
 import { useDispatch } from 'react-redux';
+import { Box, CssBaseline, Toolbar, Container } from '@mui/material';
+import MenuApp from './MenuApp';
 
-const useStyles = makeStyles({
-	container: {
-		marginTop: 75,
-	},
-});
+const drawerWidth = 240;
+
+const ContainerStyled = styled(Container)(({ theme }) => ({
+	backgroundColor:
+		theme.palette.mode === 'light' ? theme.palette.grey[100] : theme.palette.grey[900],
+	flexGrow: 1,
+	height: 'calc(100vh - 8rem)',
+	overflow: 'auto',
+}));
 
 function AppBase({ children }) {
-	const [isDrawer, setDrawer] = useState(false);
+	const [open, setOpen] = useState(true);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const classes = useStyles();
 
 	useEffect(() => {
 		if (!localStorage.getItem(OCCERTIMM_AUTH_TOKEN)) {
@@ -32,20 +35,30 @@ function AppBase({ children }) {
 	}, [navigate, dispatch]);
 
 	const toggleDrawer = () => {
-		setDrawer(prev => !prev);
+		setOpen(!open);
 	};
 
 	return (
-		<Fragment>
-			<Menu toggleDrawer={toggleDrawer} />
-			<Drawer
-				isDrawer={isDrawer}
-				toggleDrawer={toggleDrawer}
-			/>
-			<section className={classes.container}>
-				{children}
-			</section>
-		</Fragment>
+		<Box sx={{ display: 'flex' }}>
+			<CssBaseline />
+			<MenuApp openDrawer={open} toggleDrawer={toggleDrawer} />
+			<DrawerApp open={open} toggleDrawer={toggleDrawer} />
+			<Box
+				component="main"
+				sx={{
+					backgroundColor: (theme) =>
+						theme.palette.mode === 'light' ? theme.palette.grey[100] : theme.palette.grey[900],
+					flexGrow: 1,
+					height: 'calc(100vh)',
+					overflow: 'auto',
+				}}
+			>
+				<Toolbar />
+				<ContainerStyled maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+					{children}
+				</ContainerStyled>
+			</Box>
+		</Box>
 	);
 }
 

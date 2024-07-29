@@ -89,7 +89,7 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 	useEffect(() => {
 		dispatch(usersAction.fetchTeacher('Examinador'))
 
-		if (edit._id) {
+		if (edit?._id) {
 			setState(prevState => ({
 				...prevState,
 				nameCertificate: edit.name || '',
@@ -168,7 +168,7 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 			formObject.photoFile = state.photo
 		}
 
-		if (edit._id) {
+		if (edit?._id) {
 			if (state.photo) {
 				formObject.isPhoto = true
 				formObject.photo = state.photo.name.split(' ').join('')

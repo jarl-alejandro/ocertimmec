@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { alpha } from '@mui/material/styles'; // Importa alpha desde @mui/material/styles
-import { makeStyles } from '@mui/styles'; // Importa makeStyles desde @mui/styles
-
+import { alpha } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -15,7 +14,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExitToApp from '@mui/icons-material/ExitToApp';
 import Security from '@mui/icons-material/Security';
 import NotificationsActive from '@mui/icons-material/NotificationsActive';
-import searchAction from '../actions/search.action';
 import Password from './Password';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,12 +93,12 @@ const useStyles = makeStyles((theme) => ({
 
 const ITEM_HEIGHT = 48;
 
-const MenuApp = ({ toggleDrawer }) => {
+const MenuApp = ({ toggleDrawer, openDrawer }) => {
 	const [isPassword, setIsPassword] = useState(false);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const notify = useSelector(state => state.student.notify);
+	const notify = useSelector((state) => state.student.notify);
 
 	const open = Boolean(anchorEl);
 
@@ -125,7 +123,7 @@ const MenuApp = ({ toggleDrawer }) => {
 
 	return (
 		<React.Fragment>
-			<AppBar position="fixed">
+			<AppBar position="fixed" open={openDrawer}>
 				<Toolbar variant="dense">
 					<IconButton
 						onClick={toggleDrawer}
