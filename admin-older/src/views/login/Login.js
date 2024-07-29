@@ -1,30 +1,62 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Send from '@material-ui/icons/Send';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Https from '@material-ui/icons/Https';
+import { makeStyles } from '@mui/styles';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Send from '@mui/icons-material/Send';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Https from '@mui/icons-material/Https';
 import Snackbar from '../../components/Snackbar';
 import { OCCERTIMM_USER_ID, OCCERTIMM_AUTH_TOKEN } from '../../constants';
 import { BASE_URL } from '../../config';
 import './login.css';
 
-const styles = (theme) => ({
-	margin: {
-		margin: theme.spacing(1),
+const useStyles = makeStyles((theme) => ({
+	container: {
+		minHeight: '100vh',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: '#f0f2f5', // Fondo gris claro
+		padding: theme.spacing(2),
 	},
-	extendedIcon: {
-		marginRight: theme.spacing(1),
+	loginCard: {
+		padding: '2rem',
+		width: '100%',
+		maxWidth: '400px',
+		backgroundColor: '#ffffff',
+		borderRadius: '12px', // Bordes más redondeados
+		boxShadow: '0 8px 16px rgba(0,0,0,0.1)', // Sombra más pronunciada
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '1rem',
+		textAlign: 'center',
 	},
-	marginIcon: {
-		marginRight: theme.spacing(1),
-		marginBottom: 15,
+	inputContainer: {
+		display: 'flex',
+		alignItems: 'center',
+		gap: '0.5rem',
+		marginBottom: '1rem', // Espacio inferior para los inputs
 	},
-});
+	button: {
+		marginTop: '1rem',
+		padding: '0.75rem 1.5rem',
+		borderRadius: '8px',
+		fontWeight: 'bold',
+	},
+	icon: {
+		color: theme.palette.primary.main,
+	},
+	title: {
+		marginBottom: '1rem',
+		fontSize: '1.5rem',
+		fontWeight: 'bold',
+		color: theme.palette.primary.main,
+	},
+}));
 
-const Login = ({ classes }) => {
+const Login = () => {
+	const classes = useStyles();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [open, setOpen] = useState(false);
@@ -104,45 +136,47 @@ const Login = ({ classes }) => {
 	};
 
 	return (
-		<section className="Login">
-			<form className="LoginCard" onSubmit={handleLogin}>
-				<div className="Login-input">
-					<AccountCircle className={classes.marginIcon} />
+		<section className={classes.container}>
+			<form className={classes.loginCard} onSubmit={handleLogin}>
+				<div className={classes.title}>Iniciar Sesión</div>
+
+				<div className={classes.inputContainer}>
+					<AccountCircle className={classes.icon} />
 					<TextField
 						label="Email"
 						type="email"
-						margin="normal"
 						name="email"
 						onChange={setField}
 						value={email}
 						fullWidth
-						id="email"
 						inputRef={emailRef}
+						variant="outlined"
+						size="small" // Tamaño del input más pequeño
 					/>
 				</div>
 
-				<div className="Login-input">
-					<Https className={classes.marginIcon} />
+				<div className={classes.inputContainer}>
+					<Https className={classes.icon} />
 					<TextField
 						label="Contraseña"
 						type="password"
-						margin="normal"
 						name="password"
 						onChange={setField}
 						value={password}
 						fullWidth
-						id="password"
 						inputRef={passwordRef}
+						variant="outlined"
+						size="small" // Tamaño del input más pequeño
 					/>
 				</div>
 
 				<Button
-					variant="extendedFab"
+					variant="contained"
 					color="primary"
-					className={classes.margin}
+					className={classes.button}
 					type="submit"
 				>
-					<Send className={classes.extendedIcon} />
+					<Send />
 					Entrar
 				</Button>
 			</form>
@@ -151,4 +185,4 @@ const Login = ({ classes }) => {
 	);
 };
 
-export default withStyles(styles)(Login);
+export default Login;
