@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 
-const Studiant = ({ state, setField }) => {
+const Student = ({ state, setField }) => {
 	return (
 		<div className="table-container">
 			<table>
@@ -13,7 +13,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='name'
-							value={state.name}
+							value={state.name || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -25,7 +25,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='lastName'
-							value={state.lastName}
+							value={state.lastName || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -38,7 +38,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='document'
-							value={state.document}
+							value={state.document || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -50,7 +50,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="date"
 							name='birthdate'
-							value={state.birthdate}
+							value={state.birthdate || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -62,7 +62,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='direction'
-							value={state.direction}
+							value={state.direction || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -74,7 +74,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='province'
-							value={state.province}
+							value={state.province || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -86,7 +86,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='city'
-							value={state.city}
+							value={state.city || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -98,7 +98,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='celphone'
-							value={state.celphone}
+							value={state.celphone || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -110,7 +110,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='phone'
-							value={state.phone}
+							value={state.phone || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -122,7 +122,7 @@ const Studiant = ({ state, setField }) => {
 							variant="filled"
 							type="text"
 							name='email'
-							value={state.email}
+							value={state.email || ''}
 							onChange={setField}
 						/>
 					</td>
@@ -133,4 +133,4 @@ const Studiant = ({ state, setField }) => {
 	);
 };
 
-export default Studiant;
+export default Student;

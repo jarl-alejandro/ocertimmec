@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 
 import AppBase from '../../components/AppBase';
-import Planning from '../../components/Planning';
+import Planning from '../../components/Planning/Planning';
 import TableApp from './TableApp';
 import Form from './Form';
 

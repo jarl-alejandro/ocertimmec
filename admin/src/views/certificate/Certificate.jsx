@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import AppBase from '../../components/AppBase';
 import TableApp from './TableApp';
 import Form from './Form';
-import Planning from '../../components/Planning';
+import Planning from '../../components/Planning/Planning';
 
 import certificateAction from '../../actions/certificate.action';
 

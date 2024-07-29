@@ -29,7 +29,7 @@ const Ciudadanos = ({ state, setField }) => {
 						EN LA OCUPACION SELECCIONADA SE ENCUENTRA (CONTRATO O NOMBRAMIENTO):
 					</td>
 					<td width="40%">
-						<Select name="contrato" value={state.contrato} onChange={handleChange}>
+						<Select name="contrato" value={state.contrato || ''} onChange={handleChange}>
 							<MenuItem value="">-</MenuItem>
 							<MenuItem value="CONTRATO INDEFINIDIO">CONTRATO INDEFINIDIO</MenuItem>
 							<MenuItem value="CONTRATO PROVICIONAL">CONTRATO PROVICIONAL</MenuItem>

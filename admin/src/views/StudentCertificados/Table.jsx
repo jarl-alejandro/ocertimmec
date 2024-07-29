@@ -8,7 +8,7 @@ import Row from './Row';
 import CustomTableCell from '../../components/CustomTableCell';
 import TablePagination from '../../components/TablePagination';
 
-const Table = ({ classes, table, toggleCertificate }) => {
+const TableCustom = ({ classes, table, toggleCertificate }) => {
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -57,4 +57,4 @@ const Table = ({ classes, table, toggleCertificate }) => {
 	);
 };
 
-export default Table;
+export default TableCustom;
