@@ -22,30 +22,25 @@ const initialState = {
 function student (state = initialState, action) {
 	switch (action.type) {
 		case 'STUDENT_FETCH': {
-			let student = parserStudent(action.payload)
 			return Object.assign({}, state, {
 				student: {
-					payload: student,
+					payload: parserStudent(action.payload),
 					isLoading: false
 				}
 			})
 		}
 		case 'STUDENT_FETCH_CERTIFICADO': {
-			let student = parserStudent(action.payload)
-
 			return Object.assign({}, state, {
 				certificado: {
-					payload: student,
+					payload: parserStudent(action.payload),
 					isLoading: false
 				}
 			})
 		}
 		case 'STUDENT_FETCH_CERTIFICADO_NO': {
-			let student = parserStudent(action.payload)
-
 			return Object.assign({}, state, {
 				certificadoNo: {
-					payload: student,
+					payload: parserStudent(action.payload),
 					isLoading: false
 				}
 			})

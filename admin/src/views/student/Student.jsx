@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { connect } from 'react-redux';
 import { makeStyles } from '@mui/styles';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
 import CloudDownload from '@mui/icons-material/CloudDownload';
+import { useDispatch } from 'react-redux';
 
 import AppBase from '../../components/AppBase';
 import TableApp from './TableApp';
 import Detail from './Detail';
-import AllForm from './AllForm';
+import CompleteInscriptionForm from './CompleteInscriptionForm.jsx';
 import Certificate from './Certificate';
-
+import './style.css';
 import studentAction from '../../actions/student.action';
 import { BASE_URL } from '../../config';
 
@@ -32,21 +32,22 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Training = ({ fetch }) => {
+const Student = () => {
 	const classes = useStyles();
 	const [row, setRow] = useState({});
 	const [rowCertificate, setRowCertificate] = useState({});
-	const [isAll, setIsAll] = useState(false);
+	const [isCompleteInscription, setCompleteInscription] = useState(false);
 	const [isEditRow, setIsEditRow] = useState(false);
 	const [isCertificate, setIsCertificate] = useState(false);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		fetch();
-	}, [fetch]);
+		dispatch(studentAction.fetchStudent())
+	}, []);
 
-	const onAll = useCallback((row, isEdit = false) => {
+	const onCompleteInscription = useCallback((row, isEdit = false) => {
 		setRow(row);
-		setIsAll(true);
+		setCompleteInscription(true);
 		setIsEditRow(isEdit);
 	}, []);
 
@@ -57,7 +58,7 @@ const Training = ({ fetch }) => {
 
 	const closeAllForm = useCallback(() => {
 		setRow({});
-		setIsAll(false);
+		setCompleteInscription(false);
 	}, []);
 
 	const closeCertificate = useCallback(() => {
@@ -69,33 +70,29 @@ const Training = ({ fetch }) => {
 		<AppBase>
 			<section className={classes.tableApp}>
 				<Typography variant="subtitle1" gutterBottom>Occertimm &gt; Estudiantes</Typography>
-				<TableApp onAll={onAll} onCertificate={onCertificate} />
+				<TableApp onCompleteInscription={onCompleteInscription} onCertificate={onCertificate} />
 			</section>
 			<Certificate
 				row={rowCertificate}
 				isActive={isCertificate}
 				closeCertificate={closeCertificate}
 			/>
-			{isAll && (
-				<AllForm
+			{isCompleteInscription && (
+				<CompleteInscriptionForm
 					row={row}
 					isEditRow={isEditRow}
-					isActive={isAll}
+					isActive={isCompleteInscription}
 					closeAllForm={closeAllForm}
 				/>
 			)}
 			<Detail />
-			<a href={`${BASE_URL}/excel`}>
-				<Button variant="fab" color="secondary" className={classes.buttonFloat}>
+			<a href={`${BASE_URL}/excel`} target="_blank" className={classes.buttonFloat}>
+				<Fab color="primary">
 					<CloudDownload />
-				</Button>
+				</Fab>
 			</a>
 		</AppBase>
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	fetch: () => dispatch(studentAction.fetchStudent()),
-});
-
-export default connect(null, mapDispatchToProps)(Training);
+export default Student

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@mui/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -30,10 +30,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const TableApp = ({ messages, isLoading, search }) => {
+const TableApp = () => {
 	const classes = useStyles();
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
+
+	const messages = useSelector(state => state.messages.payload);
+	const isLoading = useSelector(state => state.messages.isLoading);
+	const search = useSelector(state => state.search.value);
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
@@ -53,7 +57,7 @@ const TableApp = ({ messages, isLoading, search }) => {
 						<CustomTableCell>Nombres</CustomTableCell>
 						<CustomTableCell>E-mail</CustomTableCell>
 						<CustomTableCell>Asunto</CustomTableCell>
-						<CustomTableCell>Aciones</CustomTableCell>
+						<CustomTableCell>Acciones</CustomTableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -69,7 +73,7 @@ const TableApp = ({ messages, isLoading, search }) => {
 					))}
 				</TableBody>
 				<TablePagination
-					colSpan={6}
+					colSpan={4}
 					count={messages.length}
 					rowsPerPage={rowsPerPage}
 					page={page}
@@ -81,10 +85,4 @@ const TableApp = ({ messages, isLoading, search }) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	messages: state.messages.payload,
-	isLoading: state.messages.isLoading,
-	search: state.search.value,
-});
-
-export default connect(mapStateToProps)(TableApp);
+export default TableApp;

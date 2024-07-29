@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import Dialog from '@mui/material/Dialog'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogTitle from '@mui/material/DialogTitle'
-import Select from '@mui/material/Select'
-import FormControl from '@mui/material/FormControl'
-import MenuItem from '@mui/material/MenuItem'
-import InputLabel from '@mui/material/InputLabel'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
-import LinkedCamera from '@mui/icons-material/LinkedCamera'
-import { makeStyles } from '@mui/styles'
-import usersAction from '../../actions/users.action'
-import { BASE_URL_MEDIA } from '../../config'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
+import LinkedCamera from '@mui/icons-material/LinkedCamera';
+import { makeStyles } from '@mui/styles';
+import usersAction from '../../actions/users.action';
+import { BASE_URL_MEDIA } from '../../config';
 
 const useStyles = makeStyles(theme => ({
 	grid: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 	label: {
 		cursor: 'pointer'
 	}
-}))
+}));
 
 const initialState = {
 	name: '',
@@ -60,12 +60,14 @@ const initialState = {
 	cedula: '',
 }
 
-function Form(props) {
-	const classes = useStyles()
-	const [state, setState] = useState(initialState)
+const Form = ({ isOpen, toggleForm }) => {
+	const classes = useStyles();
+	const dispatch = useDispatch();
+	const edit = useSelector(state => state.users.edit);
+
+	const [state, setState] = useState(initialState);
 
 	useEffect(() => {
-		const { edit } = props
 		if (edit._id) {
 			setState({
 				...initialState,
@@ -79,48 +81,48 @@ function Form(props) {
 				trainingProfile: edit.trainingProfile || '',
 				trainingPedagogy: edit.teachingExperience || '',
 				imagePreviewUrl: `${BASE_URL_MEDIA}${edit.photo}`,
-			})
+			});
 		}
-	}, [props.edit])
+	}, [edit]);
 
 	const setField = (e) => {
 		setState(prevState => ({
 			...prevState,
 			[e.target.name]: e.target.value
-		}))
+		}));
 	}
 
 	const uploadImage = (e) => {
-		const file = e.target.files[0]
-		const reader = new FileReader()
+		const file = e.target.files[0];
+		const reader = new FileReader();
 
 		reader.onloadend = () => {
 			setState(prevState => ({
 				...prevState,
 				photo: file,
 				imagePreviewUrl: reader.result
-			}))
+			}));
 		}
 
 		if (file) {
-			reader.readAsDataURL(file)
+			reader.readAsDataURL(file);
 		}
 	}
 
 	const handleSave = () => {
-		handleCancel()
-		const formData = getForm()
-		if (!props.edit._id) {
-			props.savedUser(formData)
+		handleCancel();
+		const formData = getForm();
+		if (!edit._id) {
+			dispatch(usersAction.savedUser(formData));
 		} else {
-			props.updated(formData)
+			dispatch(usersAction.updated(formData));
 		}
 	}
 
 	const handleCancel = () => {
-		setState(initialState)
-		props.toggleForm()
-		props.closeEdit()
+		setState(initialState);
+		toggleForm();
+		dispatch(usersAction.edit({}));
 	}
 
 	const getForm = () => {
@@ -134,27 +136,26 @@ function Form(props) {
 			trainingProfile: state.trainingProfile,
 			trainingPedagogy: state.trainingPedagogy,
 			cedula: state.cedula
-		}
+		};
 
 		if (state.photo) {
-			object.photo = state.photo.name.split(' ').join('')
-			object.photoFile = state.photo
+			object.photo = state.photo.name.split(' ').join('');
+			object.photoFile = state.photo;
 		}
 
-		if (props.edit._id) {
+		if (edit._id) {
 			if (state.photo) {
-				object.isPhoto = true
-				object.photo = props.edit.photo
-				object.photoFile = state.photo
+				object.isPhoto = true;
+				object.photo = edit.photo;
+				object.photoFile = state.photo;
 			}
-			object.id = props.edit._id
+			object.id = edit._id;
 		}
 
-		return object
+		return object;
 	}
 
-	const { edit, isOpen } = props
-	const title = edit?._id ? 'Editar' : 'Nueva'
+	const title = edit?._id ? 'Editar' : 'Nueva';
 
 	return (
 		<Dialog
@@ -194,7 +195,7 @@ function Form(props) {
 						}}
 					>
 						<MenuItem value={'Coordinador'}>Coordinador</MenuItem>
-						<MenuItem value={'Responsable  de proceso'}>Responsable de proceso</MenuItem>
+						<MenuItem value={'Responsable de proceso'}>Responsable de proceso</MenuItem>
 						<MenuItem value={'Analista'}>Analista</MenuItem>
 						<MenuItem value={'Supervisor'}>Supervisor</MenuItem>
 						<MenuItem value={'Examinador'}>Examinador</MenuItem>
@@ -300,23 +301,7 @@ function Form(props) {
 				<Button color="primary" onClick={handleSave}>Guardar</Button>
 			</DialogActions>
 		</Dialog>
-	)
-}
+	);
+};
 
-const mapStateToProps = state => ({
-	edit: state.users.edit
-})
-
-const mapDispatchToProps = dispatch => ({
-	savedUser(payload) {
-		dispatch(usersAction.savedUser(payload))
-	},
-	updated(payload) {
-		dispatch(usersAction.updated(payload))
-	},
-	closeEdit() {
-		dispatch(usersAction.edit({}))
-	}
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default Form;

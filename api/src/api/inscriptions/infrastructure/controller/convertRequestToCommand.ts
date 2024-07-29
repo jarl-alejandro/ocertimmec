@@ -3,6 +3,7 @@ import {CourseRequest} from "./inscriptionController";
 
 export function convertRequestToCommand(requestBody: any, documentFile: any, course: CourseRequest) {
 	return {
+		type: course.type.toLowerCase(),
 		trainingId: course.type === 'Certificate' ? null : course.id,
 		certificateId: course.type === 'Training' ? null : course.id,
 		name: requestBody.name,

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Form = () => {
+const Detail = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 
@@ -89,4 +89,4 @@ const Form = () => {
 	);
 };
 
-export default Form;
+export default Detail;

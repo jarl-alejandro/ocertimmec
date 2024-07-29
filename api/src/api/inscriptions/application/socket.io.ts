@@ -132,6 +132,16 @@ async function updated(data, io, socket) {
 	io.sockets.connected[id_user].emit('terminar::register')
 }
 
+function regiserInscription(data, io) {
+	let object = {
+		type: data.type.toUpperCase() === 'CERTIFICATE' ? 'certificación' : 'capacitación',
+		name: `${data.name} ${data.lastName}`,
+		nameCurso: data.nameCurso
+	}
+	io.emit('notificacion', object)
+	io.emit('registerInscripcion')
+}
+
 function ioCourse (socket, io) {
 	socket.on('certificate::assistance', data => certificateAssistance(data,))
 
@@ -139,15 +149,7 @@ function ioCourse (socket, io) {
 	socket.on('verificar::email', data => verificarEmail(data, io))
 	socket.on('finish::register', data => finishRegister(data, io))
 
-	socket.on('registerInscripcion', data => {
-		let object = {
-			type: data.type.toUpperCase() === 'CERTIFICATE' ? 'certificación' : 'capacitación',
-			name: `${data.name} ${data.lastName}`,
-			nameCurso: data.nameCurso
-		}
-		io.emit('notificacion', object)
-		io.emit('registerInscripcion')
-	})
+	socket.on('registerInscripcion', data => regiserInscription(data, io))
 
 	socket.on('deleted::student', data => deleted(data, io))
 	socket.on('certificado::estudiante', data => certificate(data, io))

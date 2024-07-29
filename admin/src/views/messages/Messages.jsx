@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
 import Typography from '@mui/material/Typography';
 
 import AppBase from '../../components/AppBase';
@@ -9,14 +8,16 @@ import MessageModal from './MessageModal';
 
 import messageAction from '../../actions/message.action';
 
-const Messages = ({ classes, fetch }) => {
+const Messages = () => {
+	const dispatch = useDispatch();
+
 	useEffect(() => {
-		fetch();
-	}, [fetch]);
+		dispatch(messageAction.fetch());
+	}, [dispatch]);
 
 	return (
 		<AppBase>
-			<section className={classes.tableApp}>
+			<section>
 				<Typography variant="subtitle1" gutterBottom> Occertimm &gt; Mensajes</Typography>
 				<TableApp />
 			</section>
@@ -25,8 +26,4 @@ const Messages = ({ classes, fetch }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	fetch: () => dispatch(messageAction.fetch()),
-});
-
-export default connect(null, mapDispatchToProps)(Messages);
+export default Messages;

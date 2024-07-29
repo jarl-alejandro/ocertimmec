@@ -1,6 +1,7 @@
 .ActionsStudent {
 	display: flex !important;
 	justify-content: space-between;
+	gap: .5rem;
 }
 
 .ActionsStudent button, .ActionsStudent a {

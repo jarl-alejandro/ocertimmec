@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment, useEffect} from 'react';
 import { useSelector } from 'react-redux';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const TableApp = ({ toggleCertificate }) => {
+const TableApp = (props) => {
 	const classes = useStyles();
-	const student = useSelector((state) => state.student.certificado);
+	const student = useSelector((state) => state.student.student);
 
 	if (student.isLoading) {
 		return (
@@ -47,7 +47,8 @@ const TableApp = ({ toggleCertificate }) => {
 						<Table
 							table={table.payload}
 							classes={classes}
-							toggleCertificate={toggleCertificate}
+							onCompleteInscription={props.onCompleteInscription}
+							onCertificate={props.onCertificate}
 						/>
 					</Paper>
 				);

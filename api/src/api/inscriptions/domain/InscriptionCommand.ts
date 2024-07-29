@@ -1,5 +1,6 @@
 export interface InscriptionCommand {
-  name: string;
+	name: string;
+	type: string;
   lastName: string;
   document: string;
   birthdate: string;

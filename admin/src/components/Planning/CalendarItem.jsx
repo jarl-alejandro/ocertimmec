@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper'
 
 import CalendarMonth from './CalendarMonth'
 
-const Calendar = props => (
+const CalendarItem = props => (
   <Paper elevation={5}>
     <header className='Calendar-header'>
       <p className='Calendar-header-year'>{ props.year }</p>
@@ -15,4 +15,4 @@ const Calendar = props => (
   </Paper>
 )
 
-export default Calendar
+export default CalendarItem

@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
-import CircularProgress from '@mui/material/CircularProgress'
-import { makeStyles } from '@mui/styles'
-import Item from './Item'
-import CustomTableCell from '../../components/CustomTableCell'
-import TablePagination from '../../components/TablePagination'
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import CircularProgress from '@mui/material/CircularProgress';
+import { makeStyles } from '@mui/styles';
+import Item from './Item';
+import CustomTableCell from '../../components/CustomTableCell';
+import TablePagination from '../../components/TablePagination';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -27,21 +27,24 @@ const useStyles = makeStyles(theme => ({
 	buttonIcon: {
 		marginRight: theme.spacing(1),
 	},
-}))
+}));
 
-function TableApp({ users, toggleForm, search }) {
-	const classes = useStyles()
-	const [page, setPage] = useState(0)
-	const [rowsPerPage, setRowsPerPage] = useState(5)
+const TableApp = ({ toggleForm }) => {
+	const classes = useStyles();
+	const [page, setPage] = useState(0);
+	const [rowsPerPage, setRowsPerPage] = useState(5);
+
+	const users = useSelector(state => state.users.users);
+	const search = useSelector(state => state.search.value);
 
 	const handleChangePage = (event, newPage) => {
-		setPage(newPage)
-	}
+		setPage(newPage);
+	};
 
-	const handleChangeRowsPerPage = event => {
-		setRowsPerPage(parseInt(event.target.value, 10))
-		setPage(0) // Reset to first page when rows per page changes
-	}
+	const handleChangeRowsPerPage = (event) => {
+		setRowsPerPage(parseInt(event.target.value, 10));
+		setPage(0); // Reset to first page when rows per page changes
+	};
 
 	return (
 		<Paper className={classes.root}>
@@ -59,7 +62,7 @@ function TableApp({ users, toggleForm, search }) {
 				<TableBody>
 					{users.isLoading && (
 						<TableRow>
-							<CustomTableCell colSpan='5'>
+							<CustomTableCell colSpan={5}>
 								<CircularProgress />
 							</CustomTableCell>
 						</TableRow>
@@ -69,7 +72,7 @@ function TableApp({ users, toggleForm, search }) {
 					))}
 				</TableBody>
 				<TablePagination
-					colSpan={6}
+					colSpan={5}
 					count={users.payload.length}
 					rowsPerPage={rowsPerPage}
 					page={page}
@@ -78,12 +81,7 @@ function TableApp({ users, toggleForm, search }) {
 				/>
 			</Table>
 		</Paper>
-	)
-}
+	);
+};
 
-const mapStateToProps = state => ({
-	users: state.users.users,
-	search: state.search.value
-})
-
-export default connect(mapStateToProps)(TableApp)
+export default TableApp;

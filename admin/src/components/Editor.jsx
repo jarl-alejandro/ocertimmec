@@ -1,6 +1,6 @@
-import React, { Component, createRef } from 'react'
-import RichTextEditor from 'react-rte'
-import './Editor.css'
+import React, { useRef, useState } from 'react';
+import RichTextEditor from 'react-rte';
+import './Editor.css';
 
 const toolbarConfig = {
 	display: ['INLINE_STYLE_BUTTONS', 'BLOCK_TYPE_BUTTONS', 'BLOCK_TYPE_DROPDOWN'],
@@ -19,47 +19,34 @@ const toolbarConfig = {
 		{ label: 'UL', style: 'unordered-list-item' },
 		{ label: 'OL', style: 'ordered-list-item' }
 	]
-}
+};
 
-class EditorOccertimm extends Component {
+const EditorOccertimm = ({ name, value, onChange, onChangePulse }) => {
+	const [format] = useState('html');
+	const refEditor = useRef(null);
 
-	constructor(props) {
-		super(props)
+	const onChangeHandler = (newValue) => {
+		onChangePulse(name, newValue);
 
-		this.state = {
-			format: 'html',
-			value: RichTextEditor.createEmptyValue()
+		if (onChange) {
+			onChange(newValue.toString(format));
 		}
+	};
 
-		this.refEditor = createRef()
-		this.onChange = this.onChange.bind(this)
-	}
+	return (
+		<div>
+			<RichTextEditor
+				ref={refEditor}
+				placeholder="Occertimm....."
+				className="Occertimm"
+				toolbarClassName="Occertimm-toolbar"
+				editorClassName="Occertimm-editor"
+				value={value}
+				onChange={onChangeHandler}
+				toolbarConfig={toolbarConfig}
+			/>
+		</div>
+	);
+};
 
-	onChange(value) {
-		this.props.onChangePulse(this.props.name, value)
-
-		if (this.props.onChange) {
-			this.props.onChange(value.toString(this.state.format))
-		}
-	}
-
-	render () {
-		return (
-			<div>
-				<RichTextEditor
-					ref={this.refEditor}
-					placeholder="Occertimm....."
-					className="Occertimm"
-					toolbarClassName="Occertimm-toolbar"
-					editorClassName={`Occertimm-editor`}
-					value={this.props.value}
-					onChange={this.onChange}
-					toolbarConfig={toolbarConfig}
-				/>
-			</div>
-		)
-	}
-
-}
-
-export default EditorOccertimm
+export default EditorOccertimm;

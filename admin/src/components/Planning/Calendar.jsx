@@ -1,91 +1,70 @@
-import React, { PureComponent } from 'react'
-import CalendarItem from './CalendarItem'
-import './calendar.css'
+import React, { useEffect, useState } from 'react';
+import CalendarItem from './CalendarItem';
+import './calendar.css';
 
-class Calendar extends PureComponent {
+const Calendar = () => {
+	const [calendar, setCalendar] = useState([]);
+	const [year, setYear] = useState(new Date().getFullYear());
+	const months = [
+		'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
+		'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+	];
+	const days = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
 
-	constructor (props) {
-		super(props)
-		const year = new Date().getFullYear()
+	useEffect(() => {
+		const start = new Date(`${year}/01/01`);
+		const finish = new Date(year, 12, 0);
+		generateCalendar(start, finish, year);
+	}, [year]);
 
-		this.state = {
-			start: new Date(`${year}/01/01`),
-			finish: new Date(year, 12, 0),
-			year: year,
-			months: [
-				'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto',
-				'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-			],
-			days: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
-			calendar: [],
-		}
+	const generateCalendar = (start, finish, startYear) => {
+		const monthsIsYear = getMonths(start.getMonth(), finish.getMonth(), startYear);
+		setCalendar(monthsIsYear);
+		setYear(startYear);
+	};
 
-	}
-
-	componentDidMount () {
-		this.generateCalendar()
-	}
-
-	generateCalendar () {
-		let { start, finish } = this.state
-		let startYear = start.getFullYear()
-		let monthsIsYear = this.getMonths(start.getMonth(), finish.getMonth(), startYear)
-		this.setState({ calendar: monthsIsYear, year: startYear })
-	}
-
-	getMonths (month, lastMonths, year) {
-		let months = []
-
+	const getMonths = (month, lastMonths, year) => {
+		let monthsList = [];
 		while (month <= lastMonths) {
-			months = months.concat({
+			monthsList = monthsList.concat({
 				monthIndex: month,
-				month: this.state.months[month],
-				days: this.getDays(year, month)
-			})
-			month = month + 1
+				month: months[month],
+				days: getDays(year, month)
+			});
+			month += 1;
 		}
-		return months
-	}
+		return monthsList;
+	};
 
-	getDays (year, month) {
-		let firstDay = new Date(year, month, 1).getDate()
-		let lastDay = new Date(year, month + 1, 0).getDate()
-		let daysByMonth = []
-
-		if (this.state.start.getMonth() === month && this.state.start.getFullYear() === year) {
-			firstDay = this.state.start.getDate()
-		}
-		if (this.state.finish.getMonth() === month && this.state.finish.getFullYear() === year) {
-			lastDay = this.state.finish.getDate()
-		}
+	const getDays = (year, month) => {
+		let firstDay = new Date(year, month, 1).getDate();
+		let lastDay = new Date(year, month + 1, 0).getDate();
+		let daysByMonth = [];
 
 		for (let i = firstDay; i <= lastDay; i++) {
-			let date = this.dateByDay(year, month, i)
-			daysByMonth = daysByMonth.concat({ day: date })
+			let date = dateByDay(year, month, i);
+			daysByMonth = daysByMonth.concat({ day: date });
 		}
 
-		return daysByMonth
-	}
+		return daysByMonth;
+	};
 
-	dateByDay (year, month, day) {
-		const date = new Date(year, month)
-		return new Date(date.setDate(day))
-	}
+	const dateByDay = (year, month, day) => {
+		const date = new Date(year, month);
+		return new Date(date.setDate(day));
+	};
 
-	render () {
+	return (
+		<section className='DetailCalendar'>
+			{calendar.map(item => (
+				<CalendarItem
+					key={item.monthIndex}
+					item={item}
+					year={year}
+				/>
+			))}
+		</section>
+	);
+};
 
-		return (
-			<section className='DetailCalendar'>
-				{ this.state.calendar.map(item => (
-					<CalendarItem
-						key={item.monthIndex}
-						item={item}
-						year={this.state.year}
-					/>
-				))}
-			</section>
-		)
-	}
-}
-
-export default Calendar
+export default Calendar;

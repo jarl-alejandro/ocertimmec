@@ -2,6 +2,7 @@ import { InscriptionCommand } from "../domain/InscriptionCommand";
 
 export const transformInscriptionToStudent = (inscription: InscriptionCommand) => {
   return {
+		type : inscription.type,
     trainingId: inscription.trainingId,
     certificateId: inscription.certificateId,
     isCerficateAssiten: false,

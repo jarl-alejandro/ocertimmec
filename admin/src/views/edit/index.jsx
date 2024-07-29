@@ -1,23 +1,21 @@
-import './style.css'
+import './style.css';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import AppBase from '../../components/AppBase';
+import Form from './Form/Form';
 
-import React, { Component } from 'react'
+const EditCertificate = () => {
+	const { id } = useParams();
 
-import AppBase from '../../components/AppBase'
-import Form from './Form/Form'
+	return (
+		<AppBase>
+			<div className="Inscription">
+				<section className="Inscription-contained">
+					<Form inscripcionId={id} />
+				</section>
+			</div>
+		</AppBase>
+	);
+};
 
-class EditCertificate extends Component {
-
-	render () {
-		return (
-			<AppBase>
-				<div className="Inscription">
-					<section className="Inscription-contained">
-					<Form inscripcionId={this.props.match.params.id} />
-					</section>
-				</div>
-			</AppBase>
-		)
-	}
-}
-
-export default EditCertificate
+export default EditCertificate;

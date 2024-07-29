@@ -1,69 +1,60 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
+import Row from './Row';
+import CustomTableCell from '../../components/CustomTableCell';
+import TablePagination from '../../components/TablePagination';
 
-import Row from './Row'
-import CustomTableCell from '../../components/CustomTableCell'
-import TablePagination from '../../components/TablePagination'
+const Table = ({ classes, table, toggleCertificate }) => {
+	const [page, setPage] = useState(0);
+	const [rowsPerPage, setRowsPerPage] = useState(5);
 
-export default class extends PureComponent {
+	const handleChangePage = (event, newPage) => {
+		setPage(newPage);
+	};
 
-	state = {
-		page: 0,
-		rowsPerPage: 5,
-	}
+	const handleChangeRowsPerPage = (event) => {
+		setRowsPerPage(parseInt(event.target.value, 10));
+		setPage(0);
+	};
 
-	handleChangePage = (event, page) => {
-		this.setState({ page });
-	}
+	return (
+		<Table className={classes.table}>
+			<TableHead>
+				<TableRow>
+					<CustomTableCell>Cedula</CustomTableCell>
+					<CustomTableCell>Nombre</CustomTableCell>
+					<CustomTableCell>Apellidos</CustomTableCell>
+					<CustomTableCell>Telefono - celular</CustomTableCell>
+					<CustomTableCell>E-mail</CustomTableCell>
+					<CustomTableCell>Certificación/Capacitacion</CustomTableCell>
+					<CustomTableCell>Fecha de aplicación</CustomTableCell>
+					<CustomTableCell>Tipo</CustomTableCell>
+					<CustomTableCell>Acciones</CustomTableCell>
+				</TableRow>
+			</TableHead>
+			<TableBody>
+				{table.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
+					<Row
+						key={row._id}
+						toggleCertificate={toggleCertificate}
+						row={row}
+					/>
+				))}
+			</TableBody>
+			<TablePagination
+				colSpan={6}
+				count={table.length}
+				rowsPerPage={rowsPerPage}
+				page={page}
+				onChangePage={handleChangePage}
+				onChangeRowsPerPage={handleChangeRowsPerPage}
+			/>
+		</Table>
+	);
+};
 
-	handleChangeRowsPerPage = event => {
-		this.setState({ rowsPerPage: event.target.value });
-	}
-
-	render () {
-		const { classes, table, toggleCertificate } = this.props
-		const { rowsPerPage, page } = this.state
-
-		return (
-			<Table className={classes.table}>
-				<TableHead>
-					<TableRow>
-						<CustomTableCell>Cedula</CustomTableCell>
-						<CustomTableCell>Nombre</CustomTableCell>
-						<CustomTableCell>Apellidos</CustomTableCell>
-						<CustomTableCell>Telefono - celular</CustomTableCell>
-						<CustomTableCell>E-mail</CustomTableCell>
-						<CustomTableCell>Certificación/Capacitacion</CustomTableCell>
-						<CustomTableCell>Fecha de aplicación</CustomTableCell>
-						<CustomTableCell>Tipo</CustomTableCell>
-						<CustomTableCell>Aciónes</CustomTableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-
-					{
-						table.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
-							<Row
-								key={row._id}
-								toggleCertificate={toggleCertificate}
-								row={row}
-							/>
-						))
-					}
-				</TableBody>
-				<TablePagination
-					colSpan={6}
-					count={table.length}
-					rowsPerPage={this.state.rowsPerPage}
-					page={this.state.page}
-					onChangePage={this.handleChangePage}
-					onChangeRowsPerPage={this.handleChangeRowsPerPage}
-				/>
-			</Table>
-		)
-	}
-}
+export default Table;

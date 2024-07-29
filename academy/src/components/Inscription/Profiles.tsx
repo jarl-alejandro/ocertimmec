@@ -26,7 +26,9 @@ export function Profiles(props: ProfilesProps) {
                 if (!isNullOrUndefined(props.courseId)) {
                     const found: TrainingCertificate = json.find(i => i._id === props.courseId) as TrainingCertificate;
                     if (!isNullOrUndefined(found)) {
-                        handleCheckboxChange(found._id, found.type);
+                        const newSelectedCourses = { ...selectedCourses, [found._id]: !selectedCourses[found._id] };
+                        setSelectedCourses(newSelectedCourses);
+                        props.setValue(`courses`, [ { id: found._id, type: found.type }]);
                     }
                 }
             });

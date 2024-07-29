@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@mui/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -29,8 +29,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const TableApp = ({ trainings, toggleForm }) => {
+const TableApp = ({ toggleForm }) => {
 	const classes = useStyles();
+	const trainings = useSelector(state => state.training.training);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -42,6 +43,9 @@ const TableApp = ({ trainings, toggleForm }) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
 	};
+
+	// Si necesitas despachar acciones, puedes hacerlo aquí
+	// dispatch(trainingActions.someAction());
 
 	return (
 		<Paper className={classes.root}>
@@ -83,8 +87,4 @@ const TableApp = ({ trainings, toggleForm }) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	trainings: state.training.training,
-});
-
-export default connect(mapStateToProps)(TableApp);
+export default TableApp;

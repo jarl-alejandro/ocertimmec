@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const AllForm = ({ isActive, closeAllForm, row, isEditRow }) => {
+const CompleteInscriptionForm = ({ isActive, closeAllForm, row, isEditRow }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const [formState, setFormState] = useState({
@@ -128,4 +128,4 @@ const AllForm = ({ isActive, closeAllForm, row, isEditRow }) => {
 	);
 };
 
-export default AllForm;
+export default CompleteInscriptionForm;

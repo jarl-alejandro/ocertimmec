@@ -1,53 +1,44 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import TableRow from '@mui/material/TableRow'
-import DateFormat from '../../../components/DateFormat'
-import CustomTableCell from '../../../components/CustomTableCell'
-import Actions from './Actions'
-import studentAction from '../../../actions/student.action'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import TableRow from '@mui/material/TableRow';
+import CustomTableCell from '../../../components/CustomTableCell';
+import DateFormat from '../../../components/DateFormat';
+import Actions from './Actions';
+import studentAction from '../../../actions/student.action';
 
+const Row = ({ row, onCompleteInscription }) => {
+	const dispatch = useDispatch();
 
-function Row (props) {
+	const handleToggleModal = () => dispatch(studentAction.toggleModal(row));
+	const handleVerificar = () => dispatch(studentAction.onVerificar(row._id));
+	const handleDeleted = () => dispatch(studentAction.deleted(row._id));
+	const handleCertificateAssitent = () => dispatch(studentAction.onCertificateAssitent(row));
+	const handleCertificate = () => dispatch(studentAction.onCertificate(row));
+
 	return (
 		<TableRow>
-			<CustomTableCell>{props.row.document}</CustomTableCell>
-			<CustomTableCell>{props.row.name}</CustomTableCell>
-			<CustomTableCell>{props.row.lastName}</CustomTableCell>
-			<CustomTableCell>{props.row.phone}</CustomTableCell>
-			<CustomTableCell>{props.row.email}</CustomTableCell>
-			{props.row.type === 'TRAINING'
-				? <CustomTableCell>{props.row.trainingId.name}</CustomTableCell>
-				: <CustomTableCell>{props.row.certificateId.name}</CustomTableCell>
-			}
+			<CustomTableCell>{row.document}</CustomTableCell>
+			<CustomTableCell>{row.name}</CustomTableCell>
+			<CustomTableCell>{row.lastName}</CustomTableCell>
+			<CustomTableCell>{row.phone}</CustomTableCell>
+			<CustomTableCell>{row.email}</CustomTableCell>
 			<CustomTableCell>
-				<DateFormat date={props.row.fechaAplicacion} />
+				{row.type === 'TRAINING' ? row.trainingId.name : row.certificateId.name}
+			</CustomTableCell>
+			<CustomTableCell>
+				<DateFormat date={row.fechaAplicacion} />
 			</CustomTableCell>
 			<Actions
-				row={props.row}
-				toggleModal={props.toggleModal}
-				onVerificar={props.onVerificar}
-				onDeleted={props.onDeleted}
-				onAll={props.onAll}
-				onCertificateAssitent={props.onCertificateAssitent}
-				onCertificate={props.onCertificate}
+				row={row}
+				toggleModal={handleToggleModal}
+				onVerificar={handleVerificar}
+				onDeleted={handleDeleted}
+				onCompleteInscription={onCompleteInscription}
+				onCertificateAssitent={handleCertificateAssitent}
+				onCertificate={handleCertificate}
 			/>
 		</TableRow>
-	)
-}
+	);
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-	toggleModal() {
-		dispatch(studentAction.toggleModal(ownProps.row))
-	},
-	onVerificar () {
-		dispatch(studentAction.onVerificar(ownProps.row._id))
-	},
-	onDeleted () {
-		dispatch(studentAction.deleted(ownProps.row._id))
-	},
-	onCertificateAssitent () {
-		dispatch(studentAction.onCertificateAssitent(ownProps.row))
-	}
-})
-
-export default connect(null, mapDispatchToProps)(Row)
+export default Row;

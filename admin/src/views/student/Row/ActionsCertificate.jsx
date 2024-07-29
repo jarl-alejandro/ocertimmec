@@ -12,7 +12,9 @@ import { BASE_URL } from '../../../config'
 
 export default function ActionsCertificate (props) {
 	
-	const handleAll = (isEdit = false) => () => props.onAll(props.row, isEdit)
+	const handleInscriptionCompletion = (isEdit = false) => () => {
+		props.onCompleteInscription(props.row, isEdit)
+	}
 
 	const handlePDF = () => {
 		let urlForm = `${BASE_URL}/pdf/${props.row._id}/formulario`
@@ -50,7 +52,7 @@ export default function ActionsCertificate (props) {
 						<CloudDownload />
 					</Button>
 					<Button
-						onClick={handleAll(true)}
+						onClick={handleInscriptionCompletion(true)}
 						variant="contained"
 						color="primary"
 					>
@@ -70,7 +72,7 @@ export default function ActionsCertificate (props) {
 				<Button
 					variant="contained"
 					color="primary"
-					onClick={handleAll(false)}
+					onClick={handleInscriptionCompletion(false)}
 				>
 					<CloudDownload />
 				</Button>

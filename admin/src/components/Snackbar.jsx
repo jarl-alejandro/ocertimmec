@@ -1,31 +1,22 @@
 import React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 
-class SnackbarClass extends React.Component {
+const SnackbarClass = ({ open, text, handleClose }) => {
+	const vertical = 'bottom';
+	const horizontal = 'right';
 
-	state = {
-		open: false,
-		vertical: 'bottom',
-		horizontal: 'right',
-	};
-
-	render() {
-		const { vertical, horizontal } = this.state;
-		const { open, text, handleClose } = this.props
-
-		return (
-			<Snackbar
-				anchorOrigin={{ vertical, horizontal }}
-				open={open}
-				autoHideDuration={2000}
-				onClose={handleClose}
-				ContentProps={{
-					'aria-describedby': 'message-id',
-				}}
-				message={<span id="message-id">{ text }</span>}
-			/>
-		)
-	}
-}
+	return (
+		<Snackbar
+			anchorOrigin={{ vertical, horizontal }}
+			open={open}
+			autoHideDuration={2000}
+			onClose={handleClose}
+			ContentProps={{
+				'aria-describedby': 'message-id',
+			}}
+			message={<span id="message-id">{text}</span>}
+		/>
+	);
+};
 
 export default SnackbarClass;

@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; // Cambia useHistory por useNavigate
+import { useNavigate } from 'react-router-dom';
 import Menu from './Menu';
 import Drawer from './Drawer';
 
@@ -8,6 +7,7 @@ import { OCCERTIMM_AUTH_TOKEN, OCCERTIMM_USER_ID } from '../constants';
 import usersAction from '../actions/users.action';
 import studentAction from '../actions/student.action';
 import { makeStyles } from '@mui/styles';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
 	container: {
@@ -15,23 +15,24 @@ const useStyles = makeStyles({
 	},
 });
 
-function AppBase(props) {
+function AppBase({ children }) {
 	const [isDrawer, setDrawer] = useState(false);
-	const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const classes = useStyles();
 
 	useEffect(() => {
 		if (!localStorage.getItem(OCCERTIMM_AUTH_TOKEN)) {
-			navigate('/'); // Usa navigate en lugar de history.push
+			navigate('/');
 		} else {
-			props.fetchMe(localStorage.getItem(OCCERTIMM_USER_ID));
+			dispatch(usersAction.fetchMe(localStorage.getItem(OCCERTIMM_USER_ID)));
 		}
 
-		props.fetchNotify();
-	}, [navigate, props]);
+		dispatch(studentAction.fetchNotificaciones());
+	}, [navigate, dispatch]);
 
 	const toggleDrawer = () => {
-		setDrawer(!isDrawer);
+		setDrawer(prev => !prev);
 	};
 
 	return (
@@ -42,19 +43,10 @@ function AppBase(props) {
 				toggleDrawer={toggleDrawer}
 			/>
 			<section className={classes.container}>
-				{props.children}
+				{children}
 			</section>
 		</Fragment>
 	);
 }
 
-const mapDispatchToProps = dispatch => ({
-	fetchMe(id) {
-		dispatch(usersAction.fetchMe(id));
-	},
-	fetchNotify() {
-		dispatch(studentAction.fetchNotificaciones());
-	},
-});
-
-export default connect(null, mapDispatchToProps)(AppBase);
+export default AppBase;

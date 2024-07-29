@@ -157,7 +157,3 @@ export function validCedula(numero, alerta) {
 	return true;
 }
 
-
-// function alerta (name) {
-// 	alert(name)
-// }

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-
-import Button from '@mui/material/Button';
+import { useDispatch } from 'react-redux';
+import { Button, Typography, Box } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import Typography from '@mui/material/Typography';
 
 import AppBase from '../../components/AppBase';
 import TableApp from './TableApp';
@@ -12,33 +10,37 @@ import Planning from '../../components/Planning';
 
 import certificateAction from '../../actions/certificate.action';
 
-const Certificate = ({ fetch, classes }) => {
+const Certificate = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		fetch();
-	}, [fetch]);
+		dispatch(certificateAction.fetchCertificate());
+	}, [dispatch]);
 
 	const toggleForm = () => {
-		setIsOpen(prevIsOpen => !prevIsOpen);
+		setIsOpen(prev => !prev);
 	};
 
 	return (
 		<AppBase>
-			<section className={classes.tableApp}>
-				<Typography variant="subtitle1" gutterBottom>Occertimm &gt; Certificación</Typography>
+			<Box sx={{ width: '90%', margin: '0 auto' }}>
+				<Typography variant="subtitle1">Occertimm &gt; Certificación</Typography>
 				<TableApp toggleForm={toggleForm} />
-			</section>
+			</Box>
 			<Button
-				variant="fab"
+				variant="contained"
 				color="secondary"
 				aria-label="Add"
-				className={classes.button}
+				sx={{
+					position: 'fixed',
+					right: '1rem',
+					bottom: 16,
+				}}
 				onClick={toggleForm}
 			>
 				<AddIcon />
 			</Button>
-
 			{isOpen && (
 				<Form isOpen={isOpen} toggleForm={toggleForm} />
 			)}
@@ -47,10 +49,4 @@ const Certificate = ({ fetch, classes }) => {
 	);
 };
 
-const mapDispatchToProps = dispatch => ({
-	fetch() {
-		dispatch(certificateAction.fetchCertificate());
-	}
-});
-
-export default connect(null, mapDispatchToProps)(Certificate);
+export default Certificate;

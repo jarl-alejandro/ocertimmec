@@ -1,24 +1,20 @@
-import React, { PureComponent } from 'react'
+import React from 'react';
 
-
-class DateFormat extends PureComponent {
-
-	parserDate () {
-		if (this.props.date) {
-			let format = this.props.date.split('T')[0].split('-').join('/')
-			let date = new Date(format)
-			return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+const DateFormat = ({ date }) => {
+	const parserDate = () => {
+		if (date) {
+			const format = date.split('T')[0].split('-').join('/');
+			const parsedDate = new Date(format);
+			return `${parsedDate.getDate()}-${parsedDate.getMonth() + 1}-${parsedDate.getFullYear()}`;
 		}
-		else return null
-	}
+		return null;
+	};
 
-	render () {
-		return (
-			<span>
-				{ this.parserDate() }
-			</span>
-		)
-	}
-}
+	return (
+		<span>
+			{parserDate()}
+		</span>
+	);
+};
 
-export default DateFormat
+export default DateFormat;

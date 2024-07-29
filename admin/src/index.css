@@ -1,4 +1,8 @@
-
+*, *::after, *::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
 
 body {
 	margin: 0;
@@ -7,12 +11,6 @@ body {
 	box-sizing: border-box;
 	font-size: 16px;
 	background-color: #f9f9f9;
-}
-
-*, *::after, *::before {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
 }
 
 .none {
