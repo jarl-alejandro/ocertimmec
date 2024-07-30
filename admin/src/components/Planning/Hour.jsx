@@ -16,11 +16,15 @@ const styles = {
 	}
 };
 
-const Hour = ({ toggleHour }) => {
+const Hour = () => {
 	const dispatch = useDispatch();
 	const isHour = useSelector(state => state.planning.isHour);
 
 	const [hours, setHours] = useState({ 'hour-1': '' });
+
+	const toggleHour = () => {
+		dispatch(planningAction.toggleHour())
+	}
 
 	const setField = (e, name) => {
 		const { value } = e.target;

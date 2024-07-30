@@ -46,7 +46,7 @@ const Row = ({ row, toggleModal, toggleForm, onEdit, onDeleted }) => {
 				)}
 			</CustomTableCell>
 			<CustomTableCell>
-				<div className="flex around">
+				<div className="flex around gap">
 					<Button
 						variant="contained"
 						color="primary"

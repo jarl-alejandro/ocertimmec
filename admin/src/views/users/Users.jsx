@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@mui/styles';
-import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
 
@@ -14,9 +14,9 @@ import usersAction from '../../actions/users.action';
 const useStyles = makeStyles((theme) => ({
 	button: {
 		margin: theme.spacing(1),
-		position: 'fixed',
-		right: '1rem',
-		bottom: 16,
+		position: 'fixed !important',
+		right: '1rem !important',
+		bottom: '1rem !important',
 	},
 	tableApp: {
 		width: '90%',
@@ -45,15 +45,14 @@ const Users = ({ fetch }) => {
 				<TableApp toggleForm={toggleForm} />
 			</section>
 
-			<Button
-				variant="contained"
-				color="secondary"
+			<Fab
+				color="primary"
 				aria-label="Add"
 				className={classes.button}
 				onClick={toggleForm}
 			>
 				<AddIcon />
-			</Button>
+			</Fab>
 			{isOpen && (
 				<Form
 					isOpen={isOpen}

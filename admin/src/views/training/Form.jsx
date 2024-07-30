@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react';
 import {
+	Avatar,
+	Button,
 	Dialog,
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-	Select,
 	FormControl,
-	MenuItem,
-	InputLabel,
-	Button,
-	TextField,
-	Avatar,
 	IconButton,
-} from '@mui/material'
-import LinkedCamera from '@mui/icons-material/LinkedCamera'
-import { makeStyles } from '@mui/styles'
-import RichTextEditor from 'react-rte'
-import EditorOccertimm from '../../components/Editor'
-import trainingAction from '../../actions/training.action'
-import usersAction from '../../actions/users.action'
-import { BASE_URL_MEDIA } from '../../config'
+	InputLabel,
+	MenuItem,
+	Select,
+	TextField,
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
-// Define styles with makeStyles
-const useStyles = makeStyles(theme => ({
+import { useDispatch, useSelector } from 'react-redux';
+import { BASE_URL_MEDIA } from '../../config';
+import EditorOccertimm from '../../components/EditorOccertimm';
+import LinkedCamera from '@mui/icons-material/LinkedCamera';
+
+import trainingAction from '../../actions/training.action';
+import usersAction from '../../actions/users.action';
+
+const useStyles = makeStyles((theme) => ({
 	grid: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
@@ -31,146 +31,143 @@ const useStyles = makeStyles(theme => ({
 		'@media (max-width: 640px)': {
 			display: 'block',
 			'& > div': {
-				width: '100%'
-			}
-		}
+				width: '100%',
+			},
+		},
 	},
 	gridComplete: {
-		gridColumn: '2 span'
+		gridColumn: '2 span',
 	},
 	marginTop: {
-		marginTop: 16
+		marginTop: 16,
 	},
 	formControl: {
-		margin: theme.spacing(1),
 		minWidth: 120,
+		marginBlock: '1rem !important'
 	},
 	paddingBottom: {
-		paddingBottom: 10
+		paddingBottom: 10,
 	},
 	label: {
-		cursor: 'pointer'
+		cursor: 'pointer',
 	},
 	bigAvatar: {
 		width: 160,
 		height: 100,
 		margin: 7,
-		borderRadius: 0
+		borderRadius: 0,
 	},
-}))
+}));
 
 const initialState = {
 	name: '',
 	imagePreviewUrl: '',
 	photo: '',
 	userId: '',
-	materials: RichTextEditor.createEmptyValue(),
-	content: RichTextEditor.createEmptyValue(),
+	materials: '',
+	content: '',
 	place: '',
 	cost: '',
 	isPhoto: false,
-	format: 'html'
-}
+	format: 'html',
+};
 
-const Form = ({ isOpen, toggleForm, edit }) => {
-	const classes = useStyles()
-	const dispatch = useDispatch()
-	const teachers = useSelector(state => state.users.teachers)
-	const [formState, setFormState] = useState(initialState)
+const Form = ({ isOpen, toggleForm }) => {
+	const classes = useStyles();
+	const dispatch = useDispatch();
+	const { teachers, edit } = useSelector((state) => ({
+		teachers: state.users.teachers,
+		edit: state.training.edit,
+	}));
+
+	const [state, setState] = useState(initialState);
 
 	useEffect(() => {
-		dispatch(usersAction.fetchTeacher('Capacitador'))
+		dispatch(usersAction.fetchTeacher('Capacitador'));
 
-		if (edit?._id) {
-			setFormState({
+		if (edit._id) {
+			setState({
 				name: edit.name || '',
 				userId: edit.id_user._id || '',
 				cost: edit.cost || '',
-				materials: RichTextEditor.createValueFromString(edit.materials || '', formState.format),
-				content: RichTextEditor.createValueFromString(edit.content || '', formState.format),
+				materials: edit.materials || '',
+				content: edit.content || '',
 				place: edit.place || '',
 				imagePreviewUrl: `${BASE_URL_MEDIA}${edit.photo}`,
-				photo: '',
-				isPhoto: false
-			})
+			});
 		}
-	}, [dispatch, edit, formState.format])
+	}, [dispatch, edit]);
 
-	const setField = e => {
-		setFormState({ ...formState, [e.target.name]: e.target.value })
-	}
+	const setField = (e) => {
+		setState({ ...state, [e.target.name]: e.target.value });
+	};
 
-	const uploadImage = e => {
-		const file = e.target.files[0]
-		const reader = new FileReader()
+	const uploadImage = (e) => {
+		let reader = new FileReader();
+		let file = e.target.files[0];
 
 		reader.onloadend = () => {
-			setFormState({
-				...formState,
+			setState({
+				...state,
 				photo: file,
-				imagePreviewUrl: reader.result
-			})
-		}
+				imagePreviewUrl: reader.result,
+			});
+		};
 
-		reader.readAsDataURL(file)
-	}
+		reader.readAsDataURL(file);
+	};
 
 	const onChangePulse = (name, value) => {
-		setFormState({ ...formState, [name]: value })
-	}
+		setState({ ...state, [name]: value });
+	};
 
-	const handleSave = () => {
-		const form = getForm()
+	const handleSaved = () => {
 		if (!edit._id) {
-			dispatch(trainingAction.savedTrainig(form));
+			dispatch(trainingAction.savedTrainig(getForm()));
 		} else {
-			dispatch(trainingAction.updated(form));
+			dispatch(trainingAction.updated(getForm()));
 		}
-		handleCancel()
-	}
+		handleCancel();
+	};
 
 	const handleCancel = () => {
-		dispatch(usersAction.fetchTeacher('Capacitador'))
-		setFormState({ ...initialState })
-		toggleForm()
-	}
+		dispatch(trainingAction.edit({}));
+		setState({ ...initialState });
+		toggleForm();
+	};
 
 	const getForm = () => {
-		const form = {
-			name: formState.name,
-			userId: formState.userId,
-			materials: formState.materials.toString(formState.format),
-			place: formState.place,
-			content: formState.content.toString(formState.format),
-			cost: formState.cost,
+		let object = {
+			name: state.name,
+			userId: state.userId,
+			materials: state.materials.toString(state.format),
+			place: state.place,
+			content: state.content.toString(state.format),
+			cost: state.cost,
+		};
+
+		if (state.photo) {
+			object.photo = state.photo.name.split(' ').join('');
+			object.photoFile = state.photo;
 		}
 
-		if (formState.photo) {
-			form.photo = formState.photo.name.split(' ').join('')
-			form.photoFile = formState.photo
-		}
-
-		if (edit?._id) {
-			if (formState.photo) {
-				form.isPhoto = true
-				form.photo = edit.photo
-				form.photoFile = formState.photo
+		if (edit._id) {
+			if (state.photo) {
+				object.isPhoto = true;
+				object.photo = edit.photo;
+				object.photoFile = state.photo;
 			}
 
-			form.id = edit._id
+			object.id = edit._id;
 		}
 
-		return form
-	}
+		return object;
+	};
 
-	const title = edit?._id ? 'Editar' : 'Nueva'
+	const title = edit._id ? 'Editar' : 'Nueva';
 
 	return (
-		<Dialog
-			open={isOpen}
-			onClose={handleCancel}
-			aria-labelledby="form-dialog-title"
-		>
+		<Dialog open={isOpen} onClose={handleCancel} aria-labelledby="form-dialog-title">
 			<DialogTitle id="form-dialog-title">{title} capacitación</DialogTitle>
 			<DialogContent className={classes.grid}>
 				<TextField
@@ -179,29 +176,31 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 					label="Nombre de la certificacion"
 					fullWidth
 					onChange={setField}
-					value={formState.name}
+					value={state.name}
 					className={classes.gridComplete}
 				/>
 
-				<FormControl className={`${classes.formControl} ${classes.gridComplete}`}>
-					<InputLabel htmlFor="userId">Capacitador</InputLabel>
+				<FormControl fullWidth className={`${classes.formControl} ${classes.gridComplete}`}>
+					<InputLabel id="userId">Capacitador</InputLabel>
 					<Select
-						value={formState.userId}
+						labelId="userId"
+						label="Capacitador"
+						value={state.userId}
 						onChange={setField}
 						inputProps={{
 							name: 'userId',
 							id: 'userId',
 						}}
 					>
-						<MenuItem value=''></MenuItem>
-						{teachers.isLoading && (
-							<MenuItem value=''>Cargando...</MenuItem>
-						)}
+						<MenuItem value=""></MenuItem>
+						{!!teachers.isLoading && <MenuItem value="">Cargando...</MenuItem>}
 						{!teachers.isLoading && !teachers.payload.length && (
-							<MenuItem value=''>No hay capacitadores</MenuItem>
+							<MenuItem value="">No hay capacitadores</MenuItem>
 						)}
-						{teachers.payload.map(item => (
-							<MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
+						{teachers.payload.map((item) => (
+							<MenuItem key={item._id} value={item._id}>
+								{item.name}
+							</MenuItem>
 						))}
 					</Select>
 				</FormControl>
@@ -212,7 +211,7 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 					label="Inversión"
 					fullWidth
 					onChange={setField}
-					value={formState.cost}
+					value={state.cost}
 					className={classes.gridComplete}
 				/>
 				<TextField
@@ -223,7 +222,7 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 					rows="2"
 					fullWidth
 					onChange={setField}
-					value={formState.place}
+					value={state.place}
 					className={classes.gridComplete}
 				/>
 
@@ -232,7 +231,7 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 					<div className={classes.paddingBottom} />
 					<EditorOccertimm
 						name="materials"
-						value={formState.materials}
+						value={state.materials}
 						onChangePulse={onChangePulse}
 					/>
 				</div>
@@ -241,17 +240,13 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 					<div className={classes.paddingBottom} />
 					<EditorOccertimm
 						name="content"
-						value={formState.content}
+						value={state.content}
 						onChangePulse={onChangePulse}
 					/>
 				</div>
 
 				<div className={`flex flex-center flex-center-y flex-wrap ${classes.gridComplete}`}>
-					<Avatar
-						alt={formState.name}
-						src={formState.imagePreviewUrl}
-						className={classes.bigAvatar}
-					/>
+					<Avatar alt={state.name} src={state.imagePreviewUrl} className={classes.bigAvatar} />
 					<input
 						id="photo-user"
 						type="file"
@@ -270,12 +265,15 @@ const Form = ({ isOpen, toggleForm, edit }) => {
 			</DialogContent>
 
 			<DialogActions>
-				<Button color="primary" onClick={handleCancel}>Cancelar</Button>
-				<Button color="primary" onClick={handleSave}>Guardar</Button>
+				<Button color="primary" onClick={handleCancel}>
+					Cancelar
+				</Button>
+				<Button color="primary" onClick={handleSaved}>
+					Guardar
+				</Button>
 			</DialogActions>
 		</Dialog>
-	)
-}
+	);
+};
 
-
-export default Form
+export default Form;

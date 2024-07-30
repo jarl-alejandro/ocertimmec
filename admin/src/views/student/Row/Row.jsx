@@ -6,14 +6,14 @@ import DateFormat from '../../../components/DateFormat';
 import Actions from './Actions';
 import studentAction from '../../../actions/student.action';
 
-const Row = ({ row, onCompleteInscription }) => {
+const Row = ({ row, onCompleteInscription, onCertificate }) => {
 	const dispatch = useDispatch();
 
 	const handleToggleModal = () => dispatch(studentAction.toggleModal(row));
 	const handleVerificar = () => dispatch(studentAction.onVerificar(row._id));
 	const handleDeleted = () => dispatch(studentAction.deleted(row._id));
 	const handleCertificateAssitent = () => dispatch(studentAction.onCertificateAssitent(row));
-	const handleCertificate = () => dispatch(studentAction.onCertificate(row));
+
 
 	return (
 		<TableRow>
@@ -35,7 +35,7 @@ const Row = ({ row, onCompleteInscription }) => {
 				onDeleted={handleDeleted}
 				onCompleteInscription={onCompleteInscription}
 				onCertificateAssitent={handleCertificateAssitent}
-				onCertificate={handleCertificate}
+				onCertificate={onCertificate}
 			/>
 		</TableRow>
 	);

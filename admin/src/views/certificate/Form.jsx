@@ -16,8 +16,7 @@ import {
 } from '@mui/material'
 import LinkedCamera from '@mui/icons-material/LinkedCamera'
 import { makeStyles } from '@mui/styles'
-import RichTextEditor from 'react-rte'
-import EditorOccertimm from '../../components/Editor'
+import EditorOccertimm from '../../components/EditorOccertimm.jsx'
 import certificateAction from '../../actions/certificate.action'
 import usersAction from '../../actions/users.action'
 import { BASE_URL_MEDIA } from '../../config'
@@ -63,12 +62,12 @@ const initialState = {
 	nameCertificate: '',
 	userId: '',
 	cost: '',
-	competition: RichTextEditor.createEmptyValue(),
-	competitionUnits: RichTextEditor.createEmptyValue(),
-	requirements: RichTextEditor.createEmptyValue(),
-	description: RichTextEditor.createEmptyValue(),
+	competition: '',
+	competitionUnits: '',
+	requirements: '',
+	description: '',
 	place: '',
-	note: RichTextEditor.createEmptyValue(),
+	note: '',
 	uc: '',
 	sector: '',
 	squemaCode: '',
