@@ -167,7 +167,7 @@ const Form = ({ isOpen, toggleForm }) => {
 	const title = edit._id ? 'Editar' : 'Nueva';
 
 	return (
-		<Dialog open={isOpen} onClose={handleCancel} aria-labelledby="form-dialog-title">
+		<Dialog fullWidth={true} maxWidth="md" open={isOpen} onClose={handleCancel} aria-labelledby="form-dialog-title">
 			<DialogTitle id="form-dialog-title">{title} capacitación</DialogTitle>
 			<DialogContent className={classes.grid}>
 				<TextField

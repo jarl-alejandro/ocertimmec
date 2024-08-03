@@ -11,7 +11,6 @@ async function created (data, io) {
 		})
 	})
 
-	console.log(data)
 	// io.emit('created::training', query)
 }
 

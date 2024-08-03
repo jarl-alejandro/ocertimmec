@@ -20,7 +20,6 @@ import { BASE_URL_MEDIA } from '../../config';
 const useStyles = makeStyles(theme => ({
 	grid: {
 		display: 'grid',
-		gridTemplateColumns: 'repeat(2, 1fr)',
 		gridGap: '0 15px',
 		'@media (max-width: 640px)': {
 			display: 'block',
@@ -30,11 +29,10 @@ const useStyles = makeStyles(theme => ({
 		}
 	},
 	gridComplete: {
-		gridColumn: '2 span'
 	},
 	formControl: {
-		margin: theme.spacing(1),
 		minWidth: 120,
+		marginBlock: '1rem !important'
 	},
 	bigAvatar: {
 		width: 60,
@@ -160,6 +158,8 @@ const Form = ({ isOpen, toggleForm }) => {
 	return (
 		<Dialog
 			open={isOpen}
+			maxWidth="sm"
+			fullWidth={true}
 			onClose={handleCancel}
 			aria-labelledby="form-dialog-title"
 		>
@@ -185,8 +185,9 @@ const Form = ({ isOpen, toggleForm }) => {
 				/>
 
 				<FormControl className={classes.formControl}>
-					<InputLabel htmlFor="roles">Roles</InputLabel>
+					<InputLabel id="roles">Roles</InputLabel>
 					<Select
+						labelId="roles"
 						value={state.roles}
 						onChange={setField}
 						inputProps={{

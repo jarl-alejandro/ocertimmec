@@ -4,8 +4,8 @@ import { makeStyles } from '@mui/styles'; // Asegúrate de tener esta dependenci
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
-		margin: theme.spacing(1), // Cambiado a 1 para que sea compatible con el tema actual
 		minWidth: 120,
+		marginBlock: '1rem !important'
 	},
 	select: {
 		'& *': {

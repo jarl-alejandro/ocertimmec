@@ -59,7 +59,7 @@ const Row = ({ row, toggleForm }) => {
 			</CustomTableCell>
 
 			<CustomTableCell>
-				<div className={classes.flex}>
+				<div className="flex around gap">
 					<Button
 						variant="contained"
 						color="primary"

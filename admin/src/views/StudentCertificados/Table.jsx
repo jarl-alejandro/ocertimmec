@@ -46,7 +46,7 @@ const TableCustom = ({ classes, table, toggleCertificate }) => {
 				))}
 			</TableBody>
 			<TablePagination
-				colSpan={6}
+				colSpan={9}
 				count={table.length}
 				rowsPerPage={rowsPerPage}
 				page={page}

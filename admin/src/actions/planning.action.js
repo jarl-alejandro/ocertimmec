@@ -17,6 +17,7 @@ export default {
 	},
 
 	savedPlanning: payload => (dispatch, _, { emitSocket }) => {
+		console.log(payload)
 		emitSocket('created::planning', payload)
 	},
 

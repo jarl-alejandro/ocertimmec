@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	IconButton,
@@ -38,8 +38,8 @@ const useStyles = makeStyles(theme => ({
 		gridColumn: '2 span'
 	},
 	formControl: {
-		margin: theme.spacing(1),
 		minWidth: 120,
+		marginBlock: '1rem !important'
 	},
 	marginTop: {
 		marginTop: 16
@@ -77,13 +77,14 @@ const initialState = {
 	format: 'html',
 }
 
-function Form({ isOpen, toggleForm, closeEdit, edit }) {
+function Form({ isOpen, toggleForm }) {
 	const classes = useStyles()
 	const dispatch = useDispatch()
-	const teachers = useSelector(state => state.users.teachers)
-
+	const { teachers, edit } = useSelector((state) => ({
+		teachers: state.users.teachers,
+		edit: state.certificate.edit,
+	}));
 	const [state, setState] = useState(initialState)
-	const refRequeriment = createRef()
 
 	useEffect(() => {
 		dispatch(usersAction.fetchTeacher('Examinador'))
@@ -94,12 +95,12 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 				nameCertificate: edit.name || '',
 				userId: edit.id_user._id || '',
 				cost: edit.cost || '',
-				competition: RichTextEditor.createValueFromString(edit.competition || '', state.format),
-				competitionUnits: RichTextEditor.createValueFromString(edit.competitionUnits || '', state.format),
-				requirements: RichTextEditor.createValueFromString(edit.requirements || '', state.format),
-				description: RichTextEditor.createValueFromString(edit.description || '', state.format),
+				competition: edit.competition || '',
+				competitionUnits: edit.competitionUnits || '',
+				requirements: edit.requirements || '',
+				description: edit.description || '',
 				place: edit.place || '',
-				note: RichTextEditor.createValueFromString(edit.note || '', state.format),
+				note: edit.note || '',
 				uc: edit.uc || '',
 				sector: edit.sector || '',
 				squemaCode: edit.squemaCode || '',
@@ -143,7 +144,7 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 	const handleCancel = () => {
 		setState(initialState)
 		toggleForm()
-		closeEdit()
+		dispatch(certificateAction.edit({}));
 	}
 
 	const getForm = () => {
@@ -185,6 +186,8 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 
 	return (
 		<Dialog
+			fullWidth={true}
+			maxWidth="md"
 			open={isOpen}
 			onClose={handleCancel}
 			aria-labelledby="form-dialog-title"
@@ -201,8 +204,9 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 				/>
 
 				<FormControl className={classes.formControl}>
-					<InputLabel htmlFor="userId">Examinador</InputLabel>
+					<InputLabel id="userId">Examinador</InputLabel>
 					<Select
+						labelId="userId"
 						value={state.userId}
 						onChange={setField}
 						inputProps={{
@@ -223,8 +227,9 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 				</FormControl>
 
 				<FormControl className={classes.formControl}>
-					<InputLabel htmlFor="squemaCode">Codigo de esquema</InputLabel>
+					<InputLabel id="squemaCode">Codigo de esquema</InputLabel>
 					<Select
+						labelId="squemaCode"
 						value={state.squemaCode}
 						onChange={setField}
 						inputProps={{
@@ -234,7 +239,29 @@ function Form({ isOpen, toggleForm, closeEdit, edit }) {
 					>
 						<MenuItem value='ATS-PRL-201703'>ATS-PRL-201703 PREVENCIÓN EN RIESGOS LABORALES</MenuItem>
 						<MenuItem value='ATS-ASI-201704'>ATS-ASI-201704 ASISTENCIA EN SEGURIDAD INDUSTRIAL</MenuItem>
-						{/* Other MenuItems */}
+						<MenuItem value='E-ADMABP-201709'>E-ADMABP-201709 ACTIVIDADES DE DOCENCIA EN METODOLOGIA DE APRENDIZAJE BASADO EN PROYECTOS ABP</MenuItem>
+						<MenuItem value='AC-AAPRYD'>AC-AAPRYD ACTIVIDADES DE APOYO PARA LA PROMOSION EN RECREACION Y DEPORTES</MenuItem>
+						<MenuItem value='ATS-GEV-201707'>ATS-GEV-201707 GESTION ESPECIALIZADA EN VENTAS</MenuItem>
+						<MenuItem value='ATS-CYMRN-201709'>ATS-CYMRN-201709 CONSERVACION Y MANEJO DE RECURSOS NATURALES</MenuItem>
+						<MenuItem value='VACP-MEV-201703'>VACP-MEV-201703 MANTENIMIENTO ELECTROMECANICO DE VEHICULOS</MenuItem>
+						<MenuItem value='VACP-MA-201703'>VACP-MA-201703 MECATRONICA AUTOMOTRIZ</MenuItem>
+						<MenuItem value='CYVP-ACE-201709'>CYVP-ASE-201709 ASISTENCIA EN COMERCIO EXTERIOR</MenuItem>
+						<MenuItem value='VASP-RMMC-201703'>VASP-RMMC-201703 REPERACION, MONTAJE Y MODIFICACION DE CARROCERIAS</MenuItem>
+						<MenuItem value='TYA-V-201607'>TYA-V-201607 VENTAS</MenuItem>
+						<MenuItem value='SF-AC-201707'>SF-AC-201707 ASISTENCIA DE CONTABILIDAD</MenuItem>
+						<MenuItem value='ATS-GA-201707'>ATS-GA-201707 GESTION ADMINISTRATIVA</MenuItem>
+
+						<MenuItem value='AC-ADE-18-10-2017'>AC-ADE-18-10-2017 ACTIVIDADES PARA DEPORTES DE EQUIPOS</MenuItem>
+						<MenuItem value='ATS-AD-201906'>ATS-AD-201906 ARBITRAJE DEPORTIVO EN FÚTBOL</MenuItem>
+						<MenuItem value='ATS-ADI-201807-001'>ATS-ADI-201807-001 ASESORÍA DE IMAGEN</MenuItem>
+						<MenuItem value='AC-C-201810-001'>AC-C-201810-001 COSMETOLOGÍA</MenuItem>
+						<MenuItem value='AC-CS-201810-001'>AC-CS-201810-001 COSMIATRÍA</MenuItem>
+						<MenuItem value='ATS-CDPAM-201902'>ATS-CDPAM-201902 CUIDADO DE PERSONAS ADULTAS MAYORES</MenuItem>
+						<MenuItem value='ATS-M-201805-001'>ATS-M-201805-001 MAQUILLAJE</MenuItem>
+						<MenuItem value='ATS-PRL-201901-001'>ATS-PRL-201901-001 PREVENCIÓN DE RIESGOS LABORALES: CONSTRUCCIÓN Y OBRAS PÚBLICAS</MenuItem>
+						<MenuItem value='ATS-PRL-201901-002'>ATS-PRL-201901-002 PREVENCIÓN DE RIESGOS LABORALES: ENERGÍA ELÉCTRICA</MenuItem>
+
+						<MenuItem value='E–AEEHYLCDPCD–201805–001'>E–AEEHYLCDPCD–201805–001 ATENCIÓN EN EL HOGAR Y LA COMUNIDAD DE PERSONAS CON DISCAPACIDAD</MenuItem>
 					</Select>
 				</FormControl>
 
