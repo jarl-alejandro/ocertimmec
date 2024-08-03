@@ -24,6 +24,7 @@ export interface TrainingCertificate extends Training, Certificate {
     name: string;
     type: string;
     photo: string,
+    video: string,
     isActive: boolean;
 }
 

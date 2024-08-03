@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const initialState = {
+	video: '',
 	name: '',
 	imagePreviewUrl: '',
 	photo: '',
@@ -93,6 +94,7 @@ const Form = ({ isOpen, toggleForm }) => {
 				materials: edit.materials || '',
 				content: edit.content || '',
 				place: edit.place || '',
+				video: edit.video || '',
 				imagePreviewUrl: `${BASE_URL_MEDIA}${edit.photo}`,
 			});
 		}
@@ -144,6 +146,7 @@ const Form = ({ isOpen, toggleForm }) => {
 			place: state.place,
 			content: state.content.toString(state.format),
 			cost: state.cost,
+			video: state.video,
 		};
 
 		if (state.photo) {
@@ -225,7 +228,15 @@ const Form = ({ isOpen, toggleForm }) => {
 					value={state.place}
 					className={classes.gridComplete}
 				/>
-
+				<TextField
+					margin="dense"
+					name="video"
+					label="Video promocional"
+					fullWidth
+					onChange={setField}
+					value={state.video}
+					className={classes.gridComplete}
+				/>
 				<div className={`${classes.gridComplete} ${classes.marginTop}`}>
 					<InputLabel>Materiales</InputLabel>
 					<div className={classes.paddingBottom} />

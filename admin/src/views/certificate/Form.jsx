@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const initialState = {
+	video: '',
 	nameCertificate: '',
 	userId: '',
 	cost: '',
@@ -113,6 +114,7 @@ function Form({ isOpen, toggleForm }) {
 				note: edit.note || '',
 				uc: edit.uc || '',
 				sector: edit.sector || '',
+				video: edit.video || '',
 				squemaCode: edit.squemaCode || '',
 				imagePreviewUrl: `${BASE_URL_MEDIA}${edit.photo}`,
 				materials: edit?.materials || [],
@@ -174,7 +176,7 @@ function Form({ isOpen, toggleForm }) {
 			uc: state.uc,
 			sector: state.sector,
 			squemaCode: state.squemaCode,
-
+			video: state.video,
 			materials: state.materials,
 			equipments: state.equipments,
 			tools: state.tools,
@@ -381,6 +383,15 @@ function Form({ isOpen, toggleForm }) {
 					fullWidth
 					onChange={setField}
 					value={state.place}
+					className={classes.gridComplete}
+				/>
+				<TextField
+					margin="dense"
+					name="video"
+					label="Video promocional"
+					fullWidth
+					onChange={setField}
+					value={state.video}
 					className={classes.gridComplete}
 				/>
 

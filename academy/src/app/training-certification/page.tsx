@@ -5,7 +5,6 @@ import style from './course.module.css'
 
 async function getData() {
     const res = await fetch(`${process.env.API_URL}/training-certificate`)
-
     if (!res.ok) {
         throw new Error('Failed to fetch data')
     }

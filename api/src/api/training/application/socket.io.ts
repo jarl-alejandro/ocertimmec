@@ -10,6 +10,7 @@ async function created (data, io) {
 		cost: data.cost,
 		content: data.content,
 		place: data.place,
+		video: data.video,
 	})
 
 	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')

@@ -10,7 +10,8 @@ interface ProfilesProps {
     register?: any,
     setValue: any,
     name?: string | null,
-    isEdit?: boolean
+    isEdit?: boolean,
+    loadUser?: boolean
 }
 
 export function Profiles(props: ProfilesProps) {
@@ -26,9 +27,9 @@ export function Profiles(props: ProfilesProps) {
                 if (!isNullOrUndefined(props.courseId)) {
                     const found: TrainingCertificate = json.find(i => i._id === props.courseId) as TrainingCertificate;
                     if (!isNullOrUndefined(found)) {
-                        const newSelectedCourses = { ...selectedCourses, [found._id]: !selectedCourses[found._id] };
+                        const newSelectedCourses = {...selectedCourses, [found._id]: !selectedCourses[found._id]};
                         setSelectedCourses(newSelectedCourses);
-                        props.setValue(`courses`, [ { id: found._id, type: found.type }]);
+                        props.setValue(`courses`, [{id: found._id, type: found.type}]);
                     }
                 }
             });
@@ -56,9 +57,9 @@ export function Profiles(props: ProfilesProps) {
 
     if (props.isEdit) {
         return (
-            <div className={style['container-profiles']} style={{ paddingBottom: '2rem' }}>
+            <div className={style['container-profiles']} style={{paddingBottom: '2rem'}}>
                 <div className="form-check">
-                    <input type="checkbox" className="form-check-input" checked disabled />
+                    <input type="checkbox" className="form-check-input" checked disabled/>
                     <label className="form-check-label">{props.name}</label>
                 </div>
             </div>

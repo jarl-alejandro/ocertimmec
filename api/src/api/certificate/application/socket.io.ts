@@ -16,6 +16,7 @@ async function created (data, io) {
 		uc: data.uc,
 		squemaCode: data.squemaCode,
 		sector: data.sector,
+		video: data.video,
 
 		materials: data.materials,
 		equipments: data.equipments,

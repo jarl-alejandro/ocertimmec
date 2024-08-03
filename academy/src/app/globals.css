@@ -52,3 +52,6 @@ td {
 .swal2-actions {
     gap: 1rem;
 }
+iframe {
+    width: 100% !important;
+}

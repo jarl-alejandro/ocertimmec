@@ -12,6 +12,8 @@ export interface Training extends Document {
 	type: String;
 	photo: String,
 	isActive: Boolean;
+	video: String,
+
 }
 
 const TrainingSchema = new Schema<Training>({
@@ -23,6 +25,7 @@ const TrainingSchema = new Schema<Training>({
 	name: { type: String, default: "" },
 	type: { type: String, default: 'Training' },
 	photo: String,
+	video: String,
 	isActive: { type: Boolean, default: true }
 })
 

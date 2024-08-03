@@ -18,7 +18,7 @@ export interface Certificate extends Document {
 	sector: String,
 	isActive: Boolean;
 	squemaCode: String,
-
+	video: String,
 	materials: string[],
 	equipments: string[],
 	tools: string[],
@@ -38,6 +38,7 @@ const CertificateSchema = new Schema<Certificate>({
 	type: { type: String, default: 'Certificate' },
 	uc: String,
 	sector: String,
+	video: String,
 	isActive: { type:Boolean, default: true },
 	squemaCode: { type: String },
 

@@ -37,6 +37,7 @@ export default function InscriptionForm(props: Props) {
     const {register, handleSubmit, setValue, formState: {errors}, reset, watch} = useForm<InscriptionCommand>({});
     const [isSendForm, setSendForm] = useState(false)
     const [isEdit, setEdit] = useState(false)
+    const [loadUser, setLoadUser] = useState(false)
     const [inputFileName, setInputFileName] = useState<string | null>(null)
     const router = useRouter();
 
@@ -65,6 +66,7 @@ export default function InscriptionForm(props: Props) {
                 if (!isNullOrUndefined(studentInfo)) {
                     setValue('name', studentInfo.name)
                     setValue('lastName', studentInfo.lastName)
+                    setLoadUser(true)
                 }
                 if (!isNullOrUndefined(studentInfo?.lastInscription)) {
                     initializeInscription(studentInfo);
@@ -89,6 +91,7 @@ export default function InscriptionForm(props: Props) {
 
     const initializeInscription = (studentInfo: StudentInfo) => {
         fillFormFromStudentInfo(setValue, studentInfo);
+        setLoadUser(true)
         const inscription: LastInscription = studentInfo?.lastInscription as LastInscription;
 
         if (inscription?.certificateId === props.certificateId && !inscription.isAll) {
@@ -181,6 +184,7 @@ export default function InscriptionForm(props: Props) {
                         <h5 className="card-title text-primary">PERFILES</h5>
                     </header>
                     <Profiles
+                        loadUser={loadUser}
                         isEdit={isEdit}
                         name={props.name}
                         courseId={props.certificateId || props.trainingId}
@@ -193,7 +197,7 @@ export default function InscriptionForm(props: Props) {
                     <header className="card-header bg-transparent">
                         <h5 className="card-title text-primary">1.- PROCESO DE INSCRIPCIÓN</h5>
                     </header>
-                    <EnrollmentProcess errors={errors} register={register}/>
+                    <EnrollmentProcess loadUser={loadUser} errors={errors} register={register}/>
                 </article>
 
                 <article className="card border mb-3 bg-light">
