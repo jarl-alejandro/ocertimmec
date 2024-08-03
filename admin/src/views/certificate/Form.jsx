@@ -20,6 +20,7 @@ import EditorOccertimm from '../../components/EditorOccertimm.jsx'
 import certificateAction from '../../actions/certificate.action'
 import usersAction from '../../actions/users.action'
 import { BASE_URL_MEDIA } from '../../config'
+import ListManager from "./ListManager.jsx";
 
 // Define styles with makeStyles
 const useStyles = makeStyles(theme => ({
@@ -33,6 +34,11 @@ const useStyles = makeStyles(theme => ({
 				width: '100%'
 			}
 		}
+	},
+	gridThree: {
+		display: 'grid',
+		gap: '1rem',
+		gridTemplateColumns: 'repeat(3, 1fr)',
 	},
 	gridComplete: {
 		gridColumn: '2 span'
@@ -75,6 +81,10 @@ const initialState = {
 	photo: '',
 	isPhoto: false,
 	format: 'html',
+
+	materials: [],
+	equipments: [],
+	tools: [],
 }
 
 function Form({ isOpen, toggleForm }) {
@@ -105,6 +115,9 @@ function Form({ isOpen, toggleForm }) {
 				sector: edit.sector || '',
 				squemaCode: edit.squemaCode || '',
 				imagePreviewUrl: `${BASE_URL_MEDIA}${edit.photo}`,
+				materials: edit?.materials || [],
+				equipments: edit?.equipments || [],
+				tools: edit?.tools || [],
 			}))
 		}
 	}, [dispatch, edit, state.format])
@@ -161,6 +174,10 @@ function Form({ isOpen, toggleForm }) {
 			uc: state.uc,
 			sector: state.sector,
 			squemaCode: state.squemaCode,
+
+			materials: state.materials,
+			equipments: state.equipments,
+			tools: state.tools,
 		}
 
 		if (state.photo) {
@@ -181,6 +198,18 @@ function Form({ isOpen, toggleForm }) {
 
 		return formObject
 	}
+
+	const setMaterials = (materials) => {
+		setState(prevState => ({ ...prevState, materials }));
+	};
+
+	const setEquipments = (equipments) => {
+		setState(prevState => ({ ...prevState, equipments }));
+	};
+
+	const setTools = (tools) => {
+		setState(prevState => ({ ...prevState, tools }));
+	};
 
 	const title = edit?._id ? 'Editar' : 'Nueva'
 
@@ -239,29 +268,39 @@ function Form({ isOpen, toggleForm }) {
 					>
 						<MenuItem value='ATS-PRL-201703'>ATS-PRL-201703 PREVENCIÓN EN RIESGOS LABORALES</MenuItem>
 						<MenuItem value='ATS-ASI-201704'>ATS-ASI-201704 ASISTENCIA EN SEGURIDAD INDUSTRIAL</MenuItem>
-						<MenuItem value='E-ADMABP-201709'>E-ADMABP-201709 ACTIVIDADES DE DOCENCIA EN METODOLOGIA DE APRENDIZAJE BASADO EN PROYECTOS ABP</MenuItem>
-						<MenuItem value='AC-AAPRYD'>AC-AAPRYD ACTIVIDADES DE APOYO PARA LA PROMOSION EN RECREACION Y DEPORTES</MenuItem>
+						<MenuItem value='E-ADMABP-201709'>E-ADMABP-201709 ACTIVIDADES DE DOCENCIA EN METODOLOGIA DE
+							APRENDIZAJE BASADO EN PROYECTOS ABP</MenuItem>
+						<MenuItem value='AC-AAPRYD'>AC-AAPRYD ACTIVIDADES DE APOYO PARA LA PROMOSION EN RECREACION Y
+							DEPORTES</MenuItem>
 						<MenuItem value='ATS-GEV-201707'>ATS-GEV-201707 GESTION ESPECIALIZADA EN VENTAS</MenuItem>
-						<MenuItem value='ATS-CYMRN-201709'>ATS-CYMRN-201709 CONSERVACION Y MANEJO DE RECURSOS NATURALES</MenuItem>
-						<MenuItem value='VACP-MEV-201703'>VACP-MEV-201703 MANTENIMIENTO ELECTROMECANICO DE VEHICULOS</MenuItem>
+						<MenuItem value='ATS-CYMRN-201709'>ATS-CYMRN-201709 CONSERVACION Y MANEJO DE RECURSOS
+							NATURALES</MenuItem>
+						<MenuItem value='VACP-MEV-201703'>VACP-MEV-201703 MANTENIMIENTO ELECTROMECANICO DE
+							VEHICULOS</MenuItem>
 						<MenuItem value='VACP-MA-201703'>VACP-MA-201703 MECATRONICA AUTOMOTRIZ</MenuItem>
 						<MenuItem value='CYVP-ACE-201709'>CYVP-ASE-201709 ASISTENCIA EN COMERCIO EXTERIOR</MenuItem>
-						<MenuItem value='VASP-RMMC-201703'>VASP-RMMC-201703 REPERACION, MONTAJE Y MODIFICACION DE CARROCERIAS</MenuItem>
+						<MenuItem value='VASP-RMMC-201703'>VASP-RMMC-201703 REPERACION, MONTAJE Y MODIFICACION DE
+							CARROCERIAS</MenuItem>
 						<MenuItem value='TYA-V-201607'>TYA-V-201607 VENTAS</MenuItem>
 						<MenuItem value='SF-AC-201707'>SF-AC-201707 ASISTENCIA DE CONTABILIDAD</MenuItem>
 						<MenuItem value='ATS-GA-201707'>ATS-GA-201707 GESTION ADMINISTRATIVA</MenuItem>
 
-						<MenuItem value='AC-ADE-18-10-2017'>AC-ADE-18-10-2017 ACTIVIDADES PARA DEPORTES DE EQUIPOS</MenuItem>
+						<MenuItem value='AC-ADE-18-10-2017'>AC-ADE-18-10-2017 ACTIVIDADES PARA DEPORTES DE
+							EQUIPOS</MenuItem>
 						<MenuItem value='ATS-AD-201906'>ATS-AD-201906 ARBITRAJE DEPORTIVO EN FÚTBOL</MenuItem>
 						<MenuItem value='ATS-ADI-201807-001'>ATS-ADI-201807-001 ASESORÍA DE IMAGEN</MenuItem>
 						<MenuItem value='AC-C-201810-001'>AC-C-201810-001 COSMETOLOGÍA</MenuItem>
 						<MenuItem value='AC-CS-201810-001'>AC-CS-201810-001 COSMIATRÍA</MenuItem>
-						<MenuItem value='ATS-CDPAM-201902'>ATS-CDPAM-201902 CUIDADO DE PERSONAS ADULTAS MAYORES</MenuItem>
+						<MenuItem value='ATS-CDPAM-201902'>ATS-CDPAM-201902 CUIDADO DE PERSONAS ADULTAS
+							MAYORES</MenuItem>
 						<MenuItem value='ATS-M-201805-001'>ATS-M-201805-001 MAQUILLAJE</MenuItem>
-						<MenuItem value='ATS-PRL-201901-001'>ATS-PRL-201901-001 PREVENCIÓN DE RIESGOS LABORALES: CONSTRUCCIÓN Y OBRAS PÚBLICAS</MenuItem>
-						<MenuItem value='ATS-PRL-201901-002'>ATS-PRL-201901-002 PREVENCIÓN DE RIESGOS LABORALES: ENERGÍA ELÉCTRICA</MenuItem>
+						<MenuItem value='ATS-PRL-201901-001'>ATS-PRL-201901-001 PREVENCIÓN DE RIESGOS LABORALES:
+							CONSTRUCCIÓN Y OBRAS PÚBLICAS</MenuItem>
+						<MenuItem value='ATS-PRL-201901-002'>ATS-PRL-201901-002 PREVENCIÓN DE RIESGOS LABORALES: ENERGÍA
+							ELÉCTRICA</MenuItem>
 
-						<MenuItem value='E–AEEHYLCDPCD–201805–001'>E–AEEHYLCDPCD–201805–001 ATENCIÓN EN EL HOGAR Y LA COMUNIDAD DE PERSONAS CON DISCAPACIDAD</MenuItem>
+						<MenuItem value='E–AEEHYLCDPCD–201805–001'>E–AEEHYLCDPCD–201805–001 ATENCIÓN EN EL HOGAR Y LA
+							COMUNIDAD DE PERSONAS CON DISCAPACIDAD</MenuItem>
 					</Select>
 				</FormControl>
 
@@ -276,7 +315,7 @@ function Form({ isOpen, toggleForm }) {
 
 				<div className={`${classes.gridComplete} ${classes.marginTop}`}>
 					<InputLabel>Requisitos</InputLabel>
-					<div className={classes.paddingBottom} />
+					<div className={classes.paddingBottom}/>
 					<EditorOccertimm
 						value={state.requirements}
 						name="requirements"
@@ -286,7 +325,7 @@ function Form({ isOpen, toggleForm }) {
 
 				<div className={`${classes.gridComplete} ${classes.marginTop}`}>
 					<InputLabel>Descripcion</InputLabel>
-					<div className={classes.paddingBottom} />
+					<div className={classes.paddingBottom}/>
 					<EditorOccertimm
 						value={state.description}
 						name="description"
@@ -296,7 +335,7 @@ function Form({ isOpen, toggleForm }) {
 
 				<div className={`${classes.gridComplete} ${classes.marginTop}`}>
 					<InputLabel>Competición General</InputLabel>
-					<div className={classes.paddingBottom} />
+					<div className={classes.paddingBottom}/>
 					<EditorOccertimm
 						value={state.competition}
 						name="competition"
@@ -306,7 +345,7 @@ function Form({ isOpen, toggleForm }) {
 
 				<div className={`${classes.gridComplete} ${classes.marginTop}`}>
 					<InputLabel>Unidades de competenica</InputLabel>
-					<div className={classes.paddingBottom} />
+					<div className={classes.paddingBottom}/>
 					<EditorOccertimm
 						value={state.competitionUnits}
 						name="competitionUnits"
@@ -347,7 +386,7 @@ function Form({ isOpen, toggleForm }) {
 
 				<div className={`${classes.gridComplete} ${classes.marginTop}`}>
 					<InputLabel>Nota</InputLabel>
-					<div className={classes.paddingBottom} />
+					<div className={classes.paddingBottom}/>
 					<EditorOccertimm
 						name="note"
 						value={state.note}
@@ -371,10 +410,28 @@ function Form({ isOpen, toggleForm }) {
 					<div className="fullWidth flex flex-center flex-center-y">
 						<IconButton>
 							<label htmlFor="photo-user" className={classes.label}>
-								<LinkedCamera />
+								<LinkedCamera/>
 							</label>
 						</IconButton>
 					</div>
+				</div>
+
+				<div className={`${classes.gridComplete} ${classes.gridThree}`}>
+					<ListManager
+						items={state.materials}
+						setItems={setMaterials}
+						label="Material"
+					/>
+					<ListManager
+						items={state.equipments}
+						setItems={setEquipments}
+						label="Equipo"
+					/>
+					<ListManager
+						items={state.tools}
+						setItems={setTools}
+						label="Herramienta"
+					/>
 				</div>
 
 			</DialogContent>

@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 const TableApp = ({ toggleForm }) => {
 	const classes = useStyles();
 	const [page, setPage] = useState(0);
-	const [rowsPerPage, setRowsPerPage] = useState(5);
+	const [rowsPerPage, setRowsPerPage] = useState(100);
 
 	const users = useSelector(state => state.users.users);
 	const search = useSelector(state => state.search.value);

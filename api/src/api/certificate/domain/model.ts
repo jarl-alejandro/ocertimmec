@@ -18,6 +18,10 @@ export interface Certificate extends Document {
 	sector: String,
 	isActive: Boolean;
 	squemaCode: String,
+
+	materials: string[],
+	equipments: string[],
+	tools: string[],
 }
 
 const CertificateSchema = new Schema<Certificate>({
@@ -36,6 +40,10 @@ const CertificateSchema = new Schema<Certificate>({
 	sector: String,
 	isActive: { type:Boolean, default: true },
 	squemaCode: { type: String },
+
+	materials: [{ type: String }],
+	equipments: [{ type: String }],
+	tools: [{ type: String }],
 })
 
 export default model<Certificate>('Certificate', CertificateSchema, 'Certificate')

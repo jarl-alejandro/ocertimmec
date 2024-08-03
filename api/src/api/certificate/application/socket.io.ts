@@ -16,6 +16,10 @@ async function created (data, io) {
 		uc: data.uc,
 		squemaCode: data.squemaCode,
 		sector: data.sector,
+
+		materials: data.materials,
+		equipments: data.equipments,
+		tools: data.tools,
 	});
 
 	const create = await certificateToSave.save();

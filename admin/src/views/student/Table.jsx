@@ -10,7 +10,7 @@ import TablePagination from '../../components/TablePagination';
 
 const DataTable = ({ classes, table, onCompleteInscription, onCertificate, onEdit }) => {
 	const [page, setPage] = useState(0);
-	const [rowsPerPage, setRowsPerPage] = useState(5);
+	const [rowsPerPage, setRowsPerPage] = useState(100);
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
