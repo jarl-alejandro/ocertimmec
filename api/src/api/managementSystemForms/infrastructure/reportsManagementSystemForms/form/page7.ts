@@ -24,7 +24,7 @@ const template = `
 			border: 1px solid black;
 		}
 		.side td {
-			height: 28px;
+			height: 48px;
 			border: 1px solid black;
 		}
 		.table-cc07 {
@@ -68,7 +68,7 @@ const template = `
 					<td>PINEDA ROMO</td>
 					<td>MIKE HARVIC</td>
 					<td>1723104988</td>
-					<td  style=font-size:10px">lemm2504@hotmail.com</td>
+					<td  style=font-size:16px">lemm2504@hotmail.com</td>
 					<td>023766135</td>
 					<td>0989231482</td>
 					<td></td>
@@ -78,7 +78,7 @@ const template = `
 					<td>${ lastName.toUpperCase() }</td>
 					<td>${ name.toUpperCase() }</td>
 					<td>${ certificate.id_user.cedula }</td>
-					<td style=font-size:10px">${ certificate.id_user.email }</td>
+					<td style=font-size:16px">${ certificate.id_user.email }</td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -88,55 +88,15 @@ const template = `
 					<td>${props.lastName}</td>
 					<td>${props.name}</td>
 					<td>${props.document}</td>
-					<td style=font-size:10px">${props.email}</td>
+					<td style=font-size:16px">${props.email}</td>
 					<td>${props.phone}</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>6</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>7</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
 					<td></td>
 					<td></td>
 				</tr>
 			</tbody>
 		</table>
 
-		<br/><br/><br/><br/>
+		<br/><br/><br/><br/><br/><br/>
 		<article style="width:40%;margin:0 auto;text-align:center">
 			<span style="display:inline-block;width:100%;height:1px;background:black;"></span>
 			<p style="margin:0;font-weight:bold;font-size:14px;">Analista de certificación y control</p>

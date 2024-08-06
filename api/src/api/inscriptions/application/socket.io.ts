@@ -56,7 +56,7 @@ async function updatedStudent(count, io, payload) {
 			isAll: true,
 			codigoCertificado: payload.code,
 			placeCertificate: payload.placeCertificate,
-			dateCertificate: payload.date,
+			dateCertificate: new Date(payload.date+"T00:00:00"),
 			hourCertificate: payload.hour,
 			notaCertificate: payload.nota,
 			numberAplicacion: count

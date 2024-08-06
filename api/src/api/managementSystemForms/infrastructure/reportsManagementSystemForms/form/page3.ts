@@ -61,7 +61,7 @@ function formatDate (date) {
 function page(props: any, certificate: any) {
 
 	let dateCerficate = new Date(props.dateCertificate)
-	let fechaAplicacion = datePlus(props.dateCertificate, 2)
+	let fechaAplicacion = datePlus(props.dateCertificate, 2, props.fechaAplicacion)
 
 
 	return `
@@ -89,11 +89,11 @@ function page(props: any, certificate: any) {
 		<br/>
 		<div style="">
 			<label>Fecha de aplicación:</label>
-			<span style="display:inline-block;width:20px;border-bottom: 1px solid black;">  ${fechaAplicacion.getDate()}</span>
+			<span style="display:inline-block;width:20px;border-bottom: 1px solid black;">  ${!fechaAplicacion ? '' : fechaAplicacion.getDate()}</span>
 			<label>/</label>
-			<span style="display:inline-block;width:20px;border-bottom: 1px solid black;">  ${fechaAplicacion.getMonth() + 1}</span>
+			<span style="display:inline-block;width:20px;border-bottom: 1px solid black;">  ${!fechaAplicacion ? '' : fechaAplicacion.getMonth() + 1}</span>
 			<label>/</label>
-			<span style="display:inline-block;width:40px;border-bottom: 1px solid black;">  ${fechaAplicacion.getFullYear()}</span>
+			<span style="display:inline-block;width:40px;border-bottom: 1px solid black;">  ${!fechaAplicacion ? '' : fechaAplicacion.getFullYear()}</span>
 		</div>
 
 		<br/><br/>

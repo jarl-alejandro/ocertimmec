@@ -1,13 +1,38 @@
 import headerc006 from './headerc006'
 import control from './control'
+import type {Certificate} from "../../../../certificate/domain/model";
 
 function formatDate(date) {
+	if (!date) {
+		return '';
+	}
 	let day = date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`
 	let month = date.getMonth() + 1 >= 10 ? 1 + date.getMonth() : `0${date.getMonth() + 1}`
 	return `${day}/${month}/${date.getFullYear()}`
 }
 
-function page(props, certificate, planning) {
+function adapterList(list: string[]) {
+	return list.map(item => {
+		return `
+		<tr>
+			<td style="border:1px solid black;">${item}</td>
+			<td style="border:1px solid black;"></td>
+			<td style="border:1px solid black;"></td>
+			<td style="border:1px solid black;"></td>
+		</tr>
+		`;
+	}).join('');
+}
+
+function page(props, certificate: Certificate, planning) {
+	const materials: string[] = certificate.materials || [];
+	const tools: string[] = certificate.tools || [];
+	const equipments: string[] = certificate.equipments || [];
+
+	const materialsHTML = adapterList(materials);
+	const toolsHTML = adapterList(tools);
+	const equipmentsHTML = adapterList(equipments);
+
 const template = `
 <style>
 	.side table {
@@ -90,24 +115,7 @@ const template = `
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
+					${equipmentsHTML}
 				</tbody>
 			</table>
 			<br/>
@@ -121,43 +129,7 @@ const template = `
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-
-						<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
+							${materialsHTML}
 				</tbody>
 			</table>
 			<table>
@@ -190,102 +162,7 @@ const template = `
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-										<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-										<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-										<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
-					<tr>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-						<td style="border:1px solid black;"></td>
-					</tr>
+							${toolsHTML}
 					<tr>
 						<td style="border:1px solid black;font-size:12px"" colspan="4">OBSERVACIONES  DEL LUGAR DE EXAMINACIÓN</td>
 					</tr>

@@ -140,6 +140,7 @@ function formatDate(date) {
 		let month = date.getMonth() + 1 >= 10 ? 1 + date.getMonth() : `0${date.getMonth() + 1}`
 		return `${day}/${month}/${date.getFullYear()}`
 	}
+	return '';
 }
 
 function formatDatePlus (date) {

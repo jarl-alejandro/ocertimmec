@@ -29,6 +29,9 @@ function siglas(name, numberAplicacion) {
 }
 
 function formatDate(date) {
+	if (!date) {
+		return '';
+	}
 	let day = date.getDate() >= 10 ? date.getDate() : `0${date.getDate()}`
 	let month = date.getMonth() >= 10 ? 1 + date.getMonth() : `0${date.getMonth() + 1}`
 	return `${day}/${month}/${date.getFullYear()}`

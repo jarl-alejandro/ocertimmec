@@ -68,6 +68,9 @@ function generateUC(uc) {
 }
 
 function formatDate(date) {
+	if (!date) {
+		return '';
+	}
 	date = JSON.stringify(date)
 	date = date.split('T')[0].split('-').join('/')
 	date = new Date(date)
