@@ -7,6 +7,7 @@ import Footer from "@/components/Footer/footer";
 import Header from "@/components/Header/header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import WhatsAppLink from "@/components/WhatsAppLink/WhatsAppLink";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
         {children}
       </main>
 
+      <WhatsAppLink />
       <Footer />
       </body>
     </html>
