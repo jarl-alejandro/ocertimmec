@@ -10,7 +10,7 @@ import path from 'path'
 
 async function finalizarInscripcion (payload, io, socket) {
 	let id_user = socket.id
-	const route = path.join(__dirname, '..', '..', '..', 'media')
+	const route =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
 	let namePDF = ''
 
 	if (payload.file) {
@@ -46,6 +46,18 @@ async function finishRegister (payload, io) {
 		{ name },
 		{ name, $inc: { 'counter': 1 } },
 		{ upsert: true, 'new': true })
+
+
+	let pathFiles =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
+
+	if (payload.photo) {
+		payload.photo = `${student._id}-${payload.photo}`
+
+		fs.writeFile(`${pathFiles}/${payload.photo}`, payload.photoFile, err => {
+			if (err) console.log(err)
+		})
+	}
+	
 	updatedStudent(param.counter, io, payload)
 
 }
@@ -59,7 +71,8 @@ async function updatedStudent(count, io, payload) {
 			dateCertificate: new Date(payload.date+"T00:00:00"),
 			hourCertificate: payload.hour,
 			notaCertificate: payload.nota,
-			numberAplicacion: count
+			numberAplicacion: count,
+			photo: payload.photo,
 		}, { new: true });
 	io.emit('registerInscripcion')
 }

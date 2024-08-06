@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs'
 async function created (data, io) {
 	const userDocument = new User({ ...data, password: 'occertimm' });
 	const create = await userDocument.save();
-	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
+	let pathFiles =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
 
 	if (data.photo) {
 		create.photo = `${create._id}-${data.photo}`
@@ -21,7 +21,7 @@ async function created (data, io) {
 }
 
 async function updated(data, io) {
-	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
+	let pathFiles =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
 	let updatedUser = await User.findByIdAndUpdate(data.id, { ...data }, { new: true })
 	io.emit('updated::user')
 

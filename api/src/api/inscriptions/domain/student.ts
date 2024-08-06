@@ -4,6 +4,7 @@ import {Certificate} from "../../certificate/domain/model";
 import {Training} from "../../training/domain/model";
 
 export interface Student extends Document {
+	photo?: string,
 	_id: Types.ObjectId;
 	isCerficateAssiten: Boolean,
 	certificacion: {
@@ -152,6 +153,7 @@ export interface Student extends Document {
 
 const StudentSchema = new Schema<Student>({
 	isCerficateAssiten: Boolean,
+	photo: String,
 	certificacion: {
 		type: {},
 		default: {

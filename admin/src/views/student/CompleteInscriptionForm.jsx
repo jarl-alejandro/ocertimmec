@@ -8,12 +8,22 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { makeStyles } from '@mui/styles';
 import actions from '../../actions/student.action';
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import LinkedCamera from "@mui/icons-material/LinkedCamera.js";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(2, 1fr)',
 		gridGap: '10px',
+	},
+	bigAvatar: {
+		width: '80px !important',
+		height: '80px !important',
+		margin: 7,
+		borderRadius: '2px !important',
+		filter: 'drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2)) !important'
 	},
 }));
 
@@ -26,6 +36,8 @@ const CompleteInscriptionForm = ({ isActive, closeAllForm, row, isEditRow }) => 
 		date: '',
 		hour: '',
 		nota: '',
+		imagePreviewUrl: '',
+		photo: '',
 	});
 
 	useEffect(() => {
@@ -50,6 +62,23 @@ const CompleteInscriptionForm = ({ isActive, closeAllForm, row, isEditRow }) => 
 		return '';
 	};
 
+	const uploadImage = (e) => {
+		const file = e.target.files[0];
+		const reader = new FileReader();
+
+		reader.onloadend = () => {
+			setFormState(prevState => ({
+				...prevState,
+				photo: file,
+				imagePreviewUrl: reader.result
+			}));
+		}
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	}
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormState(prevState => ({ ...prevState, [name]: value }));
@@ -67,10 +96,18 @@ const CompleteInscriptionForm = ({ isActive, closeAllForm, row, isEditRow }) => 
 	};
 
 	const handleSave = () => {
+		if (!formState.photo) {
+			return;
+		}
 		const object = {
 			...formState,
 			id: row._id
 		};
+		if (formState.photo) {
+			object.photo = formState.photo.name.split(' ').join('');
+			object.photoFile = formState.photo;
+		}
+
 		dispatch(actions.finishRegister(object));
 		handleCancel();
 	};
@@ -101,7 +138,7 @@ const CompleteInscriptionForm = ({ isActive, closeAllForm, row, isEditRow }) => 
 					type="date"
 					value={formState.date}
 					onChange={handleChange}
-					InputLabelProps={{ shrink: true }}
+					InputLabelProps={{shrink: true}}
 				/>
 				<TextField
 					label="Hora de certificacion"
@@ -109,7 +146,7 @@ const CompleteInscriptionForm = ({ isActive, closeAllForm, row, isEditRow }) => 
 					type="time"
 					value={formState.hour}
 					onChange={handleChange}
-					InputLabelProps={{ shrink: true }}
+					InputLabelProps={{shrink: true}}
 				/>
 				<TextField
 					label="Nota de la certificacion"
@@ -117,8 +154,28 @@ const CompleteInscriptionForm = ({ isActive, closeAllForm, row, isEditRow }) => 
 					type="number"
 					value={formState.nota}
 					onChange={handleChange}
-					InputLabelProps={{ shrink: true }}
+					InputLabelProps={{shrink: true}}
 				/>
+
+				<div className={`flex flex-center flex-center-y flex-wrap `}>
+					<Avatar
+						src={formState.imagePreviewUrl}
+						className={classes.bigAvatar}
+					/>
+					<input
+						id="photo-user"
+						type="file"
+						className="none"
+						onChange={uploadImage}
+					/>
+					<div className="fullWidth flex flex-center flex-center-y">
+						<IconButton>
+							<label htmlFor="photo-user" className={classes.label}>
+								<LinkedCamera/>
+							</label>
+						</IconButton>
+					</div>
+				</div>
 			</DialogContent>
 			<DialogActions>
 				<Button color="primary" onClick={handleCancel}>Cancelar</Button>

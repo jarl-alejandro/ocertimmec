@@ -25,7 +25,7 @@ async function created (data, io) {
 
 	const create = await certificateToSave.save();
 
-	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
+	let pathFiles =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
 
 	if (data.photo) {
 		create.photo = `${create._id}-${data.photo}`
@@ -40,7 +40,7 @@ async function created (data, io) {
 }
 
 async function updated (data, io) {
-	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
+	let pathFiles =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
 
 	if (data.isPhoto) {
 		data.photo = `updated_${Date.now()}${data.id}-${data.photo}`

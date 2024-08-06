@@ -13,7 +13,7 @@ async function created (data, io) {
 		video: data.video,
 	})
 
-	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
+	let pathFiles =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
 
 	if (data.photo) {
 		create.photo = `${create._id}-${data.photo}`
@@ -30,7 +30,7 @@ async function created (data, io) {
 }
 
 async function updated(data, io) {
-	let pathFiles = path.join(__dirname, '..', '..', '..', 'media')
+	let pathFiles =  path.join(__dirname, '..', '..', '..', '..', '..', '..', 'media')
 	let updated = await Trainings.findByIdAndUpdate(data.id, { ...data }, { new: true })
 	io.emit('updated::training')
 
